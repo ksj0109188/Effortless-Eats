@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    let kaka = KaKaoLocal()
+    
     var body: some View {
         VStack {
             Button {
-                
+                getFood(kaka: kaka)
             } label: {
                 Text("랜덤 추천받기")
             }
@@ -21,8 +23,8 @@ struct ContentView: View {
     }
 }
 
-func getFood() {
-    
+func getFood(kaka: KaKaoLocal) {
+    kaka.음식추천받기()
 }
 
 #Preview {
