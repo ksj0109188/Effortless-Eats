@@ -13,8 +13,9 @@
 		3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */; };
 		3BA9ADB22B3BEE720048D986 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA9ADB12B3BEE720048D986 /* KakaoMapsSDK_SPM */; };
 		3BCFDFB62B3C187E007283C2 /* KaKaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFB52B3C187E007283C2 /* KaKaoMap.swift */; };
-		3BCFDFBA2B3D3022007283C2 /* KaKaoLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFB92B3D3022007283C2 /* KaKaoLocal.swift */; };
-		3BCFDFBF2B3D7889007283C2 /* FoodStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFBE2B3D7889007283C2 /* FoodStore.swift */; };
+		3BCFDFBA2B3D3022007283C2 /* RandomRecommendFoodStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFB92B3D3022007283C2 /* RandomRecommendFoodStore.swift */; };
+		3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */; };
+		3BCFDFC22B3E9535007283C2 /* KaKaoLocalAPICategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFC12B3E9535007283C2 /* KaKaoLocalAPICategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +26,9 @@
 		3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3BCFDFB32B3BF3EB007283C2 /* Effortless-Eats-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Effortless-Eats-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3BCFDFB52B3C187E007283C2 /* KaKaoMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoMap.swift; sourceTree = "<group>"; };
-		3BCFDFB92B3D3022007283C2 /* KaKaoLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLocal.swift; sourceTree = "<group>"; };
-		3BCFDFBE2B3D7889007283C2 /* FoodStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStore.swift; sourceTree = "<group>"; };
+		3BCFDFB92B3D3022007283C2 /* RandomRecommendFoodStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecommendFoodStore.swift; sourceTree = "<group>"; };
+		3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLocalAPIDTO.swift; sourceTree = "<group>"; };
+		3BCFDFC12B3E9535007283C2 /* KaKaoLocalAPICategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLocalAPICategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				3BCFDFB52B3C187E007283C2 /* KaKaoMap.swift */,
-				3BCFDFB92B3D3022007283C2 /* KaKaoLocal.swift */,
+				3BCFDFB92B3D3022007283C2 /* RandomRecommendFoodStore.swift */,
+				3BCFDFC12B3E9535007283C2 /* KaKaoLocalAPICategory.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -131,7 +134,7 @@
 		3BCFDFC02B3D788D007283C2 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				3BCFDFBE2B3D7889007283C2 /* FoodStore.swift */,
+				3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -213,9 +216,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BA9ADA52B3BDF580048D986 /* ContentView.swift in Sources */,
-				3BCFDFBA2B3D3022007283C2 /* KaKaoLocal.swift in Sources */,
+				3BCFDFC22B3E9535007283C2 /* KaKaoLocalAPICategory.swift in Sources */,
+				3BCFDFBA2B3D3022007283C2 /* RandomRecommendFoodStore.swift in Sources */,
 				3BCFDFB62B3C187E007283C2 /* KaKaoMap.swift in Sources */,
-				3BCFDFBF2B3D7889007283C2 /* FoodStore.swift in Sources */,
+				3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */,
 				3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

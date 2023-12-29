@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let kaka = KaKaoLocal()
+    let kaka = RandomRecommendFoodStore()
     
     var body: some View {
         VStack {
@@ -17,14 +17,13 @@ struct ContentView: View {
             } label: {
                 Text("랜덤 추천받기")
             }
-
         }
         .padding()
     }
 }
 
-func getFood(kaka: KaKaoLocal) {
-    kaka.음식추천받기()
+func getFood(kaka: RandomRecommendFoodStore) {
+    kaka.음식추천받기(radius: 20000)
 }
 
 #Preview {
