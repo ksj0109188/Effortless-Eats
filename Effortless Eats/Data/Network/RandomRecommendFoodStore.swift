@@ -14,7 +14,7 @@ protocol KaKaoRESTAPI {
 
 protocol KaKaoLocalAPI {
     var LocalAPIURL: URL? {get set}
-    func 음식추천받기(radius : Int) -> KakaoAPIStatus
+//    func 음식추천받기(radius : Int) -> KakaoAPIStatus
 }
 
 enum KakaoAPIStatus: Error {
@@ -24,11 +24,11 @@ enum KakaoAPIStatus: Error {
     case invalidURL
 }
 
-struct RandomRecommendFoodStore: KaKaoRESTAPI, KaKaoLocalAPI {
+class RandomRecommendFoodStore: KaKaoRESTAPI, KaKaoLocalAPI {
     var restAPIMethod: String?
     var restAPIKey: String?
     var LocalAPIURL: URL?
-    
+    var selectedURL: String?
     init() {
         let mainBundle = Bundle.main
         restAPIKey = mainBundle.infoDictionary?["KAKAO_REST_API_KEY"] as? String
@@ -67,7 +67,8 @@ struct RandomRecommendFoodStore: KaKaoRESTAPI, KaKaoLocalAPI {
             } else if let data = data {
                 do {
                     let dto = try? JSONDecoder().decode(KaKaoLocalAPIDTO.self, from: data)
-                    print(dto?.documents?[0])
+                    let recommendedStore = dto?.documents?.randomElement()
+                    self.selectedURL = recommendedStore?.place_url
                 } catch let error {
                     print("Failed to convert data to JSON: \(error)")
                 }

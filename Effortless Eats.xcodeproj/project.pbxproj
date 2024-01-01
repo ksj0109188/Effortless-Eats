@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4474662B428A45005C9511 /* SafariWebView.swift */; };
 		3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */; };
 		3BA9ADA52B3BDF580048D986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* ContentView.swift */; };
 		3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B4474662B428A45005C9511 /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* Effortless Eats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Effortless Eats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effortless_EatsApp.swift; sourceTree = "<group>"; };
 		3BA9ADA42B3BDF580048D986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +45,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4474652B427EF3005C9511 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3B4474662B428A45005C9511 /* SafariWebView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3B4474682B428C1B005C9511 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3BA9AD962B3BDF580048D986 = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +100,9 @@
 		3BCFDFB42B3C185E007283C2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3BA9ADA42B3BDF580048D986 /* ContentView.swift */,
 				3BCFDFBC2B3D31CB007283C2 /* SelectStore */,
+				3B4474652B427EF3005C9511 /* Utils */,
+				3BA9ADA42B3BDF580048D986 /* ContentView.swift */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -118,6 +136,7 @@
 		3BCFDFBC2B3D31CB007283C2 /* SelectStore */ = {
 			isa = PBXGroup;
 			children = (
+				3B4474682B428C1B005C9511 /* ViewModel */,
 				3BCFDFB82B3D2FC9007283C2 /* View */,
 			);
 			name = SelectStore;
@@ -221,6 +240,7 @@
 				3BCFDFB62B3C187E007283C2 /* KaKaoMap.swift in Sources */,
 				3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */,
 				3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */,
+				3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,11 +19,13 @@ struct ContentView: View {
             }
         }
         .padding()
+        
     }
 }
 
 func getFood(kaka: RandomRecommendFoodStore) {
     kaka.음식추천받기(radius: 20000)
+    
 }
 
 #Preview {
