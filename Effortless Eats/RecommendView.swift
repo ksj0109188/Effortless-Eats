@@ -1,36 +1,53 @@
 //
-//  RecommendView.swift
-//  Effortless Eats
+//    RecommendView.swift
+//    Effortless Eats
 //
-//  Created by 김성준 on 1/1/24.
+//    Created by 김성준 on 1/1/24.
 //
+
+
+//TODO: 내 위치중심 좌표 구하기
+//TODO: 내 위치 중심 기반 설정 거리고 음식점 정보 가지고오기
+
 
 import SwiftUI
 
 struct RecommendView: View {
   @State private var isRecommendButtonCilcked: Bool = false
+  @State private var showingSafariWebView: Bool = false
   @ObservedObject var recommendViewModel = RecommendViewModel()
+  
+  var recommendedStoreName: String? {
+    recommendViewModel.recommendedStore?.place_name
+  }
+  
+  var recommendedStoreUrl: String {
+    recommendViewModel.recommendedStore?.place_url ?? ""
+  }
   
   var body: some View {
     VStack {
-      Text(recommendViewModel.recommendedStore?.place_name ?? "오류발생")
-      Button {
-        isRecommendButtonCilcked.toggle()
-        recommendViewModel.fetchRandomStore(radius: 200)
-      } label: {
-        Text("랜덤 추천받기")
-      }
-    }
-    .alert("추첨", isPresented: $isRecommendButtonCilcked, presenting: Text("f"), actions: { T in
+      Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
       HStack{
-        Text("다시뽑기")
-        NavigationLink {
-          SafariWebView(urlString: "http://place.map.kakao.com/8107636")
+        Button {
+          recommendViewModel.fetchRandomStore(radius: 200)
         } label: {
-          Text("확정")
+          Text("다시 받기")
+        }
+        Button {
+          showingSafariWebView = true
+        } label: {
+          Text("가게정보")
         }
       }
+    }
+    .onAppear(perform: {
+      recommendViewModel.fetchRandomStore(radius: 200)
     })
+    .sheet(isPresented: $showingSafariWebView, content: {
+      SafariWebView(urlString: recommendedStoreUrl)
+    })
+    
     .padding()
   }
 }

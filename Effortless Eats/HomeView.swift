@@ -9,10 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-       RecommendView()
+        NavigationLink("추천받기") {
+            RecommendView()
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    NavigationStack {
+        HomeView()
+    }
 }

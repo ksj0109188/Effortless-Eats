@@ -5,6 +5,8 @@
 //  Created by 김성준 on 1/1/24.
 //
 
+//TODO: 사파리 웹 뷰 하단 잘림현상 해결필요
+
 import SwiftUI
 import SafariServices
 
