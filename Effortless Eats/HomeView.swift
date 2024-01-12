@@ -8,10 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var showingSetting = false
     var body: some View {
-        NavigationLink("추천받기") {
-            RecommendView()
+        VStack{
+            NavigationLink("추천받기") {
+                RecommendView()
+            }
         }
+        .toolbar(content: {
+            Button(action: {
+                showingSetting = true
+            }, label: {
+                Image(systemName: "gearshape")
+            })
+        })
+        .sheet(isPresented: $showingSetting, content: {
+            SettingView()
+        })
     }
 }
 

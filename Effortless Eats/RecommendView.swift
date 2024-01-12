@@ -11,47 +11,50 @@
 
 
 import SwiftUI
+import CoreLocation
 
 struct RecommendView: View {
-  @State private var isRecommendButtonCilcked: Bool = false
-  @State private var showingSafariWebView: Bool = false
-  @ObservedObject var recommendViewModel = RecommendViewModel()
-  
-  var recommendedStoreName: String? {
-    recommendViewModel.recommendedStore?.place_name
-  }
-  
-  var recommendedStoreUrl: String {
-    recommendViewModel.recommendedStore?.place_url ?? ""
-  }
-  
-  var body: some View {
-    VStack {
-      Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
-      HStack{
-        Button {
-          recommendViewModel.fetchRandomStore(radius: 200)
-        } label: {
-          Text("다시 받기")
-        }
-        Button {
-          showingSafariWebView = true
-        } label: {
-          Text("가게정보")
-        }
-      }
-    }
-    .onAppear(perform: {
-      recommendViewModel.fetchRandomStore(radius: 200)
-    })
-    .sheet(isPresented: $showingSafariWebView, content: {
-      SafariWebView(urlString: recommendedStoreUrl)
-    })
+    @State private var isRecommendButtonCilcked: Bool = false
+    @State private var showingSafariWebView: Bool = false
+    @ObservedObject var recommendViewModel = RecommendViewModel()
     
-    .padding()
-  }
+    
+    var recommendedStoreName: String? {
+        recommendViewModel.recommendedStore?.place_name
+    }
+    
+    var recommendedStoreUrl: String {
+        recommendViewModel.recommendedStore?.place_url ?? ""
+    }
+    
+    var body: some View {
+        VStack {
+            
+            Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
+            HStack{
+                Button {
+                    recommendViewModel.fetchRandomStore(radius: 200)
+                } label: {
+                    Text("다시 받기")
+                }
+                Button {
+                    showingSafariWebView = true
+                } label: {
+                    Text("가게정보")
+                }
+            }
+        }
+        .onAppear(perform: {
+            recommendViewModel.fetchRandomStore(radius: 200)
+        })
+        .sheet(isPresented: $showingSafariWebView, content: {
+            SafariWebView(urlString: recommendedStoreUrl)
+        })
+        
+        .padding()
+    }
 }
 
 #Preview {
-  RecommendView()
+    RecommendView()
 }
