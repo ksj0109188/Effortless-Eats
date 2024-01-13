@@ -17,7 +17,7 @@ struct RecommendView: View {
     @State private var isRecommendButtonCilcked: Bool = false
     @State private var showingSafariWebView: Bool = false
     @ObservedObject var recommendViewModel = RecommendViewModel()
-    
+    @ObservedObject var locationManager = LocationManager()
     
     var recommendedStoreName: String? {
         recommendViewModel.recommendedStore?.place_name
@@ -27,9 +27,17 @@ struct RecommendView: View {
         recommendViewModel.recommendedStore?.place_url ?? ""
     }
     
+    var latitude: String {
+        locationManager.location?.coordinate.latitude.description ?? ""
+    }
+    
     var body: some View {
         VStack {
-            
+            Text(latitude)
+            //                    locationDataManager.$location.sink {
+            //                        print($0?.coordinate.latitude)
+            //                        print($0?.coordinate.longitude)
+            //                    }
             Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
             HStack{
                 Button {
