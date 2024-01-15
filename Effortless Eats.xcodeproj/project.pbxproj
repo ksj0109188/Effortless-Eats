@@ -77,12 +77,12 @@
 			path = EndPoints;
 			sourceTree = "<group>";
 		};
-		3B4474652B427EF3005C9511 /* Utils */ = {
+		3B4474652B427EF3005C9511 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				3B1F763C2B500A7E005D3D6B /* LocationManager.swift */,
 			);
-			path = Utils;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		3B4474682B428C1B005C9511 /* ViewModel */ = {
@@ -116,7 +116,7 @@
 				3BCFDFBD2B3D3200007283C2 /* Application */,
 				3BCFDFB72B3C1884007283C2 /* Data */,
 				3BCFDFB42B3C185E007283C2 /* Presentation */,
-				3B4474652B427EF3005C9511 /* Utils */,
+				3B4474652B427EF3005C9511 /* Utility */,
 				3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */,
 				3BA9ADA82B3BDF5B0048D986 /* Preview Content */,
 			);
