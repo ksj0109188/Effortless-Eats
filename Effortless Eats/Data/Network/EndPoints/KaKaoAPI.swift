@@ -9,12 +9,26 @@ import Foundation
 import Combine
 
 struct KaKaoAPI {
- 
-    enum KakaoAPIError: Error {
+    let locationManager = LocationManager()
+    
+    enum KakaoAPIError: Error, CustomStringConvertible {
         case overflowRadius
         case invalidURL
         case invalidResponse
         case decodeError
+        
+        var description: String {
+            switch self {
+                case .overflowRadius:
+                    return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
+                case .invalidURL:
+                    return "유효하지 않는 URL 발생"
+                case .invalidResponse:
+                    return "유효하지 않는 응답."
+                case .decodeError:
+                    return "Parsing 에러 발생"
+            }
+        }
     }
     
     enum EndPoint {
@@ -27,13 +41,6 @@ struct KaKaoAPI {
         var request: URLRequest{
             switch self {
                 case .kakaoLocalAPI :
-//                    var subsciprionts = Set<AnyCancellable>()
-//                    let locationDataManager = LocationManager()
-//                    locationDataManager.$location.sink {
-//                        print($0?.coordinate.latitude)
-//                        print($0?.coordinate.longitude)
-//                    }
-//                    .store(in: &subsciprionts)
                     var request = URLRequest(url: KaKaoAPI.EndPoint.baseURL.appendingPathComponent("/local/search/category.json"))
                     request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
                     request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
@@ -74,10 +81,14 @@ struct KaKaoAPI {
                 .mapError { _ in KakaoAPIError.overflowRadius}
                 .eraseToAnyPublisher()
         }
-        
+       
         var request = EndPoint.kakaoLocalAPI.request
-        
+        if let coordinate = locationManager.location?.coordinate {
+            request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
+            request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
+        }
         request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
+        
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
             .tryMap { output in
