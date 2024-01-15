@@ -21,8 +21,6 @@ class LocationManager: NSObject, ObservableObject {
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        debugPrint(location.coordinate.latitude)
-        debugPrint(location.coordinate.longitude)
         self.location = location
     }
     
@@ -32,14 +30,13 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-            case .authorizedWhenInUse:  // Location services are available.
+            case .authorizedWhenInUse:
                 manager.startUpdatingLocation()
                 break
-            case .restricted, .denied:  // Location services currently unavailable.
+            case .restricted, .denied:
                 manager.startUpdatingLocation()
                 break
-            case .notDetermined:        // Authorization not determined yet.
-                print("notYet")
+            case .notDetermined:
                 manager.requestWhenInUseAuthorization()
                 break
             default:
