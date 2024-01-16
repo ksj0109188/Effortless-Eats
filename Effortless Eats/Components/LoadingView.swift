@@ -13,8 +13,6 @@ struct LoadingView: View {
     @State private var pages: Int = 0
     @State private var images = [ Image("Bun"), Image("Burger1"), Image("Burger2"), Image("Hotdog"), Image("Noodle2"), Image("Pizza")]
     
-    private let maxImageCount = 8
-    
     var body: some View {
         VStack {
             images[pages]
@@ -31,7 +29,7 @@ struct LoadingView: View {
                 after: queue.now,
                 interval: .seconds(0.5)
             ) {
-                if images.count <= counter + 1{
+                if images.count <= counter + 1 {
                     counter = 0
                 } else {
                     counter += 1
