@@ -7,47 +7,67 @@
 
 import SwiftUI
 
-
-//검색 조건
-//TODO: 위치정보 제공 설정
 struct SettingView: View {
-    @State private var speed = 500.0
     @State private var isEditing = false
     @AppStorage("serachDistance") var serachDistance: Double = 500.0
+    @Environment(\.dismiss) var dismiss
+    
+    var transformDistance: String {
+        if serachDistance / 1000 >= 1 {
+            return "\(Double(serachDistance / 1000))km"
+        } else {
+           return "\(serachDistance)m"
+        }
+    }
     
     var body: some View {
-        List {
-            Section {
-                Text("검색거리 설정")
-                HStack{
-                    Slider(
-                        value: $speed,
-                        in: 0...20000,
-                        step: 1.0,
-                        onEditingChanged: { editing in
-                            isEditing = editing
+        NavigationStack{
+            List {
+                Section {
+                    VStack(spacing: 20){
+                        HStack{
+                            Slider(
+                                value: $serachDistance,
+                                in: 0...20000,
+                                step: 1.0,
+                                onEditingChanged: { editing in
+                                    isEditing = editing
+                                }
+                            )
+                            .frame(width: 200)
+                            Stepper("", value: $serachDistance, step: 100)
+                                .pickerStyle(.segmented)
+                            
                         }
-                    )
-                    Stepper("", value: $speed, step: 100)
-                        .pickerStyle(.segmented)
-                    
+                        Divider()
+                        Text(transformDistance)
+                            .foregroundColor(isEditing ? .red : .blue)
+                    }
+                } header: {
+                    Text("검색범위 설정")
+                        .font(.title2)
+                } footer: {
+                    Text("설정 거리내 무작위 음식점을 표출합니다.")
+                        .font(.footnote)
                 }
-                Text("\(Int(speed))m")
-                    .foregroundColor(isEditing ? .red : .blue)
-            } footer: {
-                Text("m단위로 설정 거리내 무작위 음식점을 표출합니다.")
             }
-            Button(action: {
-                serachDistance = speed
-            }, label: {
-                Text("저장")
-            })
-            Text("위치정보 제공 동의여부")
-//            if(CLLocationManager.headingAvailable()) {}
         }
+        .toolbar(content: {
+            ToolbarItem(id: "close", placement: .cancellationAction) {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Text("닫기")
+                        .font(.headline)
+                })
+                .foregroundStyle(Color.red)
+            }
+        })
     }
 }
 
 #Preview {
-    SettingView()
+    NavigationStack{
+        SettingView()
+    }
 }

@@ -12,11 +12,14 @@
 		3B1F763A2B4FB710005D3D6B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F76392B4FB710005D3D6B /* SettingView.swift */; };
 		3B1F763D2B500A7E005D3D6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F763C2B500A7E005D3D6B /* LocationManager.swift */; };
 		3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4474662B428A45005C9511 /* SafariWebView.swift */; };
-		3B44746A2B42966B005C9511 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4474692B42966B005C9511 /* HomeView.swift */; };
 		3B44746C2B42B8D5005C9511 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44746B2B42B8D5005C9511 /* RecommendViewModel.swift */; };
 		3B44746E2B42B907005C9511 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44746D2B42B907005C9511 /* RecommendView.swift */; };
+		3B5518112B57DAB000D5A38A /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */; };
+		3B5B6F4C2B5639FA00AE9675 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */; };
+		3B5B6F4E2B564FD700AE9675 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4D2B564FD700AE9675 /* Color.swift */; };
+		3B5B6F502B564FE000AE9675 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4F2B564FE000AE9675 /* Font.swift */; };
 		3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */; };
-		3BA9ADA52B3BDF580048D986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* ContentView.swift */; };
+		3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* HomeView.swift */; };
 		3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */; };
 		3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */; };
 		3BA9ADB22B3BEE720048D986 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA9ADB12B3BEE720048D986 /* KakaoMapsSDK_SPM */; };
@@ -29,12 +32,15 @@
 		3B1F76392B4FB710005D3D6B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		3B1F763C2B500A7E005D3D6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3B4474662B428A45005C9511 /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
-		3B4474692B42966B005C9511 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3B44746B2B42B8D5005C9511 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		3B44746D2B42B907005C9511 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
+		3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
+		3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		3B5B6F4D2B564FD700AE9675 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		3B5B6F4F2B564FE000AE9675 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* Effortless Eats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Effortless Eats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effortless_EatsApp.swift; sourceTree = "<group>"; };
-		3BA9ADA42B3BDF580048D986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3BA9ADA42B3BDF580048D986 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3BCFDFB32B3BF3EB007283C2 /* Effortless-Eats-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Effortless-Eats-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -57,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				3B4474662B428A45005C9511 /* SafariWebView.swift */,
+				3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -77,12 +84,13 @@
 			path = EndPoints;
 			sourceTree = "<group>";
 		};
-		3B4474652B427EF3005C9511 /* Utils */ = {
+		3B4474652B427EF3005C9511 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				3B1F763C2B500A7E005D3D6B /* LocationManager.swift */,
+				3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */,
 			);
-			path = Utils;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		3B4474682B428C1B005C9511 /* ViewModel */ = {
@@ -91,6 +99,15 @@
 				3B44746B2B42B8D5005C9511 /* RecommendViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B5B6F512B56715D00AE9675 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B5B6F4D2B564FD700AE9675 /* Color.swift */,
+				3B5B6F4F2B564FE000AE9675 /* Font.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		3BA9AD962B3BDF580048D986 = {
@@ -116,7 +133,6 @@
 				3BCFDFBD2B3D3200007283C2 /* Application */,
 				3BCFDFB72B3C1884007283C2 /* Data */,
 				3BCFDFB42B3C185E007283C2 /* Presentation */,
-				3B4474652B427EF3005C9511 /* Utils */,
 				3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */,
 				3BA9ADA82B3BDF5B0048D986 /* Preview Content */,
 			);
@@ -134,11 +150,12 @@
 		3BCFDFB42B3C185E007283C2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3BA9ADA42B3BDF580048D986 /* ContentView.swift */,
-				3B4474692B42966B005C9511 /* HomeView.swift */,
-				3BCFDFBC2B3D31CB007283C2 /* RecommendFoodStoreScene */,
+				3BA9ADA42B3BDF580048D986 /* HomeView.swift */,
 				3B1F763B2B4FB715005D3D6B /* SettingScene */,
+				3BCFDFBC2B3D31CB007283C2 /* RecommendFoodStoreScene */,
 				3B1F76382B4FACCB005D3D6B /* Components */,
+				3B5B6F512B56715D00AE9675 /* Extension */,
+				3B4474652B427EF3005C9511 /* Utility */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -272,11 +289,14 @@
 			files = (
 				3B1F76312B4E967A005D3D6B /* DummyDTO.swift in Sources */,
 				3B1F763D2B500A7E005D3D6B /* LocationManager.swift in Sources */,
+				3B5B6F502B564FE000AE9675 /* Font.swift in Sources */,
 				3B1F763A2B4FB710005D3D6B /* SettingView.swift in Sources */,
-				3BA9ADA52B3BDF580048D986 /* ContentView.swift in Sources */,
+				3B5518112B57DAB000D5A38A /* NavigationBackButton.swift in Sources */,
+				3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */,
+				3B5B6F4E2B564FD700AE9675 /* Color.swift in Sources */,
 				3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */,
+				3B5B6F4C2B5639FA00AE9675 /* LoadingView.swift in Sources */,
 				3B0F6CDA2B4BC7C10050E8B1 /* KaKaoAPI.swift in Sources */,
-				3B44746A2B42966B005C9511 /* HomeView.swift in Sources */,
 				3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */,
 				3B44746C2B42B8D5005C9511 /* RecommendViewModel.swift in Sources */,
 				3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */,
@@ -411,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Effortless Eats/Preview Content\"";
@@ -418,11 +439,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Effortless-Eats-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your consent to provide location information because we search for restaurants based on your device’s location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Effortless Eats/Preview Content\"";
@@ -453,11 +475,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Effortless-Eats-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your consent to provide location information because we search for restaurants based on your device’s location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

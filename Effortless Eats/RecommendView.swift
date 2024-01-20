@@ -14,45 +14,89 @@ import SwiftUI
 import CoreLocation
 
 struct RecommendView: View {
+    @AppStorage("serachDistance") var serachDistance: Double = 500.0
+    
     @State private var isRecommendButtonCilcked: Bool = false
     @State private var showingSafariWebView: Bool = false
+    @State private var showingResultView: Bool = false
+    
     @ObservedObject var recommendViewModel = RecommendViewModel()
     
     var recommendedStoreName: String? {
-        recommendViewModel.recommendedStore?.place_name
+        recommendViewModel.recommendedStore?.randomElement()?.place_name
     }
     
     var recommendedStoreUrl: String {
-        recommendViewModel.recommendedStore?.place_url ?? ""
+        recommendViewModel.recommendedStore?.randomElement()?.place_url ?? ""
     }
     
     var body: some View {
-        VStack {
-            Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
-            HStack{
-                Button {
-                    recommendViewModel.fetchRandomStore(radius: 200)
-                } label: {
-                    Text("다시 받기")
-                }
-                Button {
-                    showingSafariWebView = true
-                } label: {
-                    Text("가게정보")
+            ZStack {
+                Color.customColorSkyLight
+                    .ignoresSafeArea(.all)
+                if recommendViewModel.isEmptyRecommendStore && !showingResultView {
+                    LoadingView()
+                } else {
+                    VStack(spacing: 40){
+                        Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
+                            .bold()
+                            .font(.largeTitle)
+                        HStack{
+                            Spacer()
+                            Button {
+                                recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
+                            } label: {
+                                Text("다시 받기")
+                            }
+                            .font(.title2)
+                            .foregroundStyle(Color.black)
+                            .buttonStyle(.bordered)
+                            
+                            Spacer()
+                            Button {
+                                showingSafariWebView = true
+                            } label: {
+                                Text("가게정보")
+                            }
+                            .font(.title2)
+                            .buttonStyle(.borderedProminent)
+                            Spacer()
+                        }
+                    }
+                    .padding(20)
+                    .frame(width: 300, height: 300)
+                            .cornerRadius(10)
+                    .background(
+                        RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                            .foregroundStyle(Color.customGrayLight)
+                            .shadow(radius: 10, y: 10)
+                    )
+                    .transition(.scale)
                 }
             }
-        }
-        .onAppear(perform: {
-            recommendViewModel.fetchRandomStore(radius: 200)
-        })
-        .sheet(isPresented: $showingSafariWebView, content: {
-            SafariWebView(urlString: recommendedStoreUrl)
-        })
-        
-        .padding()
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationBackButton(color: .white) { }
+                }
+            }
+            .onAppear(perform: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
+                    recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
+                    withAnimation {
+                        showingResultView = true
+                    }
+                }))
+            })
+            .sheet(isPresented: $showingSafariWebView, content: {
+                SafariWebView(urlString: recommendedStoreUrl)
+            })
+            
     }
 }
 
 #Preview {
-    RecommendView()
+    NavigationStack{
+        RecommendView()
+    }
 }
