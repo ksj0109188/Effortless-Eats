@@ -32,7 +32,9 @@ struct HomeView: View {
                 })
             })
             .sheet(isPresented: $showingSetting, content: {
-                SettingView()
+                NavigationStack{
+                    SettingView()
+                }
             })
         }
         .background(Color.customGrayLight)
@@ -47,18 +49,15 @@ struct HomeHeaderView: View {
                 .frame(width: proxy.size.width,
                        height: proxy.size.height/8)
                 .foregroundStyle(Color.customColorSkyLight)
-            NavigationStack{
                 NavigationLink {
                     RecommendView()
                 } label: {
-                    //TODO: 버튼스타일 미지정
                     Text("추천받기")
                         .foregroundStyle(Color.white)
                         .font(.title)
                         .bold()
-                }
+                }.buttonStyle(.bordered)
             }
-        }
     }
 }
 

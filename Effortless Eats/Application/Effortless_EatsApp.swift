@@ -11,7 +11,9 @@ import SwiftUI
 struct Effortless_EatsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                HomeView()
+            }
         }
     }
 }

@@ -23,12 +23,12 @@ struct LoadingView: View {
             Text("로딩중")
                 .bold()
                 .font(.title2)
-                
         }
         .padding(20)
         .background(
             RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
                 .foregroundStyle(Color.customGrayLight)
+                .shadow(radius: 10, y: 10)
         )
         
         .onAppear(perform: {
