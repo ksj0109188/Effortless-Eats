@@ -88,7 +88,7 @@ struct KaKaoAPI {
             request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
         }
         request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
-        print(request.url)
+        
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
             .tryMap { output in

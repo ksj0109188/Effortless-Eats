@@ -5,13 +5,9 @@
 //    Created by 김성준 on 1/1/24.
 //
 
-
-//TODO: 내 위치중심 좌표 구하기
-//TODO: 내 위치 중심 기반 설정 거리고 음식점 정보 가지고오기
-
-
 import SwiftUI
 import CoreLocation
+import Combine
 
 struct RecommendView: View {
     @AppStorage("serachDistance") var serachDistance: Double = 500.0
@@ -21,38 +17,47 @@ struct RecommendView: View {
     @State private var showingResultView: Bool = false
     
     @ObservedObject var recommendViewModel = RecommendViewModel()
+    let clikedButtonSubject = PassthroughSubject<Void, Never>()
     
-    var recommendedStoreName: String? {
-        recommendViewModel.recommendedStore?.randomElement()?.place_name
+    var recommendedStoreName: String {
+        recommendViewModel.recommendedStore?.place_name ?? "추첨중"
     }
     
     var recommendedStoreUrl: String {
-        recommendViewModel.recommendedStore?.randomElement()?.place_url ?? ""
+        recommendViewModel.recommendedStore?.place_url ?? "추첨중"
     }
     
     var body: some View {
             ZStack {
                 Color.customColorSkyLight
                     .ignoresSafeArea(.all)
-                if recommendViewModel.isEmptyRecommendStore && !showingResultView {
+                // TODO: 트렌지션 다시 생각해보기
+                if recommendViewModel.isEmptyRecommendStore {
                     LoadingView()
+                        .onDisappear(perform: {
+                            showingResultView = true
+                        })
                 } else {
                     VStack(spacing: 40){
-                        Text(recommendedStoreName ?? "랜덤 추천받기 버튼을 눌러주세요!")
+                        Text(recommendedStoreName)
                             .bold()
                             .font(.largeTitle)
                         HStack{
                             Spacer()
                             Button {
-                                recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
+                                showingResultView = false
+                                clikedButtonSubject.send()
                             } label: {
                                 Text("다시 받기")
                             }
+                            .onReceive(clikedButtonSubject.throttle(for:.seconds(1), scheduler: DispatchQueue.main, latest: true), 
+                                       perform: { recommendViewModel.fetchRandomStore(radius: Int(serachDistance)) })
                             .font(.title2)
                             .foregroundStyle(Color.black)
                             .buttonStyle(.bordered)
                             
                             Spacer()
+                            
                             Button {
                                 showingSafariWebView = true
                             } label: {
@@ -71,7 +76,7 @@ struct RecommendView: View {
                             .foregroundStyle(Color.customGrayLight)
                             .shadow(radius: 10, y: 10)
                     )
-                    .transition(.scale)
+                    .transition(.scale.animation(.interactiveSpring(duration: 1)))
                 }
             }
             .navigationBarBackButtonHidden()
@@ -83,7 +88,7 @@ struct RecommendView: View {
             .onAppear(perform: {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
                     recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
-                    withAnimation {
+                    withAnimation(.easeInOut(duration: 10)) {
                         showingResultView = true
                     }
                 }))
@@ -91,7 +96,6 @@ struct RecommendView: View {
             .sheet(isPresented: $showingSafariWebView, content: {
                 SafariWebView(urlString: recommendedStoreUrl)
             })
-            
     }
 }
 

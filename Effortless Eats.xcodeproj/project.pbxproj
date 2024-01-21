@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B0F6CDA2B4BC7C10050E8B1 /* KaKaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F6CD92B4BC7C10050E8B1 /* KaKaoAPI.swift */; };
-		3B1F76312B4E967A005D3D6B /* DummyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F76302B4E967A005D3D6B /* DummyDTO.swift */; };
 		3B1F763A2B4FB710005D3D6B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F76392B4FB710005D3D6B /* SettingView.swift */; };
 		3B1F763D2B500A7E005D3D6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F763C2B500A7E005D3D6B /* LocationManager.swift */; };
 		3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4474662B428A45005C9511 /* SafariWebView.swift */; };
@@ -28,7 +27,6 @@
 
 /* Begin PBXFileReference section */
 		3B0F6CD92B4BC7C10050E8B1 /* KaKaoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAPI.swift; sourceTree = "<group>"; };
-		3B1F76302B4E967A005D3D6B /* DummyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDTO.swift; sourceTree = "<group>"; };
 		3B1F76392B4FB710005D3D6B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		3B1F763C2B500A7E005D3D6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3B4474662B428A45005C9511 /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */,
-				3B1F76302B4E967A005D3D6B /* DummyDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -287,7 +284,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1F76312B4E967A005D3D6B /* DummyDTO.swift in Sources */,
 				3B1F763D2B500A7E005D3D6B /* LocationManager.swift in Sources */,
 				3B5B6F502B564FE000AE9675 /* Font.swift in Sources */,
 				3B1F763A2B4FB710005D3D6B /* SettingView.swift in Sources */,

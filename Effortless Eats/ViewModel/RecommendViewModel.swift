@@ -9,13 +9,14 @@ import Foundation
 import Combine
 
 final class RecommendViewModel: ObservableObject {
-    @Published var recommendedStore: [Documents]?
+    @Published var recommendedStore: Documents?
     @Published var isEmptyRecommendStore: Bool = true
 
     let API = KaKaoAPI()
     var subsciprionts = Set<AnyCancellable>()
     
     func fetchRandomStore(radius mapRadius: Int) {
+        recommendedStore = nil
         isEmptyRecommendStore = true
         
         API.requestStores(mapRadius)
@@ -29,7 +30,7 @@ final class RecommendViewModel: ObservableObject {
                 }
             },receiveValue: {[weak self] stores in
                 let store = stores.documents
-                self?.recommendedStore = store
+                self?.recommendedStore = store?.randomElement()
                 self?.isEmptyRecommendStore = false
             })
             .store(in: &subsciprionts)
