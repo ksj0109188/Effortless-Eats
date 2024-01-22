@@ -36,7 +36,7 @@
 		3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3B5B6F4D2B564FD700AE9675 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3B5B6F4F2B564FE000AE9675 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		3BA9AD9F2B3BDF580048D986 /* Effortless Eats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Effortless Eats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BA9AD9F2B3BDF580048D986 /* Effortless-Eats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Effortless-Eats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effortless_EatsApp.swift; sourceTree = "<group>"; };
 		3BA9ADA42B3BDF580048D986 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +60,7 @@
 		3B1F76382B4FACCB005D3D6B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */,
 				3B4474662B428A45005C9511 /* SafariWebView.swift */,
 				3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */,
 			);
@@ -86,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				3B1F763C2B500A7E005D3D6B /* LocationManager.swift */,
-				3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 		3BA9AD962B3BDF580048D986 = {
 			isa = PBXGroup;
 			children = (
-				3BA9ADA12B3BDF580048D986 /* Effortless Eats */,
+				3BA9ADA12B3BDF580048D986 /* Effortless-Eats */,
 				3BA9ADA02B3BDF580048D986 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,12 +119,12 @@
 		3BA9ADA02B3BDF580048D986 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3BA9AD9F2B3BDF580048D986 /* Effortless Eats.app */,
+				3BA9AD9F2B3BDF580048D986 /* Effortless-Eats.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3BA9ADA12B3BDF580048D986 /* Effortless Eats */ = {
+		3BA9ADA12B3BDF580048D986 /* Effortless-Eats */ = {
 			isa = PBXGroup;
 			children = (
 				3BCFDFB32B3BF3EB007283C2 /* Effortless-Eats-Info.plist */,
@@ -134,7 +134,7 @@
 				3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */,
 				3BA9ADA82B3BDF5B0048D986 /* Preview Content */,
 			);
-			path = "Effortless Eats";
+			path = "Effortless-Eats";
 			sourceTree = "<group>";
 		};
 		3BA9ADA82B3BDF5B0048D986 /* Preview Content */ = {
@@ -211,9 +211,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3BA9AD9E2B3BDF580048D986 /* Effortless Eats */ = {
+		3BA9AD9E2B3BDF580048D986 /* Effortless-Eats */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BA9ADAD2B3BDF5B0048D986 /* Build configuration list for PBXNativeTarget "Effortless Eats" */;
+			buildConfigurationList = 3BA9ADAD2B3BDF5B0048D986 /* Build configuration list for PBXNativeTarget "Effortless-Eats" */;
 			buildPhases = (
 				3BA9AD9B2B3BDF580048D986 /* Sources */,
 				3BA9AD9C2B3BDF580048D986 /* Frameworks */,
@@ -223,12 +223,12 @@
 			);
 			dependencies = (
 			);
-			name = "Effortless Eats";
+			name = "Effortless-Eats";
 			packageProductDependencies = (
 				3BA9ADB12B3BEE720048D986 /* KakaoMapsSDK_SPM */,
 			);
 			productName = "Effortless Eats";
-			productReference = 3BA9AD9F2B3BDF580048D986 /* Effortless Eats.app */;
+			productReference = 3BA9AD9F2B3BDF580048D986 /* Effortless-Eats.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -246,7 +246,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3BA9AD9A2B3BDF580048D986 /* Build configuration list for PBXProject "Effortless Eats" */;
+			buildConfigurationList = 3BA9AD9A2B3BDF580048D986 /* Build configuration list for PBXProject "Effortless-Eats" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -262,7 +262,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3BA9AD9E2B3BDF580048D986 /* Effortless Eats */,
+				3BA9AD9E2B3BDF580048D986 /* Effortless-Eats */,
 			);
 		};
 /* End PBXProject section */
@@ -355,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -412,7 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -430,7 +430,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Effortless Eats/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Effortless-Eats/Preview Content\"";
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -466,7 +466,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Effortless Eats/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Effortless-Eats/Preview Content\"";
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -497,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3BA9AD9A2B3BDF580048D986 /* Build configuration list for PBXProject "Effortless Eats" */ = {
+		3BA9AD9A2B3BDF580048D986 /* Build configuration list for PBXProject "Effortless-Eats" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BA9ADAB2B3BDF5B0048D986 /* Debug */,
@@ -506,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BA9ADAD2B3BDF5B0048D986 /* Build configuration list for PBXNativeTarget "Effortless Eats" */ = {
+		3BA9ADAD2B3BDF5B0048D986 /* Build configuration list for PBXNativeTarget "Effortless-Eats" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3BA9ADAE2B3BDF5B0048D986 /* Debug */,
