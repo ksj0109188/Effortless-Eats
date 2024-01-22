@@ -21,7 +21,6 @@
 		3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* HomeView.swift */; };
 		3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */; };
 		3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */; };
-		3BA9ADB22B3BEE720048D986 /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 3BA9ADB12B3BEE720048D986 /* KakaoMapsSDK_SPM */; };
 		3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BA9ADB22B3BEE720048D986 /* KakaoMapsSDK_SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +223,6 @@
 			);
 			name = "Effortless-Eats";
 			packageProductDependencies = (
-				3BA9ADB12B3BEE720048D986 /* KakaoMapsSDK_SPM */,
 			);
 			productName = "Effortless Eats";
 			productReference = 3BA9AD9F2B3BDF580048D986 /* Effortless-Eats.app */;
@@ -256,7 +253,6 @@
 			);
 			mainGroup = 3BA9AD962B3BDF580048D986;
 			packageReferences = (
-				3BA9ADB02B3BEE720048D986 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 3BA9ADA02B3BDF580048D986 /* Products */;
 			projectDirPath = "";
@@ -516,25 +512,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3BA9ADB02B3BEE720048D986 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3BA9ADB12B3BEE720048D986 /* KakaoMapsSDK_SPM */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3BA9ADB02B3BEE720048D986 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
-			productName = KakaoMapsSDK_SPM;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BA9AD972B3BDF580048D986 /* Project object */;
 }
