@@ -17,11 +17,13 @@
 		3B5B6F4C2B5639FA00AE9675 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */; };
 		3B5B6F4E2B564FD700AE9675 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4D2B564FD700AE9675 /* Color.swift */; };
 		3B5B6F502B564FE000AE9675 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4F2B564FE000AE9675 /* Font.swift */; };
-		3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */; };
+		3BA9ADA32B3BDF580048D986 /* Effortless-EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA22B3BDF580048D986 /* Effortless-EatsApp.swift */; };
 		3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* HomeView.swift */; };
 		3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */; };
 		3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */; };
 		3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */; };
+		3BD188952B5FBD15003AECAF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD188932B5FBD15003AECAF /* Model.xcdatamodeld */; };
+		3BD188BB2B60D5D0003AECAF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD188BA2B60D5D0003AECAF /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +38,14 @@
 		3B5B6F4D2B564FD700AE9675 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3B5B6F4F2B564FE000AE9675 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* Effortless-Eats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Effortless-Eats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effortless_EatsApp.swift; sourceTree = "<group>"; };
+		3BA9ADA22B3BDF580048D986 /* Effortless-EatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effortless-EatsApp.swift"; sourceTree = "<group>"; };
 		3BA9ADA42B3BDF580048D986 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3BCFDFB32B3BF3EB007283C2 /* Effortless-Eats-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Effortless-Eats-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLocalAPIDTO.swift; sourceTree = "<group>"; };
+		3BD188942B5FBD15003AECAF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		3BD188BA2B60D5D0003AECAF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				3BCFDFB32B3BF3EB007283C2 /* Effortless-Eats-Info.plist */,
-				3BCFDFBD2B3D3200007283C2 /* Application */,
 				3BCFDFB72B3C1884007283C2 /* Data */,
+				3BCFDFBD2B3D3200007283C2 /* Application */,
 				3BCFDFB42B3C185E007283C2 /* Presentation */,
 				3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */,
 				3BA9ADA82B3BDF5B0048D986 /* Preview Content */,
@@ -159,6 +163,7 @@
 		3BCFDFB72B3C1884007283C2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3BD188962B5FBD42003AECAF /* Persistence */,
 				3BCFDFBB2B3D3028007283C2 /* Network */,
 				3BCFDFC02B3D788D007283C2 /* DTO */,
 			);
@@ -193,7 +198,7 @@
 		3BCFDFBD2B3D3200007283C2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				3BA9ADA22B3BDF580048D986 /* Effortless_EatsApp.swift */,
+				3BA9ADA22B3BDF580048D986 /* Effortless-EatsApp.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -204,6 +209,15 @@
 				3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		3BD188962B5FBD42003AECAF /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				3BD188932B5FBD15003AECAF /* Model.xcdatamodeld */,
+				3BD188BA2B60D5D0003AECAF /* Persistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,13 +297,15 @@
 				3B1F763D2B500A7E005D3D6B /* LocationManager.swift in Sources */,
 				3B5B6F502B564FE000AE9675 /* Font.swift in Sources */,
 				3B1F763A2B4FB710005D3D6B /* SettingView.swift in Sources */,
+				3BD188952B5FBD15003AECAF /* Model.xcdatamodeld in Sources */,
 				3B5518112B57DAB000D5A38A /* NavigationBackButton.swift in Sources */,
 				3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */,
 				3B5B6F4E2B564FD700AE9675 /* Color.swift in Sources */,
 				3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */,
 				3B5B6F4C2B5639FA00AE9675 /* LoadingView.swift in Sources */,
+				3BD188BB2B60D5D0003AECAF /* Persistence.swift in Sources */,
 				3B0F6CDA2B4BC7C10050E8B1 /* KaKaoAPI.swift in Sources */,
-				3BA9ADA32B3BDF580048D986 /* Effortless_EatsApp.swift in Sources */,
+				3BA9ADA32B3BDF580048D986 /* Effortless-EatsApp.swift in Sources */,
 				3B44746C2B42B8D5005C9511 /* RecommendViewModel.swift in Sources */,
 				3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */,
 				3B44746E2B42B907005C9511 /* RecommendView.swift in Sources */,
@@ -512,6 +528,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3BD188932B5FBD15003AECAF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3BD188942B5FBD15003AECAF /* Model.xcdatamodel */,
+			);
+			currentVersion = 3BD188942B5FBD15003AECAF /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3BA9AD972B3BDF580048D986 /* Project object */;
 }

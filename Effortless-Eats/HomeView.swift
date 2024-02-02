@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {
     @State private var showingSetting = false
+    @State private var showingSafariWebView = false
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \RecommendedList.date, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<RecommendedList>
     
     var body: some View {
         GeometryReader{ proxy in
             VStack{
-                HomeHeaderView(proxy: proxy)
-                List {
-                    Section("추천받은 리스트") {
-                        Text("비어있음")
-                    }
-                }
-                .listStyle(.insetGrouped)
+                HomeHeaderView(viewContext: viewContext, proxy: proxy)
+                SavedRecommendList
             }
             .toolbar(content: {
                 Button(action: {
@@ -39,9 +41,51 @@ struct HomeView: View {
         }
         .background(Color.customGrayLight)
     }
+
+    var SavedRecommendList: some View {
+        List {
+            Section("즐겨찾기") {
+                ForEach(items, id: \.self){ item in
+                    HStack {
+                        Button {
+                            showingSafariWebView = true
+                        } label: {
+                            Text(item.place_name ?? "추천항목")
+                                .foregroundStyle(Color.black)
+                                .font(.body)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.right.circle.fill")
+                            .foregroundStyle(Color.customColorSkyLight)
+                    }
+                    .sheet(isPresented: $showingSafariWebView, content: {
+                        SafariWebView(urlString: item.place_url ?? "https://map.kakao.com")
+                    })
+                }
+                .onDelete(perform: deleteItems)
+            }
+        }
+        .lineLimit(10)
+        .listStyle(.insetGrouped)
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+      withAnimation {
+        offsets.map { items[$0] }.forEach(viewContext.delete)
+        
+        do {
+          try viewContext.save()
+        } catch {
+          let nsError = error as NSError
+          fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+      }
+    }
 }
 
 struct HomeHeaderView: View {
+    var viewContext: NSManagedObjectContext
     @State var proxy: GeometryProxy
     var body: some View {
         ZStack{
@@ -51,6 +95,7 @@ struct HomeHeaderView: View {
                 .foregroundStyle(Color.customColorSkyLight)
                 NavigationLink {
                     RecommendView()
+                        .environment(\.managedObjectContext, self.viewContext)
                 } label: {
                     Text("추천받기")
                         .foregroundStyle(Color.white)
@@ -61,8 +106,11 @@ struct HomeHeaderView: View {
     }
 }
 
+
+
 #Preview {
     NavigationStack {
         HomeView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
