@@ -8,14 +8,11 @@
 import SwiftUI
 
 @main
-struct RandomDine: App {
-    let persistenceController = PersistenceController.shared
-    
+struct Effortless_EatsApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 HomeView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
     }
