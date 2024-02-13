@@ -21,6 +21,7 @@
 		3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* HomeView.swift */; };
 		3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */; };
 		3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */; };
+		3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */; };
 		3BCFDFBF2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */; };
 		3BD188952B5FBD15003AECAF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD188932B5FBD15003AECAF /* Model.xcdatamodeld */; };
 		3BD188BB2B60D5D0003AECAF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD188BA2B60D5D0003AECAF /* Persistence.swift */; };
@@ -42,6 +43,7 @@
 		3BA9ADA42B3BDF580048D986 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BA9ADA92B3BDF5B0048D986 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3BCFDFB32B3BF3EB007283C2 /* Effortless-Eats-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Effortless-Eats-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3BCFDFBE2B3D7889007283C2 /* KaKaoLocalAPIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLocalAPIDTO.swift; sourceTree = "<group>"; };
 		3BD188942B5FBD15003AECAF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		3BA9AD962B3BDF580048D986 = {
 			isa = PBXGroup;
 			children = (
+				3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */,
 				3BA9ADA12B3BDF580048D986 /* Effortless-Eats */,
 				3BA9ADA02B3BDF580048D986 /* Products */,
 			);
@@ -230,6 +233,7 @@
 				3BA9AD9B2B3BDF580048D986 /* Sources */,
 				3BA9AD9C2B3BDF580048D986 /* Frameworks */,
 				3BA9AD9D2B3BDF580048D986 /* Resources */,
+				3BB25B932B6CF41F000C8A88 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -282,12 +286,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */,
 				3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */,
 				3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3BB25B932B6CF41F000C8A88 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3BA9AD9B2B3BDF580048D986 /* Sources */ = {
@@ -445,6 +470,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Effortless-Eats/Preview Content\"";
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Effortless-Eats-Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your consent to provide location information because we search for restaurants based on your device’s location.";
@@ -481,6 +507,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Effortless-Eats/Preview Content\"";
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Effortless-Eats-Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your consent to provide location information because we search for restaurants based on your device’s location.";
