@@ -21,11 +21,11 @@ struct SettingView: View {
     }
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             List {
                 Section {
-                    VStack(spacing: 20){
-                        HStack{
+                    VStack(spacing: 20) {
+                        HStack {
                             Slider(
                                 value: $serachDistance,
                                 in: 0...20000,
@@ -67,7 +67,7 @@ struct SettingView: View {
 }
 
 #Preview {
-    NavigationStack{
+    NavigationStack {
         SettingView()
     }
 }

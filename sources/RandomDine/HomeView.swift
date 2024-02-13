@@ -18,8 +18,8 @@ struct HomeView: View {
     private var items: FetchedResults<RecommendedList>
     
     var body: some View {
-        GeometryReader{ proxy in
-            VStack{
+        GeometryReader { proxy in
+            VStack {
                 HomeHeaderView(viewContext: viewContext, proxy: proxy)
                 SavedRecommendList
             }
@@ -34,7 +34,7 @@ struct HomeView: View {
                 })
             })
             .sheet(isPresented: $showingSetting, content: {
-                NavigationStack{
+                NavigationStack {
                     SettingView()
                 }
             })
@@ -45,7 +45,7 @@ struct HomeView: View {
     var SavedRecommendList: some View {
         List {
             Section("즐겨찾기") {
-                ForEach(items, id: \.self){ item in
+                ForEach(items, id: \.self) { item in
                     HStack {
                         Button {
                             showingSafariWebView = true
@@ -88,7 +88,7 @@ struct HomeHeaderView: View {
     var viewContext: NSManagedObjectContext
     @State var proxy: GeometryProxy
     var body: some View {
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)).ignoresSafeArea(edges: .top)
                 .frame(width: proxy.size.width,
                        height: proxy.size.height/8)
@@ -105,8 +105,6 @@ struct HomeHeaderView: View {
             }
     }
 }
-
-
 
 #Preview {
     NavigationStack {

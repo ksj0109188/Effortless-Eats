@@ -30,17 +30,14 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-            case .authorizedWhenInUse:
-                manager.startUpdatingLocation()
-                break
-            case .restricted, .denied:
-                manager.startUpdatingLocation()
-                break
-            case .notDetermined:
-                manager.requestWhenInUseAuthorization()
-                break
-            default:
-                break
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        case .restricted, .denied:
+            manager.startUpdatingLocation()
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            break
         }
     }
 }
