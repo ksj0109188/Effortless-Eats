@@ -23,12 +23,12 @@ final class RecommendViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {
-                    case .finished:
-                        debugPrint(complete)
-                    case .failure(let error):
-                        debugPrint(error)
+                case .finished:
+                    debugPrint(complete)
+                case .failure(let error):
+                    debugPrint(error)
                 }
-            },receiveValue: {[weak self] stores in
+            }, receiveValue: {[weak self] stores in
                 let store = stores.documents
                 self?.recommendedStore = store?.randomElement()
                 self?.isEmptyRecommendStore = false

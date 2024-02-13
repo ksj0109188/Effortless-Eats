@@ -81,7 +81,7 @@ struct RecommendView: View {
     }
     
     var resultForm: some View {
-        VStack(spacing: 40){
+        VStack(spacing: 40) {
             Button {
                 isFavorite ? deleteFavortie(at: recommendViewModel.recommendedStore?.id) : addFavorite(data: recommendViewModel.recommendedStore)
             } label: {
@@ -95,7 +95,7 @@ struct RecommendView: View {
                 .font(.largeTitle)
                 .lineLimit(1)
             
-            HStack{
+            HStack {
                 Spacer()
                 Button {
                     showingResultView = false
@@ -103,7 +103,7 @@ struct RecommendView: View {
                 } label: {
                     Text("다시 받기")
                 }
-                .onReceive(clikedButtonSubject.throttle(for:.seconds(1), scheduler: DispatchQueue.main, latest: true),
+                .onReceive(clikedButtonSubject.throttle(for: .seconds(1), scheduler: DispatchQueue.main, latest: true),
                            perform: { recommendViewModel.fetchRandomStore(radius: Int(serachDistance)) })
                 .font(.title2)
                 .foregroundStyle(Color.black)
@@ -126,7 +126,7 @@ struct RecommendView: View {
     }
 }
 
-//MARK: CoreData Functions
+// MARK: CoreData Functions
 extension RecommendView {
     func addFavorite(data: Documents?) {
         guard let data = data, let id = data.id else {
@@ -170,7 +170,7 @@ extension RecommendView {
 }
 
 #Preview {
-    NavigationStack{
+    NavigationStack {
         RecommendView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

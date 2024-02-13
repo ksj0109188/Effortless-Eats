@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Effortless_EatsApp: App {
+struct RandomDine: App {
     let persistenceController = PersistenceController.shared
     
     var body: some Scene {

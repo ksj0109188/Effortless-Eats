@@ -19,33 +19,33 @@ struct KaKaoAPI {
         
         var description: String {
             switch self {
-                case .overflowRadius:
-                    return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
-                case .invalidURL:
-                    return "유효하지 않는 URL 발생"
-                case .invalidResponse:
-                    return "유효하지 않는 응답."
-                case .decodeError:
-                    return "Parsing 에러 발생"
+            case .overflowRadius:
+                return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
+            case .invalidURL:
+                return "유효하지 않는 URL 발생"
+            case .invalidResponse:
+                return "유효하지 않는 응답."
+            case .decodeError:
+                return "Parsing 에러 발생"
             }
         }
     }
     
     enum EndPoint {
-        static let baseURL = URL(string:  Bundle.main.infoDictionary?["KAKAO_API_URL"] as? String ?? String(""))!
+        static let baseURL = URL(string: Bundle.main.infoDictionary?["KAKAO_API_URL"] as? String ?? String(""))!
         static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
         static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_MEHTOD"] as? String ??  String("")
         
         case kakaoLocalAPI
         
-        var request: URLRequest{
+        var request: URLRequest {
             switch self {
-                case .kakaoLocalAPI :
-                    var request = URLRequest(url: KaKaoAPI.EndPoint.baseURL.appendingPathComponent("/local/search/category.json"))
-                    request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
-                    request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
-                    request.httpMethod = "GET"
-                    return request
+            case .kakaoLocalAPI: 
+                var request = URLRequest(url: KaKaoAPI.EndPoint.baseURL.appendingPathComponent("/local/search/category.json"))
+                request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
+                request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                return request
             }
         }
     }
@@ -94,16 +94,15 @@ struct KaKaoAPI {
             .tryMap { output in
                 return try JSONDecoder().decode(KaKaoLocalAPIDTO.self, from: output.data)
             }
-            .mapError{ error -> KakaoAPIError in
+            .mapError { error -> KakaoAPIError in
                 switch error {
-                    case is URLError:
-                        return KakaoAPIError.invalidURL
-                    case is DecodingError:
-                        return KakaoAPIError.decodeError
-                    default: return KakaoAPIError.invalidResponse
+                case is URLError:
+                    return KakaoAPIError.invalidURL
+                case is DecodingError:
+                    return KakaoAPIError.decodeError
+                default: return KakaoAPIError.invalidResponse
                 }
             }
             .eraseToAnyPublisher()
     }
 }
-

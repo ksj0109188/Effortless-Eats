@@ -8,8 +8,8 @@
 import Foundation
 
 struct KaKaoLocalAPIDTO: Codable {
-    let documents : [Documents]?
-    let meta : Meta?
+    let documents: [Documents]?
+    let meta: Meta?
     
     enum CodingKeys: String, CodingKey {
         case documents = "documents"
@@ -23,19 +23,19 @@ struct KaKaoLocalAPIDTO: Codable {
     }
 }
 
-struct Documents : Codable {
-    let address_name : String?
-    let category_group_code : String?
-    let category_group_name : String?
-    let category_name : String?
-    let distance : String?
-    let id : String?
-    let phone : String?
-    let place_name : String?
-    let place_url : String?
-    let road_address_name : String?
-    let x : String?
-    let y : String?
+struct Documents: Codable {
+    let address_name: String?
+    let category_group_code: String?
+    let category_group_name: String?
+    let category_name: String?
+    let distance: String?
+    let id: String?
+    let phone: String?
+    let place_name: String?
+    let place_url: String?
+    let road_address_name: String?
+    let x: String?
+    let y: String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -71,11 +71,11 @@ struct Documents : Codable {
 
 }
 
-struct Meta : Codable {
-    let is_end : Bool?
-    let pageable_count : Int?
-    let same_name : String?
-    let total_count : Int?
+struct Meta: Codable {
+    let is_end: Bool?
+    let pageable_count: Int?
+    let same_name: String?
+    let total_count: Int?
 
     enum CodingKeys: String, CodingKey {
 
@@ -94,5 +94,3 @@ struct Meta : Codable {
     }
 
 }
-
-
