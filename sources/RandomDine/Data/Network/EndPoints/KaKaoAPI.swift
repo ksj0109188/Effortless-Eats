@@ -32,9 +32,37 @@ struct KaKaoAPI {
     }
     
     enum EndPoint {
-        static let baseURL = URL(string: Bundle.main.infoDictionary?["KAKAO_API_URL"] as? String ?? String(""))!
-        static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
-        static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_MEHTOD"] as? String ??  String("")
+//        static let baseURL = URL(string: Bundle.main.infoDictionary?["KAKAO_API_URL"] as? String ?? String(""))!
+//        static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
+//        static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_MEHTOD"] as? String ??  String("")
+        
+        static var baseURL: URL {
+            guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
+                  let dict = NSDictionary(contentsOfFile: path),
+                  let urlString = dict["KAKAO_API_URL"] as? String,
+                  let url = URL(string: urlString) else {
+                return URL(string: "")!
+            }
+            return url
+        }
+        
+        static var restAPIKey: String {
+            guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
+                  let dict = NSDictionary(contentsOfFile: path),
+                  let key = dict["KAKAO_REST_API_KEY"] as? String else {
+                return ""
+            }
+            return key
+        }
+        
+        static var restAPIMethod: String {
+            guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
+                  let dict = NSDictionary(contentsOfFile: path),
+                  let method = dict["KAKAO_RESTAPI_AUTH_MEHTOD"] as? String else {
+                return ""
+            }
+            return method
+        }
         
         case kakaoLocalAPI
         

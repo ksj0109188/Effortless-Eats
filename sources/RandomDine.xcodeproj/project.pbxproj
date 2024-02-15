@@ -16,6 +16,7 @@
 		3B5518112B57DAB000D5A38A /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */; };
 		3B5B6F4C2B5639FA00AE9675 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */; };
 		3B5B6F4E2B564FD700AE9675 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B6F4D2B564FD700AE9675 /* Color.swift */; };
+		3B99E9CD2B7E1880000ADEE9 /* KaKaoAPI.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B99E9CC2B7E1880000ADEE9 /* KaKaoAPI.plist */; };
 		3BA9ADA32B3BDF580048D986 /* Effortless-EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA22B3BDF580048D986 /* Effortless-EatsApp.swift */; };
 		3BA9ADA52B3BDF580048D986 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA42B3BDF580048D986 /* HomeView.swift */; };
 		3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA9ADA62B3BDF5B0048D986 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		3B5518102B57DAB000D5A38A /* NavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
 		3B5B6F4B2B5639FA00AE9675 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3B5B6F4D2B564FD700AE9675 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		3B99E9CC2B7E1880000ADEE9 /* KaKaoAPI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KaKaoAPI.plist; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* RandomDine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomDine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA9ADA22B3BDF580048D986 /* Effortless-EatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Effortless-EatsApp.swift"; sourceTree = "<group>"; };
 		3BA9ADA42B3BDF580048D986 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				3BCFDFB32B3BF3EB007283C2 /* RandomDine-Info.plist */,
+				3B99E9CC2B7E1880000ADEE9 /* KaKaoAPI.plist */,
 				3BCFDFB72B3C1884007283C2 /* Data */,
 				3BCFDFBD2B3D3200007283C2 /* Application */,
 				3BCFDFB42B3C185E007283C2 /* Presentation */,
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */,
+				3B99E9CD2B7E1880000ADEE9 /* KaKaoAPI.plist in Resources */,
 				3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */,
 				3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */,
 			);
