@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 final class RecommendViewModel: ObservableObject {
     @Published var recommendedStore: Documents?
@@ -18,8 +19,9 @@ final class RecommendViewModel: ObservableObject {
     func fetchRandomStore(radius mapRadius: Int) {
         recommendedStore = nil
         isEmptyRecommendStore = true
+        let coordinate = API.locationManager.location?.coordinate
         
-        API.requestStores(mapRadius)
+        API.requestStores(distance: mapRadius, coordinate: coordinate)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {

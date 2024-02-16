@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-
+import CoreLocation
 struct KaKaoAPI {
     let locationManager = LocationManager()
     
@@ -32,10 +32,6 @@ struct KaKaoAPI {
     }
     
     enum EndPoint {
-//        static let baseURL = URL(string: Bundle.main.infoDictionary?["KAKAO_API_URL"] as? String ?? String(""))!
-//        static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
-//        static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_MEHTOD"] as? String ??  String("")
-        
         static var baseURL: URL {
             guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
                   let dict = NSDictionary(contentsOfFile: path),
@@ -103,19 +99,20 @@ struct KaKaoAPI {
     /// - Parameters:
     ///   - radius: 내 중심점 위도 경도 기준 반경 설정 파라미터(m단위).
     /// - Returns: URL session data task publihser for a given request
-    func requestStores(_ radius: Int) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
+    func requestStores(distance radius: Int, coordinate: CLLocationCoordinate2D?) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
         guard (0...20000).contains(radius) else {
             return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
                 .mapError { _ in KakaoAPIError.overflowRadius}
                 .eraseToAnyPublisher()
         }
-       
+        
         var request = EndPoint.kakaoLocalAPI.request
-        if let coordinate = locationManager.location?.coordinate {
+        request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
+        
+        if let coordinate = coordinate {
             request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
             request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
         }
-        request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
