@@ -252,7 +252,7 @@
 		3BA9AD972B3BDF580048D986 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
@@ -312,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  exit 1\nfi\n";
+			shellScript = "PLIST_PATH=\"${SRCROOT}/YourApp/Resources/KaKaoAPI.plist\"\n/usr/libexec/PlistBuddy -c \"Set :KAKAO_API_URL $KAKAO_API_URL\" $PLIST_PATH\n/usr/libexec/PlistBuddy -c \"Set :KAKAO_APP_KEY $KAKAO_APP_KEY\" $PLIST_PATH\n/usr/libexec/PlistBuddy -c \"Set :KAKAO_PHAS $KAKAO_PHAS\" $PLIST_PATH\n/usr/libexec/PlistBuddy -c \"Set :KAKAO_RESTAPI_AUTH_MEHTOD $KAKAO_RESTAPI_AUTH_MEHTOD\" $PLIST_PATH\n/usr/libexec/PlistBuddy -c \"Set :KAKAO_REST_API_KEY $KAKAO_REST_API_KEY\" $PLIST_PATH\n\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  exit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -477,8 +477,8 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your consent to provide location information because we search for restaurants based on your device’s location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,8 +514,8 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your consent to provide location information because we search for restaurants based on your device’s location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
