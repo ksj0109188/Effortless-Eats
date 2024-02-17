@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B0F6CDA2B4BC7C10050E8B1 /* KaKaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0F6CD92B4BC7C10050E8B1 /* KaKaoAPI.swift */; };
-		3B10B6432B7F968A0040B941 /* APIConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3B10B6422B7F968A0040B941 /* APIConfig.xcconfig */; };
 		3B1F763A2B4FB710005D3D6B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F76392B4FB710005D3D6B /* SettingView.swift */; };
 		3B1F763D2B500A7E005D3D6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F763C2B500A7E005D3D6B /* LocationManager.swift */; };
 		3B4474672B428A45005C9511 /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4474662B428A45005C9511 /* SafariWebView.swift */; };
@@ -287,7 +286,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */,
-				3B10B6432B7F968A0040B941 /* APIConfig.xcconfig in Resources */,
 				3BA9ADAA2B3BDF5B0048D986 /* Preview Assets.xcassets in Resources */,
 				3BA9ADA72B3BDF5B0048D986 /* Assets.xcassets in Resources */,
 			);
@@ -463,6 +461,7 @@
 		};
 		3BA9ADAE2B3BDF5B0048D986 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B10B6422B7F968A0040B941 /* APIConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
