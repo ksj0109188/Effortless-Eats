@@ -43,21 +43,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3BBDCCFD2B808BB700389E42"
-            BuildableName = "RandomDineTestFlight.app"
-            BlueprintName = "RandomDineTestFlight"
-            ReferencedContainer = "container:RandomDine.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
             BlueprintIdentifier = "3BA9AD9E2B3BDF580048D986"
             BuildableName = "RandomDine.app"
             BlueprintName = "RandomDine"
             ReferencedContainer = "container:RandomDine.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

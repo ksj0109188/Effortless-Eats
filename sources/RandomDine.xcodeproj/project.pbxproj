@@ -266,8 +266,8 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
 			mainGroup = 3BA9AD962B3BDF580048D986;
 			packageReferences = (
@@ -462,7 +462,6 @@
 		};
 		3BA9ADAE2B3BDF5B0048D986 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B10B6422B7F968A0040B941 /* APIConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

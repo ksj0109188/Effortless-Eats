@@ -33,7 +33,9 @@ final class RecommendViewModel: ObservableObject {
             }, receiveValue: {[weak self] stores in
                 let store = stores.documents
                 self?.recommendedStore = store?.randomElement()
-                self?.isEmptyRecommendStore = false
+                if self?.recommendedStore != nil {
+                    self?.isEmptyRecommendStore = false
+                }
             })
             .store(in: &subsciprionts)
     }
