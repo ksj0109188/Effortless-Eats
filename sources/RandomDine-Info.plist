@@ -2,14 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>KAKAO_REST_API_KEY</key>
-	<string>$(KAKAO_REST_API_KEY)</string>
-	<key>KAKAO_RESTAPI_AUTH_METHOD</key>
-	<string>$(KAKAO_RESTAPI_AUTH_METHOD)</string>
-	<key>KAKAO_PHAS</key>
-	<string>$(KAKAO_PHAS)</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>$(KAKAO_APP_KEY)</string>
+	<key>KAKAO_PHAS</key>
+	<string>$(KAKAO_PHAS)</string>
+	<key>KAKAO_RESTAPI_AUTH_METHOD</key>
+	<string>$(KAKAO_RESTAPI_AUTH_METHOD)</string>
+	<key>KAKAO_REST_API_KEY</key>
+	<string>$(KAKAO_REST_API_KEY)</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
