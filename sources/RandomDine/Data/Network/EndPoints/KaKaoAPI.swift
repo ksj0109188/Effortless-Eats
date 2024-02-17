@@ -41,7 +41,6 @@ struct KaKaoAPI {
         #else
         static let restAPIKey = ProcessInfo.processInfo.environment["KAKAO_REST_API_KEY"] ??  String("")
         static let restAPIMethod = ProcessInfo.processInfo.environment["KAKAO_RESTAPI_AUTH_METHOD"] ??  String("")
-        
         #endif
         
         case kakaoLocalAPI
