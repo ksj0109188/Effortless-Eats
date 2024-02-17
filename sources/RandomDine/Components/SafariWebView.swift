@@ -12,7 +12,7 @@ struct SafariWebView: UIViewControllerRepresentable {
     var urlString: String
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        var requestURL: URL = URL(string: urlString) ?? URL(string: "http://place.map.kakao.com/8107636")!
+        let requestURL: URL = URL(string: urlString) ?? URL(string: "http://place.map.kakao.com/8107636")!
         let safariViewController = SFSafariViewController(url: requestURL)
         
         return safariViewController

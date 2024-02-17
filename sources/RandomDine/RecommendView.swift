@@ -31,7 +31,7 @@ struct RecommendView: View {
     }
     
     var recommendedStoreUrl: String {
-        recommendViewModel.recommendedStore?.place_url ?? "추첨중"
+        recommendViewModel.recommendedStore?.place_url ?? "http://place.map.kakao.com/8107636"
     }
     
     var isFavorite: Bool {
