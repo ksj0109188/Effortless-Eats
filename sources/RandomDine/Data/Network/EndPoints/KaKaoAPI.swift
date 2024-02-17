@@ -32,39 +32,22 @@ struct KaKaoAPI {
     }
     
     enum EndPoint {
-        static var baseURL: URL {
-            guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
-                  let dict = NSDictionary(contentsOfFile: path),
-                  let urlString = dict["KAKAO_API_URL"] as? String,
-                  let url = URL(string: urlString) else {
-                return URL(string: "")!
-            }
-            return url
-        }
+        static let baseURL: URL = URL(string: "https://dapi.kakao.com/v2")!
         
-        static var restAPIKey: String {
-            guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
-                  let dict = NSDictionary(contentsOfFile: path),
-                  let key = dict["KAKAO_REST_API_KEY"] as? String else {
-                return ""
-            }
-            return key
-        }
+        #if DEBUG
+        static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
+        static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_METHOD"] as? String ??  String("")
         
-        static var restAPIMethod: String {
-            guard let path = Bundle.main.path(forResource: "KaKaoAPI", ofType: "plist"),
-                  let dict = NSDictionary(contentsOfFile: path),
-                  let method = dict["KAKAO_RESTAPI_AUTH_MEHTOD"] as? String else {
-                return ""
-            }
-            return method
-        }
+        #else
+        static let restAPIKey = ProcessInfo.processInfo.environment["KAKAO_REST_API_KEY"] ??  String("")
+        static let restAPIMethod = ProcessInfo.processInfo.environment["KAKAO_RESTAPI_AUTH_METHOD"] ??  String("")
+        #endif
         
         case kakaoLocalAPI
         
         var request: URLRequest {
             switch self {
-            case .kakaoLocalAPI: 
+            case .kakaoLocalAPI:
                 var request = URLRequest(url: KaKaoAPI.EndPoint.baseURL.appendingPathComponent("/local/search/category.json"))
                 request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
                 request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
@@ -108,12 +91,12 @@ struct KaKaoAPI {
         
         var request = EndPoint.kakaoLocalAPI.request
         request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
-        
+        print(request)
         if let coordinate = coordinate {
             request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
             request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
         }
-        
+        print(request)
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
             .tryMap { output in
