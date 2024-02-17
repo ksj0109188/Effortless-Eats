@@ -91,12 +91,10 @@ struct KaKaoAPI {
         
         var request = EndPoint.kakaoLocalAPI.request
         request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
-        print(request)
         if let coordinate = coordinate {
             request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
             request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
         }
-        print(request)
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
             .tryMap { output in
