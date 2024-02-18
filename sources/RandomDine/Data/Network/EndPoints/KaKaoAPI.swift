@@ -32,25 +32,22 @@ struct KaKaoAPI {
     }
     
     enum EndPoint {
-        
-        
-        #if DEBUG
-        static let baseURL: URL = URL(string: "\(Bundle.main.infoDictionary?["KAKAO_API_PROTOCOL"] as? String ??  String(""))://\(Bundle.main.infoDictionary?["KAKAO_API_DOMAIN"] as? String ??  String(""))")!
+        static let apiProtocol = Bundle.main.infoDictionary?["KAKAO_API_PROTOCOL"] as? String ??  String("")
+        static let domain = Bundle.main.infoDictionary?["KAKAO_API_DOMAIN"] as? String ??  String("")
         static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
         static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_METHOD"] as? String ??  String("")
         
-        #else
-        static let baseURL: URL = URL(string: ProcessInfo.processInfo.environment["KAKAO_API_URL"] ??  String(""))!
-        static let restAPIKey = ProcessInfo.processInfo.environment["KAKAO_REST_API_KEY"] ??  String("")
-        static let restAPIMethod = ProcessInfo.processInfo.environment["KAKAO_RESTAPI_AUTH_METHOD"] ??  String("")
-        #endif
+        var baseURL: URL {
+            URL(string: "\(KaKaoAPI.EndPoint.apiProtocol)://\(KaKaoAPI.EndPoint.domain)")!
+        }
         
         case kakaoLocalAPI
         
         var request: URLRequest {
             switch self {
             case .kakaoLocalAPI:
-                var request = URLRequest(url: KaKaoAPI.EndPoint.baseURL.appendingPathComponent("/local/search/category.json"))
+                let url = baseURL.appendingPathComponent("/local/search/category.json")
+                var request = URLRequest(url: url)
                 request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
                 request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
                 request.httpMethod = "GET"
