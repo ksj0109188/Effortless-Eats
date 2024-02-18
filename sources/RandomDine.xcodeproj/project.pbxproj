@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B32FF7F2B94362C000358E7 /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FF7E2B94362C000358E7 /* ci_pre_xcodebuild.sh */; };
 		3B32FFDF2B94432A000358E7 /* Effortless-EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */; };
 		3B32FFE02B94432A000358E7 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFC02B94432A000358E7 /* Color+.swift */; };
 		3B32FFE12B94432A000358E7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFC32B94432A000358E7 /* SettingView.swift */; };
@@ -28,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B32FF7E2B94362C000358E7 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Effortless-EatsApp.swift"; sourceTree = "<group>"; };
 		3B32FFC02B94432A000358E7 /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		3B32FFC32B94432A000358E7 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -48,6 +46,7 @@
 		3B32FFDE2B94432A000358E7 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* RandomDine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomDine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		3BBDCD612B81E1E800389E42 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +60,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B32FF7D2B94362C000358E7 /* ci_scripts */ = {
-			isa = PBXGroup;
-			children = (
-				3B32FF7E2B94362C000358E7 /* ci_pre_xcodebuild.sh */,
-			);
-			path = ci_scripts;
-			sourceTree = "<group>";
-		};
 		3B32FFBD2B94432A000358E7 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,13 +191,21 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		3B904CED2C08A125000BB8F9 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		3BA9AD962B3BDF580048D986 = {
 			isa = PBXGroup;
 			children = (
 				3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */,
-				3B32FF7D2B94362C000358E7 /* ci_scripts */,
+				3BBDCD602B81E1CB00389E42 /* ci_scripts */,
 				3BA9ADA12B3BDF580048D986 /* RandomDine */,
 				3BA9ADA02B3BDF580048D986 /* Products */,
+				3B904CED2C08A125000BB8F9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +228,14 @@
 				3B32FFDD2B94432A000358E7 /* Utility */,
 			);
 			path = RandomDine;
+			sourceTree = "<group>";
+		};
+		3BBDCD602B81E1CB00389E42 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				3BBDCD612B81E1E800389E42 /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +304,6 @@
 				3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */,
 				3B32FFEC2B94432A000358E7 /* APIConfig.xcconfig in Resources */,
 				3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */,
-				3B32FF7F2B94362C000358E7 /* ci_pre_xcodebuild.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +326,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/sh\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\n    echo \"build script start\"\n    echo \"${PROJECT_DIR}\"\n    sh \"${PROJECT_DIR}/ci_scripts/ci_pre_xcodebuild.sh\"\nelse\n    echo \"Skipping script for non-debug build configuration\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
