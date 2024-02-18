@@ -32,13 +32,15 @@ struct KaKaoAPI {
     }
     
     enum EndPoint {
-        static let baseURL: URL = URL(string: "https://dapi.kakao.com/v2")!
+        
         
         #if DEBUG
+        static let baseURL: URL = URL(string: "\(Bundle.main.infoDictionary?["KAKAO_API_PROTOCOL"] as? String ??  String(""))://\(Bundle.main.infoDictionary?["KAKAO_API_DOMAIN"] as? String ??  String(""))")!
         static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
         static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_METHOD"] as? String ??  String("")
         
         #else
+        static let baseURL: URL = URL(string: ProcessInfo.processInfo.environment["KAKAO_API_URL"] ??  String(""))!
         static let restAPIKey = ProcessInfo.processInfo.environment["KAKAO_REST_API_KEY"] ??  String("")
         static let restAPIMethod = ProcessInfo.processInfo.environment["KAKAO_RESTAPI_AUTH_METHOD"] ??  String("")
         #endif
