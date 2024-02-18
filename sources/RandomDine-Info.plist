@@ -2,14 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>KAKAO_API_DOMAIN</key>
+	<string>dapi.kakao.com/v2</string>
+	<key>KAKAO_API_PROTOCOL</key>
+	<string>https</string>
 	<key>KAKAO_APP_KEY</key>
-	<string>$(KAKAO_APP_KEY)</string>
-	<key>KAKAO_PHAS</key>
-	<string>$(KAKAO_PHAS)</string>
+	<string>eca26b04e01cbca507c6327c0af4cdcb</string>
 	<key>KAKAO_RESTAPI_AUTH_METHOD</key>
-	<string>$(KAKAO_RESTAPI_AUTH_METHOD)</string>
+	<string>KakaoAK</string>
 	<key>KAKAO_REST_API_KEY</key>
-	<string>$(KAKAO_REST_API_KEY)</string>
+	<string>8b9d47e3885b0f2e06fac729842fc127</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
