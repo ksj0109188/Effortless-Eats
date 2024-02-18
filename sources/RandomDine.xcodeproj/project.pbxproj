@@ -326,7 +326,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\n    echo \"build script start\"\n    echo \"${PROJECT_DIR}\"\n    sh \"${PROJECT_DIR}/ci_scripts/ci_pre_xcodebuild.sh\"\nelse\n    echo \"Skipping script for non-debug build configuration\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
