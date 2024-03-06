@@ -35,7 +35,7 @@
       <p>
         <h2> 홈 </h2>
         <li> 메인 화면으로 추천받기 버튼 및 저장된 즐겨찾기 리스트가 출력됩니다. </li>
-        <li> 오른쪽 상단위 톱니 Symbol으로 환경설정뷰로 이동됩니다. </li>
+        <li> 오른쪽 상단위 톱니 Symbol을 터치해 환경설정뷰로 이동됩니다. </li>
       </p>
     </td>
   </tr>
@@ -86,7 +86,7 @@
     <td>
       <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/02e48b30-2d70-4d03-a8f5-459e6691c9f0" width="150" alt="설정" />
     </td>
-    <td valign= "top">
+   <td align="left" valign="top">
       <p>
        <h2> 설정 </h2>
        <li> 사용자가 설정한 거리에따라 음식춤이 됩니다. </li>
