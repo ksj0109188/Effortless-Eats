@@ -24,6 +24,14 @@
   </tr>
 </Table>
 
+## Skills
+- SwiftUI
+- MVVM 
+- Cobmine 
+- KaKaoMap Local API 
+- Swift Lint 
+- CoreData
+- Git Flow
 
 ## Funtions
 <Table>
@@ -96,15 +104,6 @@
     </td>
   </tr>
 </Table>
-
-## Skills
-- SwiftUI
-- MVVM 
-- Cobmine (KaKao API 호출및 에러 핸들링에 사용)
-- KaKaoMap Local API (가게정보)
-- Lint (코드 컨밴션)
-- CoreData (즐겨찾기 정보 저장)
-- Git Flow
 
 ## File tree
 ```
