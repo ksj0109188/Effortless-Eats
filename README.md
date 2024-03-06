@@ -8,7 +8,6 @@
 #### Download : [<img src="https://img.shields.io/badge/apple-%23000000.svg?&style=for-the-badge&logo=apple&logoColor=white" />](https://apps.apple.com/kr/app/randomdine/id6477853120) 
 #### Targets : iPad:17.1, iOS:17.1 이상
 
-
 <Table align = "center">
   <tr>
     <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/061c9eb5-8f2c-4a4c-983d-33bb86894877" width="200" alt="추천받기" /></td>
@@ -33,8 +32,8 @@
 - CoreData
 - Git Flow
 
-## Funtions
-<Table>
+## Functions
+  <Table>
   <tr>
     <td align = "center">
       <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/fba17168-d9d2-4c05-a537-231d76d66aa8" width="150" alt="설정" />
@@ -103,9 +102,15 @@
       </p>
     </td>
   </tr>
+
+  
 </Table>
 
+
+
 ## File tree
+<details>
+  <summary>자세히</summary>
 ```
 sources
 ├─ RandomDine
@@ -126,3 +131,4 @@ sources
 ├─ ci_scripts
 └─ .swiftlint.yml
 ```
+</details>
