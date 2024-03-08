@@ -160,7 +160,7 @@
 
 
 <details>
-  <summary>
+  <summary id="apiModule">
   확장성과 재사용성을 고려한 API 모듈
   </summary>
   
