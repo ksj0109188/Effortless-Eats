@@ -20,13 +20,13 @@
 		3B32FFE92B94432A000358E7 /* KaKaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD32B94432A000358E7 /* KaKaoAPI.swift */; };
 		3B32FFEA2B94432A000358E7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD52B94432A000358E7 /* Persistence.swift */; };
 		3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */; };
-		3B32FFEC2B94432A000358E7 /* APIConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFD92B94432A000358E7 /* APIConfig.xcconfig */; };
 		3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFDE2B94432A000358E7 /* LocationManager.swift */; };
 		3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIConfig.xcconfig; sourceTree = "<group>"; };
 		3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Effortless-EatsApp.swift"; sourceTree = "<group>"; };
 		3B32FFC02B94432A000358E7 /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		3B32FFC32B94432A000358E7 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -40,7 +40,6 @@
 		3B32FFD32B94432A000358E7 /* KaKaoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaKaoAPI.swift; sourceTree = "<group>"; };
 		3B32FFD52B94432A000358E7 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3B32FFD72B94432A000358E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		3B32FFD92B94432A000358E7 /* APIConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = APIConfig.xcconfig; sourceTree = "<group>"; };
 		3B32FFDA2B94432A000358E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B32FFDC2B94432A000358E7 /* RandomDine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RandomDine-Info.plist"; sourceTree = "<group>"; };
 		3B32FFDE2B94432A000358E7 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -176,26 +175,19 @@
 		3B32FFD82B94432A000358E7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3B32FFD92B94432A000358E7 /* APIConfig.xcconfig */,
 				3B32FFDA2B94432A000358E7 /* Assets.xcassets */,
 				3B32FFDC2B94432A000358E7 /* RandomDine-Info.plist */,
+				3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		3B32FFDD2B94432A000358E7 /* Utility */ = {
+		3B32FFDD2B94432A000358E7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				3B32FFDE2B94432A000358E7 /* LocationManager.swift */,
 			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		3B904CED2C08A125000BB8F9 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		3BA9AD962B3BDF580048D986 = {
@@ -205,7 +197,6 @@
 				3BBDCD602B81E1CB00389E42 /* ci_scripts */,
 				3BA9ADA12B3BDF580048D986 /* RandomDine */,
 				3BA9ADA02B3BDF580048D986 /* Products */,
-				3B904CED2C08A125000BB8F9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -225,7 +216,7 @@
 				3B32FFBF2B94432A000358E7 /* Extension */,
 				3B32FFC12B94432A000358E7 /* Presentation */,
 				3B32FFD82B94432A000358E7 /* Resource */,
-				3B32FFDD2B94432A000358E7 /* Utility */,
+				3B32FFDD2B94432A000358E7 /* Utilities */,
 			);
 			path = RandomDine;
 			sourceTree = "<group>";
@@ -302,7 +293,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */,
-				3B32FFEC2B94432A000358E7 /* APIConfig.xcconfig in Resources */,
 				3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +348,7 @@
 /* Begin XCBuildConfiguration section */
 		3BA9ADAB2B3BDF5B0048D986 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B32FFD92B94432A000358E7 /* APIConfig.xcconfig */;
+			baseConfigurationReference = 3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -479,7 +469,7 @@
 		};
 		3BA9ADAE2B3BDF5B0048D986 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B32FFD92B94432A000358E7 /* APIConfig.xcconfig */;
+			baseConfigurationReference = 3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
