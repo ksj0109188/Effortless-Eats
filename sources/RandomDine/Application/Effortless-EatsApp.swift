@@ -9,13 +9,12 @@ import SwiftUI
 
 @main
 struct RandomDine: App {
-    let persistenceController = PersistenceController.shared
+    let recommendViewModelDependency = AppDIContainer().makeHomeViewModelDependencies()
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HomeView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                HomeView(homeViewModel: HomeViewModel(dependencies: recommendViewModelDependency))
             }
         }
     }

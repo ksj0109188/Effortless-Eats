@@ -11,18 +11,10 @@ import Combine
 
 struct RecommendView: View {
     @AppStorage("serachDistance") var serachDistance: Double = 500.0
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \RecommendedList.date, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<RecommendedList>
-    
     @State private var isRecommendButtonCilcked: Bool = false
     @State private var showingSafariWebView: Bool = false
     @State private var showingResultView: Bool = false
-    
-    @StateObject var recommendViewModel = RecommendViewModel()
+    @ObservedObject var recommendViewModel: RecommendViewModel
     
     let clikedButtonSubject = PassthroughSubject<Void, Never>()
     
@@ -32,14 +24,6 @@ struct RecommendView: View {
     
     var recommendedStoreUrl: String {
         recommendViewModel.recommendedStore?.place_url ?? "http://place.map.kakao.com/8107636"
-    }
-    
-    var isFavorite: Bool {
-        if let item = items.first(where: {$0.id == recommendViewModel.recommendedStore?.id}) {
-            return item.isFavorite
-        } else {
-            return false
-        }
     }
     
     var body: some View {
@@ -83,9 +67,9 @@ struct RecommendView: View {
     var resultForm: some View {
         VStack(spacing: 40) {
             Button {
-                isFavorite ? deleteFavortie(at: recommendViewModel.recommendedStore?.id) : addFavorite(data: recommendViewModel.recommendedStore)
+                recommendViewModel.isFavorite ? recommendViewModel.cancelFavorite() : recommendViewModel.addFavorite()
             } label: {
-                isFavorite ? Image(systemName: "star.fill") : Image(systemName: "star")
+                recommendViewModel.isFavorite ? Image(systemName: "star.fill") : Image(systemName: "star")
             }
             .font(.headline)
             .foregroundStyle(Color.yellow)
@@ -123,55 +107,5 @@ struct RecommendView: View {
                 Spacer()
             }
         }
-    }
-}
-
-// MARK: CoreData Functions
-extension RecommendView {
-    func addFavorite(data: Documents?) {
-        guard let data = data, let id = data.id else {
-            return
-        }
-        
-        let newItem = RecommendedList(context: viewContext)
-        newItem.id = id
-        newItem.address_name = data.address_name
-        newItem.date = Date()
-        newItem.isFavorite = true
-        newItem.place_name = data.place_name
-        newItem.place_url = data.place_url
-        
-        do {
-          try viewContext.save()
-        } catch {
-          let nsError = error as NSError
-          debugPrint("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    func deleteFavortie(at id: String?) {
-        guard let id = id else {
-            return
-        }
-        guard let item = items.first(where: {$0.id ==  id}) else {
-            debugPrint("The \(id) haven't from items")
-            return
-        }
-        
-        viewContext.delete(item)
-        
-        do {
-          try viewContext.save()
-        } catch {
-          let nsError = error as NSError
-            debugPrint("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-}
-
-#Preview {
-    NavigationStack {
-        RecommendView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

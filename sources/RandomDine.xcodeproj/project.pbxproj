@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0778B62C16D4380073D572 /* FoodStoreDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0778B52C16D4380073D572 /* FoodStoreDBRepository.swift */; };
 		3B32FFDF2B94432A000358E7 /* Effortless-EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */; };
 		3B32FFE02B94432A000358E7 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFC02B94432A000358E7 /* Color+.swift */; };
 		3B32FFE12B94432A000358E7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFC32B94432A000358E7 /* SettingView.swift */; };
@@ -18,14 +19,28 @@
 		3B32FFE72B94432A000358E7 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFCD2B94432A000358E7 /* RecommendView.swift */; };
 		3B32FFE82B94432A000358E7 /* KaKaoLocalAPIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD02B94432A000358E7 /* KaKaoLocalAPIDTO.swift */; };
 		3B32FFE92B94432A000358E7 /* KaKaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD32B94432A000358E7 /* KaKaoAPI.swift */; };
-		3B32FFEA2B94432A000358E7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD52B94432A000358E7 /* Persistence.swift */; };
+		3B32FFEA2B94432A000358E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD52B94432A000358E7 /* CoreDataStack.swift */; };
 		3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */; };
 		3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFDE2B94432A000358E7 /* LocationManager.swift */; };
+		3B68B48E2C0F0DE800CDB536 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */; };
+		3B93EA942C09C96900EA0C70 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */; };
 		3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3B0778C22C1738900073D572 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BA9AD972B3BDF580048D986 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BA9AD9E2B3BDF580048D986;
+			remoteInfo = RandomDine;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3B0778B52C16D4380073D572 /* FoodStoreDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStoreDBRepository.swift; sourceTree = "<group>"; };
+		3B0778BE2C17388F0073D572 /* RandomDineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomDineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIConfig.xcconfig; sourceTree = "<group>"; };
 		3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Effortless-EatsApp.swift"; sourceTree = "<group>"; };
 		3B32FFC02B94432A000358E7 /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -38,17 +53,26 @@
 		3B32FFCD2B94432A000358E7 /* RecommendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		3B32FFD02B94432A000358E7 /* KaKaoLocalAPIDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaKaoLocalAPIDTO.swift; sourceTree = "<group>"; };
 		3B32FFD32B94432A000358E7 /* KaKaoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaKaoAPI.swift; sourceTree = "<group>"; };
-		3B32FFD52B94432A000358E7 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		3B32FFD52B94432A000358E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3B32FFD72B94432A000358E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3B32FFDA2B94432A000358E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B32FFDC2B94432A000358E7 /* RandomDine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RandomDine-Info.plist"; sourceTree = "<group>"; };
 		3B32FFDE2B94432A000358E7 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* RandomDine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomDine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3BBDCD612B81E1E800389E42 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B0778BB2C17388F0073D572 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BA9AD9C2B3BDF580048D986 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,10 +83,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0778B72C170C9A0073D572 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				3B0778B52C16D4380073D572 /* FoodStoreDBRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		3B32FFBD2B94432A000358E7 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */,
+				3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -78,9 +111,9 @@
 		3B32FFC12B94432A000358E7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3B32FFC22B94432A000358E7 /* SettingScene */,
-				3B32FFC42B94432A000358E7 /* HomeView.swift */,
 				3B32FFC52B94432A000358E7 /* Components */,
+				3B32FFC22B94432A000358E7 /* SettingScene */,
+				3B68B48F2C0F0DF000CDB536 /* Home */,
 				3B32FFC92B94432A000358E7 /* RecommendFoodStoreScene */,
 			);
 			path = Presentation;
@@ -132,6 +165,7 @@
 		3B32FFCE2B94432A000358E7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3B0778B72C170C9A0073D572 /* Repositories */,
 				3B32FFCF2B94432A000358E7 /* DTO */,
 				3B32FFD12B94432A000358E7 /* Network */,
 				3B32FFD42B94432A000358E7 /* Persistence */,
@@ -166,7 +200,7 @@
 		3B32FFD42B94432A000358E7 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				3B32FFD52B94432A000358E7 /* Persistence.swift */,
+				3B32FFD52B94432A000358E7 /* CoreDataStack.swift */,
 				3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */,
 			);
 			path = Persistence;
@@ -190,6 +224,31 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		3B68B48F2C0F0DF000CDB536 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3B68B4902C0F0E0900CDB536 /* Home */,
+				3B68B4912C0F0E0E00CDB536 /* HomeViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3B68B4902C0F0E0900CDB536 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3B32FFC42B94432A000358E7 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3B68B4912C0F0E0E00CDB536 /* HomeViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */,
+			);
+			path = HomeViewModel;
+			sourceTree = "<group>";
+		};
 		3BA9AD962B3BDF580048D986 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				3BA9AD9F2B3BDF580048D986 /* RandomDine.app */,
+				3B0778BE2C17388F0073D572 /* RandomDineTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,6 +292,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3B0778BD2C17388F0073D572 /* RandomDineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B0778C42C1738900073D572 /* Build configuration list for PBXNativeTarget "RandomDineTests" */;
+			buildPhases = (
+				3B0778BA2C17388F0073D572 /* Sources */,
+				3B0778BB2C17388F0073D572 /* Frameworks */,
+				3B0778BC2C17388F0073D572 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B0778C32C1738900073D572 /* PBXTargetDependency */,
+			);
+			name = RandomDineTests;
+			productName = RandomDineTests;
+			productReference = 3B0778BE2C17388F0073D572 /* RandomDineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3BA9AD9E2B3BDF580048D986 /* RandomDine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BA9ADAD2B3BDF5B0048D986 /* Build configuration list for PBXNativeTarget "RandomDine" */;
@@ -259,9 +337,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					3B0778BD2C17388F0073D572 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 3BA9AD9E2B3BDF580048D986;
+					};
 					3BA9AD9E2B3BDF580048D986 = {
 						CreatedOnToolsVersion = 15.1;
 					};
@@ -283,11 +365,19 @@
 			projectRoot = "";
 			targets = (
 				3BA9AD9E2B3BDF580048D986 /* RandomDine */,
+				3B0778BD2C17388F0073D572 /* RandomDineTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3B0778BC2C17388F0073D572 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BA9AD9D2B3BDF580048D986 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,18 +406,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3B0778BA2C17388F0073D572 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BA9AD9B2B3BDF580048D986 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3B32FFE82B94432A000358E7 /* KaKaoLocalAPIDTO.swift in Sources */,
 				3B32FFE12B94432A000358E7 /* SettingView.swift in Sources */,
+				3B93EA942C09C96900EA0C70 /* AppDIContainer.swift in Sources */,
+				3B68B48E2C0F0DE800CDB536 /* HomeViewModel.swift in Sources */,
 				3B32FFE72B94432A000358E7 /* RecommendView.swift in Sources */,
 				3B32FFE62B94432A000358E7 /* RecommendViewModel.swift in Sources */,
 				3B32FFE22B94432A000358E7 /* HomeView.swift in Sources */,
@@ -335,17 +433,64 @@
 				3B32FFE32B94432A000358E7 /* NavigationBackButton.swift in Sources */,
 				3B32FFE02B94432A000358E7 /* Color+.swift in Sources */,
 				3B32FFE92B94432A000358E7 /* KaKaoAPI.swift in Sources */,
-				3B32FFEA2B94432A000358E7 /* Persistence.swift in Sources */,
+				3B32FFEA2B94432A000358E7 /* CoreDataStack.swift in Sources */,
 				3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */,
 				3B32FFE52B94432A000358E7 /* LoadingView.swift in Sources */,
 				3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */,
+				3B0778B62C16D4380073D572 /* FoodStoreDBRepository.swift in Sources */,
 				3B32FFE42B94432A000358E7 /* SafariWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3B0778C32C1738900073D572 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3BA9AD9E2B3BDF580048D986 /* RandomDine */;
+			targetProxy = 3B0778C22C1738900073D572 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		3B0778C52C1738900073D572 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M7F7863UPY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jjunbbang.RandomDineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RandomDine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RandomDine";
+			};
+			name = Debug;
+		};
+		3B0778C62C1738900073D572 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M7F7863UPY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jjunbbang.RandomDineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RandomDine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RandomDine";
+			};
+			name = Release;
+		};
 		3BA9ADAB2B3BDF5B0048D986 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */;
@@ -547,6 +692,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B0778C42C1738900073D572 /* Build configuration list for PBXNativeTarget "RandomDineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B0778C52C1738900073D572 /* Debug */,
+				3B0778C62C1738900073D572 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3BA9AD9A2B3BDF580048D986 /* Build configuration list for PBXProject "RandomDine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

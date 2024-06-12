@@ -12,9 +12,20 @@ import UIKit
 final class RecommendViewModel: ObservableObject {
     @Published var recommendedStore: Documents?
     @Published var isEmptyRecommendStore: Bool = true
-
-    let API = KaKaoAPI()
-    var subsciprionts = Set<AnyCancellable>()
+    @Published var isFavorite: Bool = false
+    
+    struct Dependencies {
+        ///notes: CoreData DB
+        var repository: FoodStoreDBRepository
+    }
+    
+    let dependency: Dependencies
+    private let API = KaKaoAPI()
+    private var subsciprionts = Set<AnyCancellable>()
+    
+    init(dependency: Dependencies) {
+        self.dependency = dependency
+    }
     
     func fetchRandomStore(radius mapRadius: Int) {
         recommendedStore = nil
@@ -36,6 +47,47 @@ final class RecommendViewModel: ObservableObject {
                 if self?.recommendedStore != nil {
                     self?.isEmptyRecommendStore = false
                 }
+            })
+            .store(in: &subsciprionts)
+    }
+    
+    func addFavorite() {
+        guard let data = recommendedStore else { return }
+        
+        dependency.repository.insertFoodStore(foodStore: data)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.isFavorite = true
+                case .failure:
+                    break
+                }
+            }, receiveValue: {})
+            .store(in: &subsciprionts)
+    }
+    
+    func cancelFavorite() {
+        guard let id = recommendedStore?.id else { return }
+        
+        dependency.repository.cancelFavoriteFoodStore(id: id)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.isFavorite = false
+                case .failure:
+                    break
+                }
+            }, receiveValue: {})
+            .store(in: &subsciprionts)
+    }
+    
+    func checkFavorite() {
+        guard let id = recommendedStore?.id else { return }
+        
+        dependency.repository.countFoodStore(id: id)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { [weak self] in
+                self?.isFavorite = $0 > 0 ? true : false
             })
             .store(in: &subsciprionts)
     }
