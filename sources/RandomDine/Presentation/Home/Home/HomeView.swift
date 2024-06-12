@@ -11,16 +11,13 @@ import CoreData
 struct HomeView: View {
     @State private var showingSetting = false
     @State private var showingSafariWebView = false
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \RecommendedList.date, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<RecommendedList>
+    @State private var proxy: GeometryProxy?
+    @ObservedObject var homeViewModel: HomeViewModel
     
     var body: some View {
         GeometryReader { proxy in
             VStack {
-                HomeHeaderView(viewContext: viewContext, proxy: proxy)
+                HomeHeaderView(homeViewModel: homeViewModel, proxy: proxy)
                 SavedRecommendList
             }
             .toolbar(content: {
@@ -45,7 +42,7 @@ struct HomeView: View {
     var SavedRecommendList: some View {
         List {
             Section("즐겨찾기") {
-                ForEach(items, id: \.self) { item in
+                ForEach(homeViewModel.items, id: \.self) { item in
                     HStack {
                         Button {
                             showingSafariWebView = true
@@ -66,27 +63,24 @@ struct HomeView: View {
                 .onDelete(perform: deleteItems)
             }
         }
+        .onAppear(perform: {
+            homeViewModel.fetchFoodStore()
+        })
         .lineLimit(10)
         .listStyle(.insetGrouped)
     }
     
     private func deleteItems(offsets: IndexSet) {
       withAnimation {
-        offsets.map { items[$0] }.forEach(viewContext.delete)
-        
-        do {
-          try viewContext.save()
-        } catch {
-          let nsError = error as NSError
-          fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+          homeViewModel.deleteFoodStore(offsets)
       }
     }
 }
 
 struct HomeHeaderView: View {
-    var viewContext: NSManagedObjectContext
+    let homeViewModel: HomeViewModel
     @State var proxy: GeometryProxy
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)).ignoresSafeArea(edges: .top)
@@ -94,8 +88,7 @@ struct HomeHeaderView: View {
                        height: proxy.size.height/8)
                 .foregroundStyle(Color.customColorSkyLight)
                 NavigationLink {
-                    RecommendView()
-                        .environment(\.managedObjectContext, self.viewContext)
+                    RecommendView(recommendViewModel: .init(dependency: RecommendViewModel.Dependencies(repository: homeViewModel.dependency.repository)))
                 } label: {
                     Text("추천받기")
                         .foregroundStyle(Color.white)
@@ -103,12 +96,5 @@ struct HomeHeaderView: View {
                         .bold()
                 }.buttonStyle(.bordered)
             }
-    }
-}
-
-#Preview {
-    NavigationStack {
-        HomeView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
