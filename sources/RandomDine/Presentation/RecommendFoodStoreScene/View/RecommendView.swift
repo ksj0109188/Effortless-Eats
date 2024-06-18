@@ -14,54 +14,51 @@ struct RecommendView: View {
     @State private var isRecommendButtonCilcked: Bool = false
     @State private var showingSafariWebView: Bool = false
     @State private var showingResultView: Bool = false
+    @State private var showingSettingView: Bool = false
     @ObservedObject var recommendViewModel: RecommendViewModel
     
     let clikedButtonSubject = PassthroughSubject<Void, Never>()
     
     var recommendedStoreName: String {
-        recommendViewModel.recommendedStore?.place_name ?? "추첨중"
+        recommendViewModel.recommendedStore?.placeName ?? "추첨중"
     }
     
     var recommendedStoreUrl: String {
-        recommendViewModel.recommendedStore?.place_url ?? "http://place.map.kakao.com/8107636"
+        recommendViewModel.recommendedStore?.placeURL ?? "http://place.map.kakao.com/8107636"
     }
     
     var body: some View {
-            ZStack {
-                Color.customColorSkyLight
-                    .ignoresSafeArea(.all)
-                if recommendViewModel.isEmptyRecommendStore {
-                    LoadingView() .onDisappear(perform: { showingResultView = true })
-                } else {
-                    resultForm
-                    .padding(20)
-                    .frame(width: 300, height: 300)
-                            .cornerRadius(10)
-                    .background(
-                        RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
-                            .foregroundStyle(Color.customGrayLight)
-                            .shadow(radius: 10, y: 10)
-                    )
-                    .transition(.scale.animation(.interactiveSpring(duration: 1)))
-                }
+        ZStack {
+            Color.customColorSkyLight
+                .ignoresSafeArea(.all)
+            if recommendViewModel.isEmptyRecommendStore {
+                LoadingView()
+                    .onDisappear(perform: { showingResultView = true })
+            } else {
+                resultForm
+                settingPositionButton
             }
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationBackButton(color: .white) { }
-                }
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavigationBackButton(color: .white) { }
             }
-            .onAppear(perform: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
-                    recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
-                    withAnimation(.easeInOut(duration: 10)) {
-                        showingResultView = true
-                    }
-                }))
-            })
-            .sheet(isPresented: $showingSafariWebView, content: {
-                SafariWebView(urlString: recommendedStoreUrl)
-            })
+        }
+        .onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
+                recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
+                withAnimation(.easeInOut(duration: 10)) {
+                    showingResultView = true
+                }
+            }))
+        })
+        .sheet(isPresented: $showingSafariWebView, content: {
+            SafariWebView(urlString: recommendedStoreUrl)
+        })
+        .fullScreenCover(isPresented: $showingSettingView, content: {
+            PositionSettingView(positionSettingViewModel: .init(dependency: PositionSettingViewModel.Dependencies(repository: recommendViewModel.dependency.repository)))
+        })
     }
     
     var resultForm: some View {
@@ -106,6 +103,27 @@ struct RecommendView: View {
                 
                 Spacer()
             }
+        }
+        .padding(20)
+        .frame(width: 300, height: 300)
+        .cornerRadius(10)
+        .background(
+            RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                .foregroundStyle(Color.customGrayLight)
+                .shadow(radius: 10, y: 10)
+        )
+        .transition(.scale.animation(.interactiveSpring(duration: 1)))
+    }
+    
+    var settingPositionButton: some View {
+        VStack {
+            Button {
+                showingSettingView = true
+            } label: {
+                Text("위치 설정")
+            }
+            .font(.title2)
+            .buttonStyle(.borderedProminent)
         }
     }
 }

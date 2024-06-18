@@ -47,7 +47,7 @@ struct HomeView: View {
                         Button {
                             showingSafariWebView = true
                         } label: {
-                            Text(item.place_name ?? "추천항목")
+                            Text(item.placeName ?? "추천항목")
                                 .foregroundStyle(Color.black)
                                 .font(.body)
                                 .lineLimit(1)
@@ -57,7 +57,7 @@ struct HomeView: View {
                             .foregroundStyle(Color.customColorSkyLight)
                     }
                     .sheet(isPresented: $showingSafariWebView, content: {
-                        SafariWebView(urlString: item.place_url ?? "https://map.kakao.com")
+                        SafariWebView(urlString: item.placeURL ?? "https://map.kakao.com")
                     })
                 }
                 .onDelete(perform: deleteItems)

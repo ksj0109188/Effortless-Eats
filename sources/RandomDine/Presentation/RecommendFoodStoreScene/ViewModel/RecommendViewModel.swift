@@ -10,17 +10,16 @@ import Combine
 import UIKit
 
 final class RecommendViewModel: ObservableObject {
-    @Published var recommendedStore: Documents?
+    @Published var recommendedStore: Document?
     @Published var isEmptyRecommendStore: Bool = true
     @Published var isFavorite: Bool = false
     
     struct Dependencies {
-        ///notes: CoreData DB
         var repository: FoodStoreDBRepository
     }
     
     let dependency: Dependencies
-    private let API = KaKaoAPI()
+    private let api = KaKaoAPI()
     private var subsciprionts = Set<AnyCancellable>()
     
     init(dependency: Dependencies) {
@@ -30,9 +29,9 @@ final class RecommendViewModel: ObservableObject {
     func fetchRandomStore(radius mapRadius: Int) {
         recommendedStore = nil
         isEmptyRecommendStore = true
-        let coordinate = API.locationManager.location?.coordinate
+        let coordinate = api.locationManager.location?.coordinate
         
-        API.requestStores(distance: mapRadius, coordinate: coordinate)
+        api.requestStores(distance: mapRadius, coordinate: coordinate)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {

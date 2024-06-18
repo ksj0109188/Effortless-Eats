@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreLocation
+
 struct KaKaoAPI {
     let locationManager = LocationManager()
     
@@ -16,6 +17,7 @@ struct KaKaoAPI {
         case invalidURL
         case invalidResponse
         case decodeError
+        case invalidQuery
         
         var description: String {
             switch self {
@@ -23,10 +25,13 @@ struct KaKaoAPI {
                 return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
             case .invalidURL:
                 return "유효하지 않는 URL 발생"
+                    
             case .invalidResponse:
                 return "유효하지 않는 응답."
             case .decodeError:
                 return "Parsing 에러 발생"
+            case .invalidQuery:
+                return "유효하지 않는 쿼리 파라미터"
             }
         }
     }
@@ -41,16 +46,25 @@ struct KaKaoAPI {
             URL(string: "\(KaKaoAPI.EndPoint.apiProtocol)://\(KaKaoAPI.EndPoint.domain)")!
         }
         
-        case kakaoLocalAPI
+        case recommendFoodStore
+        case searchPlace
         
         var request: URLRequest {
             switch self {
-            case .kakaoLocalAPI:
+            case .recommendFoodStore:
                 let url = baseURL.appendingPathComponent("/local/search/category.json")
                 var request = URLRequest(url: url)
                 request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
                 request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
                 request.httpMethod = "GET"
+                return request
+                    
+            case .searchPlace:
+                let url = baseURL.appendingPathComponent("/local/search/keyword.json")
+                var request = URLRequest(url: url)
+                request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                
                 return request
             }
         }
@@ -88,12 +102,14 @@ struct KaKaoAPI {
                 .eraseToAnyPublisher()
         }
         
-        var request = EndPoint.kakaoLocalAPI.request
+        var request = EndPoint.recommendFoodStore.request
         request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
+        
         if let coordinate = coordinate {
             request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
             request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
         }
+        
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
             .tryMap { output in
@@ -110,4 +126,37 @@ struct KaKaoAPI {
             }
             .eraseToAnyPublisher()
     }
+    
+    func searchPlace(title: String) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
+        guard !title.isEmpty else {
+            return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
+                .mapError { _ in KakaoAPIError.invalidQuery}
+                .eraseToAnyPublisher()
+        }
+        
+        var request = EndPoint.searchPlace.request
+        request.url?.append(queryItems: [.init(name: "query", value: title)])
+        
+        if let coordinate = locationManager.location?.coordinate {
+            request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
+            request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.global())
+            .tryMap { output in
+                return try JSONDecoder().decode(KaKaoLocalAPIDTO.self, from: output.data)
+            }
+            .mapError { error -> KakaoAPIError in
+                switch error {
+                case is URLError:
+                    return KakaoAPIError.invalidURL
+                case is DecodingError:
+                    return KakaoAPIError.decodeError
+                default: return KakaoAPIError.invalidResponse
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
 }
