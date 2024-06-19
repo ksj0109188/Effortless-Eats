@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 final class PositionSettingViewModel: ObservableObject {
     @Published var items: [Document]?
@@ -24,7 +25,6 @@ final class PositionSettingViewModel: ObservableObject {
     }
     
     func searchPlace(title: String) {
-        
         api.searchPlace(title: title)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
@@ -40,4 +40,5 @@ final class PositionSettingViewModel: ObservableObject {
             })
             .store(in: &subsciprionts)
     }
+    
 }

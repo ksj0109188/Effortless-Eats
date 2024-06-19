@@ -14,7 +14,8 @@ struct RandomDine: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HomeView(homeViewModel: HomeViewModel(dependencies: recommendViewModelDependency))
+//                HomeView(homeViewModel: HomeViewModel(dependencies: recommendViewModelDependency))
+                MapView(draw: true)
             }
         }
     }

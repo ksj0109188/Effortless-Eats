@@ -57,7 +57,7 @@ struct RecommendView: View {
             SafariWebView(urlString: recommendedStoreUrl)
         })
         .fullScreenCover(isPresented: $showingSettingView, content: {
-            PositionSettingView(positionSettingViewModel: .init(dependency: PositionSettingViewModel.Dependencies(repository: recommendViewModel.dependency.repository)))
+            PositionSettingView(viewModel: .init(dependency: PositionSettingViewModel.Dependencies(repository: recommendViewModel.dependency.repository)))
         })
     }
     

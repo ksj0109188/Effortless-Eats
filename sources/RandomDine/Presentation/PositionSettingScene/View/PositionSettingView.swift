@@ -1,49 +1,38 @@
 //
-//  PositionSettingView.swift
+//  SettingPositionView.swift
 //  RandomDine
 //
-//  Created by 김성준 on 6/16/24.
+//  Created by 김성준 on 6/19/24.
 //
 
 import SwiftUI
 
 struct PositionSettingView: View {
-    @ObservedObject var positionSettingViewModel: PositionSettingViewModel
-    @State private var title: String = ""
-    @State private var selectedPosition: Document?
+    @StateObject var viewModel: PositionSettingViewModel
+    @State private var searchTitle: String = ""
     
     var body: some View {
-        VStack {
-            //MARK: TOP
-            SearchBar(text: $title) {
-                positionSettingViewModel.searchPlace(title: title)
-            }
-            
-            //MARK: Middle
-            List {
-                if let itmes = positionSettingViewModel.items {
-                    ForEach(itmes, id: \.self) { item in
-                        Button(action: {
-                            selectedPosition = item
-                        }, label: {
-                            SearchListCellView(item: item)
-                        })
-                    }
+        NavigationStack {
+            VStack {
+                NavigationLink(destination: SearchPlaceView(positionSettingViewModel: viewModel)) {
+                    SearchBar(text: $searchTitle) { }
+                        .disabled(true)
                 }
+                
+                MapView(draw: true)
             }
-            
-            //MARK: BOTTOM
-            
         }
     }
 }
 
 #Preview {
-    PositionSettingView(positionSettingViewModel: PositionSettingViewModel(
-        dependency: PositionSettingViewModel.Dependencies(
-            repository: RealFoodStoreDBRepository(
-                persistentStore: CoreDataStack()
+    NavigationStack {
+        PositionSettingView(viewModel: PositionSettingViewModel(
+            dependency: PositionSettingViewModel.Dependencies(
+                repository: RealFoodStoreDBRepository(
+                    persistentStore: CoreDataStack()
+                )
             )
-        )
-    ))
+        ))
+    }
 }
