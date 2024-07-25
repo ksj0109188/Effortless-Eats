@@ -15,23 +15,23 @@ struct RecommendView: View {
     @State private var showingSafariWebView: Bool = false
     @State private var showingResultView: Bool = false
     @State private var showingSettingView: Bool = false
-    @ObservedObject var recommendViewModel: RecommendViewModel
+    @ObservedObject var viewModel: RecommendViewModel
     
     let clikedButtonSubject = PassthroughSubject<Void, Never>()
     
     var recommendedStoreName: String {
-        recommendViewModel.recommendedStore?.placeName ?? "추첨중"
+        viewModel.recommendedStore?.placeName ?? "추첨중"
     }
     
     var recommendedStoreUrl: String {
-        recommendViewModel.recommendedStore?.placeURL ?? "http://place.map.kakao.com/8107636"
+        viewModel.recommendedStore?.placeURL ?? "http://place.map.kakao.com/8107636"
     }
     
     var body: some View {
         ZStack {
             Color.customColorSkyLight
                 .ignoresSafeArea(.all)
-            if recommendViewModel.isEmptyRecommendStore {
+            if viewModel.isEmptyRecommendStore {
                 LoadingView()
                     .onDisappear(perform: { showingResultView = true })
             } else {
@@ -47,7 +47,7 @@ struct RecommendView: View {
         }
         .onAppear(perform: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: DispatchWorkItem(block: {
-                recommendViewModel.fetchRandomStore(radius: Int(serachDistance))
+                viewModel.fetchRandomStore(radius: Int(serachDistance))
                 withAnimation(.easeInOut(duration: 10)) {
                     showingResultView = true
                 }
@@ -57,16 +57,16 @@ struct RecommendView: View {
             SafariWebView(urlString: recommendedStoreUrl)
         })
         .fullScreenCover(isPresented: $showingSettingView, content: {
-            PositionSettingView(viewModel: .init(dependency: PositionSettingViewModel.Dependencies(repository: recommendViewModel.dependency.repository)))
+            PositionSettingView(viewModel: .init(dependency: .init(repository: viewModel.dependency.repository, locationManager: viewModel.dependency.locationManager)))
         })
     }
     
     var resultForm: some View {
         VStack(spacing: 40) {
             Button {
-                recommendViewModel.isFavorite ? recommendViewModel.cancelFavorite() : recommendViewModel.addFavorite()
+                viewModel.isFavorite ? viewModel.cancelFavorite() : viewModel.addFavorite()
             } label: {
-                recommendViewModel.isFavorite ? Image(systemName: "star.fill") : Image(systemName: "star")
+                viewModel.isFavorite ? Image(systemName: "star.fill") : Image(systemName: "star")
             }
             .font(.headline)
             .foregroundStyle(Color.yellow)
@@ -85,7 +85,7 @@ struct RecommendView: View {
                     Text("다시 받기")
                 }
                 .onReceive(clikedButtonSubject.throttle(for: .seconds(1), scheduler: DispatchQueue.main, latest: true),
-                           perform: { recommendViewModel.fetchRandomStore(radius: Int(serachDistance)) })
+                           perform: { viewModel.fetchRandomStore(radius: Int(serachDistance)) })
                 .font(.title2)
                 .foregroundStyle(Color.black)
                 .buttonStyle(.bordered)
@@ -99,7 +99,7 @@ struct RecommendView: View {
                 }
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
-                .disabled(recommendViewModel.isEmptyRecommendStore)
+                .disabled(viewModel.isEmptyRecommendStore)
                 
                 Spacer()
             }

@@ -12,12 +12,12 @@ struct HomeView: View {
     @State private var showingSetting = false
     @State private var showingSafariWebView = false
     @State private var proxy: GeometryProxy?
-    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
         GeometryReader { proxy in
             VStack {
-                HomeHeaderView(homeViewModel: homeViewModel, proxy: proxy)
+                HomeHeaderView(homeViewModel: viewModel, proxy: proxy)
                 SavedRecommendList
             }
             .toolbar(content: {
@@ -42,7 +42,7 @@ struct HomeView: View {
     var SavedRecommendList: some View {
         List {
             Section("즐겨찾기") {
-                ForEach(homeViewModel.items, id: \.self) { item in
+                ForEach(viewModel.items, id: \.self) { item in
                     HStack {
                         Button {
                             showingSafariWebView = true
@@ -64,7 +64,7 @@ struct HomeView: View {
             }
         }
         .onAppear(perform: {
-            homeViewModel.fetchFoodStore()
+            viewModel.fetchFoodStore()
         })
         .lineLimit(10)
         .listStyle(.insetGrouped)
@@ -72,7 +72,7 @@ struct HomeView: View {
     
     private func deleteItems(offsets: IndexSet) {
       withAnimation {
-          homeViewModel.deleteFoodStore(offsets)
+          viewModel.deleteFoodStore(offsets)
       }
     }
 }
@@ -88,7 +88,7 @@ struct HomeHeaderView: View {
                        height: proxy.size.height/8)
                 .foregroundStyle(Color.customColorSkyLight)
                 NavigationLink {
-                    RecommendView(recommendViewModel: .init(dependency: RecommendViewModel.Dependencies(repository: homeViewModel.dependency.repository)))
+                    RecommendView(viewModel: .init(dependency: RecommendViewModel.Dependencies(repository: homeViewModel.dependency.repository, locationManager: homeViewModel.dependency.locationManager)))
                 } label: {
                     Text("추천받기")
                         .foregroundStyle(Color.white)

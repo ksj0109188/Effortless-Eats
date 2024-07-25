@@ -14,7 +14,8 @@ final class HomeViewModel: ObservableObject {
     
     struct Dependencies {
         ///notes: CoreData DB
-        var repository: FoodStoreDBRepository
+        let repository: FoodStoreDBRepository
+        let locationManager: LocationManager
     }
     
     private var subsciprionts = Set<AnyCancellable>()

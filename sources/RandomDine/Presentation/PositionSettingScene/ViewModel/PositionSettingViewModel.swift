@@ -8,15 +8,16 @@
 import Foundation
 import Combine
 import CoreLocation
-
+// TODO: 둘로 나누어야 할 거 같음, items이 postionview에선 쓸모가 없음 ㅠ
 final class PositionSettingViewModel: ObservableObject {
     @Published var items: [Document]?
-    
+    @Published var selectedPosition: Document?
     struct Dependencies {
-        var repository: FoodStoreDBRepository
+        let repository: FoodStoreDBRepository
+        let locationManager: LocationManager
     }
     
-    private let dependency: Dependencies
+    let dependency: Dependencies
     private let api = KaKaoAPI()
     private var subsciprionts = Set<AnyCancellable>()
     
@@ -35,10 +36,13 @@ final class PositionSettingViewModel: ObservableObject {
                     debugPrint(error)
                 }
             }, receiveValue: { [weak self] in
-                debugPrint($0)
                 self?.items = $0.documents
             })
             .store(in: &subsciprionts)
+    }
+    
+    func setCustomPosition(location: CLLocation) {
+        dependency.locationManager.kaKaoSettingLocation = location
     }
     
 }

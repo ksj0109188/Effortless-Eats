@@ -9,14 +9,13 @@ import SwiftUI
 
 @main
 struct RandomDine: App {
-    let recommendViewModelDependency = AppDIContainer().makeHomeViewModelDependencies()
-    
+    @State var document: Document?
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-//                HomeView(homeViewModel: HomeViewModel(dependencies: recommendViewModelDependency))
-                MapView(draw: true)
+                HomeView(viewModel: HomeViewModel(dependencies:  AppDIContainer.makeHomeViewModelDependencies()))
             }
         }
     }
 }
+

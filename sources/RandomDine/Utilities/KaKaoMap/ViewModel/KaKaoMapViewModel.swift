@@ -10,11 +10,18 @@ import CoreLocation
 import Combine
 
 final class KaKaoMapViewModel {
-    private let locationManager = LocationManager()
-    private var subsciprionts = Set<AnyCancellable>()
+    struct Dependencies {
+        let locationManager: LocationManager
+    }
+    
+    let dependency: Dependencies
+    
+    init(dependency: Dependencies) {
+        self.dependency = dependency
+    }
     
     func getLocation() -> CLLocation? {
-        return locationManager.location
+         dependency.locationManager.getLocation()
     }
     
 }

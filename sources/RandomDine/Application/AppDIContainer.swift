@@ -8,10 +8,11 @@
 import Foundation
 
 struct AppDIContainer {
-    func makeHomeViewModelDependencies() -> HomeViewModel.Dependencies {
+    static func makeHomeViewModelDependencies() -> HomeViewModel.Dependencies {
         let persistence = CoreDataStack()
         let db = RealFoodStoreDBRepository(persistentStore: persistence)
+        let locationManager = LocationManager()
         
-        return HomeViewModel.Dependencies(repository: db)
+        return HomeViewModel.Dependencies(repository: db, locationManager: locationManager)
     }
 }

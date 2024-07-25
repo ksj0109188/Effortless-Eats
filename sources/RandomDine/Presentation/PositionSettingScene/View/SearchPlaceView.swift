@@ -6,42 +6,46 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct SearchPlaceView: View {
-    @ObservedObject var positionSettingViewModel: PositionSettingViewModel
-    @State private var title: String = ""
-    @State private var selectedPosition: Document?
+    @ObservedObject var viewModel: PositionSettingViewModel
+    @Binding var searchTitle: String
+    @Binding var selectedPosition: Document?
+    
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
-            //MARK: TOP
-            SearchBar(text: $title) {
-                positionSettingViewModel.searchPlace(title: title)
-            }
-            
-            //MARK: Middle
+            SearchBar(text: $searchTitle) { viewModel.searchPlace(title: searchTitle) }
             List {
-                if let itmes = positionSettingViewModel.items {
+                if let itmes = viewModel.items {
                     ForEach(itmes, id: \.self) { item in
                         Button(action: {
                             selectedPosition = item
+                            dismiss()
                         }, label: {
                             SearchListCellView(item: item)
                         })
                     }
                 }
             }
-            
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavigationBackButton(color: .white) { }
+            }
         }
     }
 }
 
-#Preview {
-    SearchPlaceView(positionSettingViewModel: PositionSettingViewModel(
-        dependency: PositionSettingViewModel.Dependencies(
-            repository: RealFoodStoreDBRepository(
-                persistentStore: CoreDataStack()
-            ) 
-        )
-    ))
-}
+//#Preview {
+//    SearchPlaceView(positionSettingViewModel: PositionSettingViewModel(
+//        dependency: PositionSettingViewModel.Dependencies(
+//            repository: RealFoodStoreDBRepository(
+//                persistentStore: CoreDataStack()
+//            ) 
+//        )
+//    ))
+//}

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct MapView : View {
     @State var draw: Bool = false
-   
+    @Binding var selectedPlace: Document?
+    var viewModel: KaKaoMapViewModel
+    
     var body: some View {
-        VStack{
-            KakaoMapView(draw: $draw)
-                .onAppear(perform: {self.draw = true})
-                .onDisappear(perform: {self.draw = false})
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(.all)
+        VStack {
+            KakaoMapView(viewModel: viewModel, draw: $draw, selectedPlace: $selectedPlace)
+                .onAppear(perform: { self.draw = true })
+                .onDisappear(perform: { self.draw = false })
         }
     }
 }
