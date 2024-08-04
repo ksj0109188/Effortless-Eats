@@ -106,8 +106,7 @@ extension KaKaoMapViewController: MapControllerDelegate {
             let mapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition, defaultLevel: 7)
             
             controller?.addView(mapviewInfo)
-            
-            markPosition(longtitude: <#T##String?#>, latitude: <#T##String?#>, viewName: controller?.getView("mapView") as! KakaoMapView, isMoveCamera: false)
+            markPosition(location:  location!, subView: controller?.getView("mapview") as! KakaoMap)
         } else {
             let mapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: nil, defaultLevel: 7)
             
@@ -145,8 +144,7 @@ extension KaKaoMapViewController :KakaoMapEventDelegate {
         viewModel.dependency.locationManager.setKaKaoLocationValue(location: location)
 
         if let mapView = controller?.getView("mapview") as? KakaoMap {
-            markPosition(longtitude: <#T##String?#>, latitude: <#T##String?#>, viewName: <#T##String#>, isMoveCamera: false)
-            poiDelegate?.drawPoi(location: location, subView: mapView)
+            markPosition(location: location, subView: mapView)
         } else {
             showToast(self.view, message: KaKaoErrorTypes.notFoundedMapBase.description)
         }
@@ -155,22 +153,11 @@ extension KaKaoMapViewController :KakaoMapEventDelegate {
 
 ///note: Poi그리기
 extension KaKaoMapViewController {
-    private func markPosition(longtitude: String?, latitude: String?, viewName: String, isMoveCamera: Bool = false) {
-        if let mapView = controller?.getView("mapview") as? KakaoMap {
-            if let location = viewModel.dependency.locationManager.makeCLLocation(longtitude: longtitude, latitude: latitude) {
-                poiDelegate?.drawPoi(location: location, subView: mapView)
-            } else if let location = viewModel.dependency.locationManager.getLocation() {
-                poiDelegate?.drawPoi(location: location, subView: mapView)
-                
-                if isMoveCamera {
-                    cameraDelegate.cameraMoveTo(location: location, subView: mapView)
-                }
-            } else {
-                showToast(self.view, message: KaKaoErrorTypes.notFoundedLocation.description)
-            }
-        } else {
-            showToast(self.view, message: KaKaoErrorTypes.notFoundedMapBase.description)
+    private func markPosition(location: CLLocation, subView: KakaoMap, isMoveCamera: Bool = false) {
+        if isMoveCamera {
+            cameraDelegate.cameraMoveTo(location: location, subView: subView)
         }
+        poiDelegate?.drawPoi(location: location, subView: subView)
     }
 }
 //TODO: 7/8일 카메라 이동 메소드 작성, 매개변수 어떻게 할지 고민했었음
