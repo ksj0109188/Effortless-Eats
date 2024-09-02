@@ -13,7 +13,7 @@ struct RandomDine: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HomeView(viewModel: HomeViewModel(dependencies:  AppDIContainer.makeHomeViewModelDependencies()))
+                HomeView()
             }
         }
     }

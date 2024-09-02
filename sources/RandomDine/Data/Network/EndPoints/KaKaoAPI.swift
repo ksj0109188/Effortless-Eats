@@ -11,85 +11,7 @@ import CoreLocation
 
 struct KaKaoAPI {
     let locationManager = LocationManager()
-    
-    enum KakaoAPIError: Error, CustomStringConvertible {
-        case overflowRadius
-        case invalidURL
-        case invalidResponse
-        case decodeError
-        case invalidQuery
-        
-        var description: String {
-            switch self {
-            case .overflowRadius:
-                return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
-            case .invalidURL:
-                return "유효하지 않는 URL 발생"
-                    
-            case .invalidResponse:
-                return "유효하지 않는 응답."
-            case .decodeError:
-                return "Parsing 에러 발생"
-            case .invalidQuery:
-                return "유효하지 않는 쿼리 파라미터"
-            }
-        }
-    }
-    
-    enum EndPoint {
-        static let apiProtocol = Bundle.main.infoDictionary?["KAKAO_API_PROTOCOL"] as? String ??  String("")
-        static let domain = Bundle.main.infoDictionary?["KAKAO_API_DOMAIN"] as? String ??  String("")
-        static let restAPIKey = Bundle.main.infoDictionary?["KAKAO_REST_API_KEY"] as? String ??  String("")
-        static let restAPIMethod = Bundle.main.infoDictionary?["KAKAO_RESTAPI_AUTH_METHOD"] as? String ??  String("")
-        
-        var baseURL: URL {
-            URL(string: "\(KaKaoAPI.EndPoint.apiProtocol)://\(KaKaoAPI.EndPoint.domain)")!
-        }
-        
-        case recommendFoodStore
-        case searchPlace
-        
-        var request: URLRequest {
-            switch self {
-            case .recommendFoodStore:
-                let url = baseURL.appendingPathComponent("/local/search/category.json")
-                var request = URLRequest(url: url)
-                request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
-                request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
-                request.httpMethod = "GET"
-                return request
-                    
-            case .searchPlace:
-                let url = baseURL.appendingPathComponent("/local/search/keyword.json")
-                var request = URLRequest(url: url)
-                request.addValue("\(KaKaoAPI.EndPoint.restAPIMethod) \(KaKaoAPI.EndPoint.restAPIKey)", forHTTPHeaderField: "Authorization")
-                request.httpMethod = "GET"
-                
-                return request
-            }
-        }
-    }
-    
-    enum KaKaoLocalAPICategory: String {
-        case Supermarket = "MT1"
-        case ConvenienceStore = "CS2"
-        case Kindergarten = "PS3"
-        case School = "SC4"
-        case Academy = "AC5"
-        case ParkingLot = "PK6"
-        case GasStation = "OL7"
-        case SubwayStation = "SW8"
-        case Bank = "BK9"
-        case CulturalFacility = "CT1"
-        case Brokerage = "AG2"
-        case PublicInstitution = "PO3"
-        case TouristAttraction = "AT4"
-        case Accommodation = "AD5"
-        case Restaurant = "FD6"
-        case Cafe = "CE7"
-        case Hospital = "HP8"
-        case Pharmacy = "PM9"
-    }
+    private let config: AppConfiguration = AppConfiguration()
     
     /// 내주위 음식점 정보 가지고오기
     /// - Parameters:
@@ -158,5 +80,80 @@ struct KaKaoAPI {
             }
             .eraseToAnyPublisher()
     }
+}
+
+extension KaKaoAPI {
+    enum KakaoAPIError: Error, CustomStringConvertible {
+        case overflowRadius
+        case invalidURL
+        case invalidResponse
+        case decodeError
+        case invalidQuery
+        
+        var description: String {
+            switch self {
+            case .overflowRadius:
+                return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
+            case .invalidURL:
+                return "유효하지 않는 URL 발생"
+                    
+            case .invalidResponse:
+                return "유효하지 않는 응답."
+            case .decodeError:
+                return "Parsing 에러 발생"
+            case .invalidQuery:
+                return "유효하지 않는 쿼리 파라미터"
+            }
+        }
+    }
+    //TODO: EndPoint 분리 필요
+    enum EndPoint {
+        case recommendFoodStore
+        case searchPlace
+        
+        var baseURL: URL {
+            URL(string: "\(AppConfiguration().apiProtocol)://\(AppConfiguration().domain)")!
+        }
+        
+        var request: URLRequest {
+            switch self {
+            case .recommendFoodStore:
+                let url = baseURL.appendingPathComponent("/local/search/category.json")
+                var request = URLRequest(url: url)
+                request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
+                request.addValue("\(AppConfiguration().restAPIMethod) \(AppConfiguration().restAPIKey)", forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                return request
+                    
+            case .searchPlace:
+                let url = baseURL.appendingPathComponent("/local/search/keyword.json")
+                var request = URLRequest(url: url)
+                    request.addValue("\(AppConfiguration().restAPIMethod) \(AppConfiguration().restAPIKey)", forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                
+                return request
+            }
+        }
+    }
     
+    enum KaKaoLocalAPICategory: String {
+        case Supermarket = "MT1"
+        case ConvenienceStore = "CS2"
+        case Kindergarten = "PS3"
+        case School = "SC4"
+        case Academy = "AC5"
+        case ParkingLot = "PK6"
+        case GasStation = "OL7"
+        case SubwayStation = "SW8"
+        case Bank = "BK9"
+        case CulturalFacility = "CT1"
+        case Brokerage = "AG2"
+        case PublicInstitution = "PO3"
+        case TouristAttraction = "AT4"
+        case Accommodation = "AD5"
+        case Restaurant = "FD6"
+        case Cafe = "CE7"
+        case Hospital = "HP8"
+        case Pharmacy = "PM9"
+    }
 }

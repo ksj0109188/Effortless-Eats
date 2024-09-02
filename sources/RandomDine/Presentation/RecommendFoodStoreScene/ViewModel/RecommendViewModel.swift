@@ -18,14 +18,14 @@ final class RecommendViewModel: ObservableObject {
     struct Dependencies {
         let repository: FoodStoreDBRepository
         let locationManager: LocationManager
+        let kakaoAPI: KaKaoAPI
     }
     
     let dependency: Dependencies
-    private let api = KaKaoAPI()
     private var subsciprionts = Set<AnyCancellable>()
     
-    init(dependency: Dependencies) {
-        self.dependency = dependency
+    init() {
+        self.dependency = AppDIContainer.makeRecommendViewModel()
     }
     
     func fetchRandomStore(radius mapRadius: Int) {
@@ -37,10 +37,10 @@ final class RecommendViewModel: ObservableObject {
             print(location)
             coordinate = location.coordinate
         } else {
-            coordinate = api.locationManager.location?.coordinate
+            coordinate = dependency.kakaoAPI.locationManager.location?.coordinate
         }
         
-        api.requestStores(distance: mapRadius, coordinate: coordinate)
+        dependency.kakaoAPI.requestStores(distance: mapRadius, coordinate: coordinate)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {

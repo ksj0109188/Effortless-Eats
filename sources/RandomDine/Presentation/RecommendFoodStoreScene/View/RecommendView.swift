@@ -15,7 +15,7 @@ struct RecommendView: View {
     @State private var showingSafariWebView: Bool = false
     @State private var showingResultView: Bool = false
     @State private var showingSettingView: Bool = false
-    @ObservedObject var viewModel: RecommendViewModel
+    @StateObject var viewModel =  RecommendViewModel()
     
     let clikedButtonSubject = PassthroughSubject<Void, Never>()
     
@@ -57,7 +57,7 @@ struct RecommendView: View {
             SafariWebView(urlString: recommendedStoreUrl)
         })
         .fullScreenCover(isPresented: $showingSettingView, content: {
-            PositionSettingView(viewModel: .init(dependency: .init(repository: viewModel.dependency.repository, locationManager: viewModel.dependency.locationManager)))
+            PositionSettingView()
         })
     }
     

@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var showingSetting = false
     @State private var showingSafariWebView = false
     @State private var proxy: GeometryProxy?
-    @ObservedObject var viewModel: HomeViewModel
+    @StateObject private var viewModel: HomeViewModel = HomeViewModel()
     
     var body: some View {
         GeometryReader { proxy in
@@ -88,7 +88,7 @@ struct HomeHeaderView: View {
                        height: proxy.size.height/8)
                 .foregroundStyle(Color.customColorSkyLight)
                 NavigationLink {
-                    RecommendView(viewModel: .init(dependency: RecommendViewModel.Dependencies(repository: homeViewModel.dependency.repository, locationManager: homeViewModel.dependency.locationManager)))
+                    RecommendView()
                 } label: {
                     Text("추천받기")
                         .foregroundStyle(Color.white)

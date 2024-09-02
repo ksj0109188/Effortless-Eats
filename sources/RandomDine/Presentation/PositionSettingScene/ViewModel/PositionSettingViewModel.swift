@@ -12,8 +12,9 @@ import CoreLocation
 final class PositionSettingViewModel: ObservableObject {
     @Published var items: [Document]?
     @Published var selectedPosition: Document?
+    
     struct Dependencies {
-        let repository: FoodStoreDBRepository
+//        let repository: FoodStoreDBRepository
         let locationManager: LocationManager
     }
     
@@ -21,8 +22,8 @@ final class PositionSettingViewModel: ObservableObject {
     private let api = KaKaoAPI()
     private var subsciprionts = Set<AnyCancellable>()
     
-    init(dependency: Dependencies) {
-        self.dependency = dependency
+    init() {
+        self.dependency = AppDIContainer.makePositionSettingViewModel()
     }
     
     func searchPlace(title: String) {

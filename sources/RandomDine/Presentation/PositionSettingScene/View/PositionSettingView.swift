@@ -10,7 +10,7 @@ import CoreLocation
 
 struct PositionSettingView: View {
     //TODO: selectedPosition, viewModel locationManager 위/경도 값 두개가 지금 뷰끼리 흐름있음, 이걸 고민해서 고쳐야함
-    @StateObject var viewModel: PositionSettingViewModel
+    @StateObject var viewModel: PositionSettingViewModel = PositionSettingViewModel()
     @State private var searchTitle: String = ""
     @State private var selectedPosition: Document?
     
@@ -20,7 +20,8 @@ struct PositionSettingView: View {
                 NavigationLink(destination: SearchPlaceView(viewModel: viewModel, searchTitle: $searchTitle, selectedPosition: $selectedPosition)){
                     SearchBar(text: $searchTitle){}.disabled(true)
                 }
-                MapView(draw: true, selectedPlace: $selectedPosition, viewModel: .init(dependency: .init(locationManager: viewModel.dependency.locationManager)))
+//                MapView(draw: true, selectedPlace: $selectedPosition, viewModel: .init(dependency: .init(locationManager: viewModel.dependency.locationManager)))
+                MapView(draw: true, selectedPlace: $selectedPosition)
             }
             VStack {
                 Button {
@@ -56,11 +57,6 @@ struct PositionSettingView: View {
 #Preview {
     NavigationStack {
         PositionSettingView(viewModel: PositionSettingViewModel(
-            dependency: PositionSettingViewModel.Dependencies(
-                repository: RealFoodStoreDBRepository(
-                    persistentStore: CoreDataStack()
-                ), locationManager: LocationManager()
-            )
         ))
     }
 }
