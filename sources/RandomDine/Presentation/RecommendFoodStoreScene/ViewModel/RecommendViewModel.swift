@@ -8,31 +8,39 @@
 import Foundation
 import Combine
 import UIKit
+import CoreLocation
 
 final class RecommendViewModel: ObservableObject {
-    @Published var recommendedStore: Documents?
+    @Published var recommendedStore: Document?
     @Published var isEmptyRecommendStore: Bool = true
     @Published var isFavorite: Bool = false
     
     struct Dependencies {
-        ///notes: CoreData DB
-        var repository: FoodStoreDBRepository
+        let repository: FoodStoreDBRepository
+        let locationManager: LocationManager
+        let kakaoAPI: KaKaoAPI
     }
     
     let dependency: Dependencies
-    private let API = KaKaoAPI()
     private var subsciprionts = Set<AnyCancellable>()
     
-    init(dependency: Dependencies) {
-        self.dependency = dependency
+    init() {
+        self.dependency = AppDIContainer.makeRecommendViewModel()
     }
     
     func fetchRandomStore(radius mapRadius: Int) {
         recommendedStore = nil
         isEmptyRecommendStore = true
-        let coordinate = API.locationManager.location?.coordinate
+        // Map에서 설정된 위치가 있다면, LocationManager말고 설정된 카카오 위 경도 값으로 위치를 조회한다.
+        let coordinate: CLLocationCoordinate2D?
+        if let location = dependency.locationManager.kaKaoSettingLocation {
+            print(location)
+            coordinate = location.coordinate
+        } else {
+            coordinate = dependency.kakaoAPI.locationManager.location?.coordinate
+        }
         
-        API.requestStores(distance: mapRadius, coordinate: coordinate)
+        dependency.kakaoAPI.requestStores(distance: mapRadius, coordinate: coordinate)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {

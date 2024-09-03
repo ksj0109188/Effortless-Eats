@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3B0778B62C16D4380073D572 /* FoodStoreDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0778B52C16D4380073D572 /* FoodStoreDBRepository.swift */; };
+		3B1985CA2C31865700572B96 /* KaKaoUIDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1985C92C31865700572B96 /* KaKaoUIDraw.swift */; };
+		3B2D979F2C22B66900E20DBA /* PositionSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D979E2C22B66900E20DBA /* PositionSettingView.swift */; };
+		3B2D97A52C22F5D300E20DBA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D97A42C22F5D300E20DBA /* MapView.swift */; };
 		3B32FFDF2B94432A000358E7 /* Effortless-EatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */; };
 		3B32FFE02B94432A000358E7 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFC02B94432A000358E7 /* Color+.swift */; };
 		3B32FFE12B94432A000358E7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFC32B94432A000358E7 /* SettingView.swift */; };
@@ -23,9 +26,20 @@
 		3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */; };
 		3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFDE2B94432A000358E7 /* LocationManager.swift */; };
+		3B5893342C858ACD00BB738D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893332C858ACD00BB738D /* AppConfiguration.swift */; };
+		3B5893382C85912B00BB738D /* KaKaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */; };
 		3B68B48E2C0F0DE800CDB536 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */; };
 		3B93EA942C09C96900EA0C70 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */; };
+		3B9D19B32C21C13D00068208 /* KakaoMapCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D19B22C21C13D00068208 /* KakaoMapCoordinatorTest.swift */; };
+		3BA7A6032C2EB83E004062E7 /* KaKaoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7A6022C2EB83E004062E7 /* KaKaoMapViewController.swift */; };
 		3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */; };
+		3BCC27C92C1B26F70028C9AB /* KaKaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCC27C82C1B26F70028C9AB /* KaKaoMap.swift */; };
+		3BCF945E2C786756003F11C5 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 3BCF945D2C786756003F11C5 /* KakaoMapsSDK-SPM */; };
+		3BD4A41D2C3BDA8100FBA633 /* KaKaoMapCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4A41C2C3BDA8100FBA633 /* KaKaoMapCameraDelegate.swift */; };
+		3BEA39C52C1EF201001AAEFA /* SearchPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEA39C42C1EF201001AAEFA /* SearchPlaceView.swift */; };
+		3BEA39C72C1EF21F001AAEFA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEA39C62C1EF21F001AAEFA /* SearchBar.swift */; };
+		3BEA39CB2C1F1633001AAEFA /* PositionSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEA39CA2C1F1633001AAEFA /* PositionSettingViewModel.swift */; };
+		3BEA39D02C1F2F09001AAEFA /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEA39CF2C1F2F09001AAEFA /* SearchListCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +56,9 @@
 		3B0778B52C16D4380073D572 /* FoodStoreDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStoreDBRepository.swift; sourceTree = "<group>"; };
 		3B0778BE2C17388F0073D572 /* RandomDineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomDineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B18DECF2C09A8AA0028E44E /* APIConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIConfig.xcconfig; sourceTree = "<group>"; };
+		3B1985C92C31865700572B96 /* KaKaoUIDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoUIDraw.swift; sourceTree = "<group>"; };
+		3B2D979E2C22B66900E20DBA /* PositionSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSettingView.swift; sourceTree = "<group>"; };
+		3B2D97A42C22F5D300E20DBA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Effortless-EatsApp.swift"; sourceTree = "<group>"; };
 		3B32FFC02B94432A000358E7 /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		3B32FFC32B94432A000358E7 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -58,11 +75,21 @@
 		3B32FFDA2B94432A000358E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B32FFDC2B94432A000358E7 /* RandomDine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RandomDine-Info.plist"; sourceTree = "<group>"; };
 		3B32FFDE2B94432A000358E7 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3B5893332C858ACD00BB738D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoMapViewModel.swift; sourceTree = "<group>"; };
 		3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		3B9D19B22C21C13D00068208 /* KakaoMapCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapCoordinatorTest.swift; sourceTree = "<group>"; };
+		3BA7A6022C2EB83E004062E7 /* KaKaoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoMapViewController.swift; sourceTree = "<group>"; };
 		3BA9AD9F2B3BDF580048D986 /* RandomDine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomDine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB25B962B6CFB2F000C8A88 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3BBDCD612B81E1E800389E42 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
+		3BCC27C82C1B26F70028C9AB /* KaKaoMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoMap.swift; sourceTree = "<group>"; };
+		3BD4A41C2C3BDA8100FBA633 /* KaKaoMapCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoMapCameraDelegate.swift; sourceTree = "<group>"; };
+		3BEA39C42C1EF201001AAEFA /* SearchPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceView.swift; sourceTree = "<group>"; };
+		3BEA39C62C1EF21F001AAEFA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		3BEA39CA2C1F1633001AAEFA /* PositionSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSettingViewModel.swift; sourceTree = "<group>"; };
+		3BEA39CF2C1F2F09001AAEFA /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BCF945E2C786756003F11C5 /* KakaoMapsSDK-SPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,11 +119,31 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		3B1985C82C31828500572B96 /* Deleagtes */ = {
+			isa = PBXGroup;
+			children = (
+				3B9D19B22C21C13D00068208 /* KakaoMapCoordinatorTest.swift */,
+				3B1985C92C31865700572B96 /* KaKaoUIDraw.swift */,
+				3BD4A41C2C3BDA8100FBA633 /* KaKaoMapCameraDelegate.swift */,
+			);
+			path = Deleagtes;
+			sourceTree = "<group>";
+		};
+		3B2D97A02C22F4BE00E20DBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BCC27C82C1B26F70028C9AB /* KaKaoMap.swift */,
+				3BA7A6022C2EB83E004062E7 /* KaKaoMapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3B32FFBD2B94432A000358E7 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				3B5893362C858E1000BB738D /* DIContainer */,
+				3B5893352C858AD400BB738D /* Config */,
 				3B32FFBE2B94432A000358E7 /* Effortless-EatsApp.swift */,
-				3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -111,10 +159,10 @@
 		3B32FFC12B94432A000358E7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3B32FFC52B94432A000358E7 /* Components */,
-				3B32FFC22B94432A000358E7 /* SettingScene */,
-				3B68B48F2C0F0DF000CDB536 /* Home */,
+				3B68B48F2C0F0DF000CDB536 /* HomeScene */,
 				3B32FFC92B94432A000358E7 /* RecommendFoodStoreScene */,
+				3BEA39C82C1F160C001AAEFA /* PositionSettingScene */,
+				3B32FFC22B94432A000358E7 /* SettingScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -122,7 +170,7 @@
 		3B32FFC22B94432A000358E7 /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
-				3B32FFC32B94432A000358E7 /* SettingView.swift */,
+				3BEA39D12C203789001AAEFA /* View */,
 			);
 			path = SettingScene;
 			sourceTree = "<group>";
@@ -133,6 +181,8 @@
 				3B32FFC62B94432A000358E7 /* NavigationBackButton.swift */,
 				3B32FFC72B94432A000358E7 /* SafariWebView.swift */,
 				3B32FFC82B94432A000358E7 /* LoadingView.swift */,
+				3BEA39C62C1EF21F001AAEFA /* SearchBar.swift */,
+				3B2D97A42C22F5D300E20DBA /* MapView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -140,8 +190,8 @@
 		3B32FFC92B94432A000358E7 /* RecommendFoodStoreScene */ = {
 			isa = PBXGroup;
 			children = (
-				3B32FFCA2B94432A000358E7 /* ViewModel */,
 				3B32FFCC2B94432A000358E7 /* View */,
+				3B32FFCA2B94432A000358E7 /* ViewModel */,
 			);
 			path = RecommendFoodStoreScene;
 			sourceTree = "<group>";
@@ -219,26 +269,52 @@
 		3B32FFDD2B94432A000358E7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3B32FFC52B94432A000358E7 /* Components */,
+				3B9D19B12C21C10E00068208 /* KaKaoMap */,
 				3B32FFDE2B94432A000358E7 /* LocationManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		3B68B48F2C0F0DF000CDB536 /* Home */ = {
+		3B5893352C858AD400BB738D /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				3B68B4902C0F0E0900CDB536 /* Home */,
-				3B68B4912C0F0E0E00CDB536 /* HomeViewModel */,
+				3B5893332C858ACD00BB738D /* AppConfiguration.swift */,
 			);
-			path = Home;
+			path = Config;
 			sourceTree = "<group>";
 		};
-		3B68B4902C0F0E0900CDB536 /* Home */ = {
+		3B5893362C858E1000BB738D /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3B93EA932C09C96800EA0C70 /* AppDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		3B5893392C85913300BB738D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B68B48F2C0F0DF000CDB536 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+				3B68B4902C0F0E0900CDB536 /* View */,
+				3B68B4912C0F0E0E00CDB536 /* HomeViewModel */,
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		3B68B4902C0F0E0900CDB536 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3B32FFC42B94432A000358E7 /* HomeView.swift */,
 			);
-			path = Home;
+			path = View;
 			sourceTree = "<group>";
 		};
 		3B68B4912C0F0E0E00CDB536 /* HomeViewModel */ = {
@@ -247,6 +323,16 @@
 				3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */,
 			);
 			path = HomeViewModel;
+			sourceTree = "<group>";
+		};
+		3B9D19B12C21C10E00068208 /* KaKaoMap */ = {
+			isa = PBXGroup;
+			children = (
+				3B5893392C85913300BB738D /* ViewModel */,
+				3B1985C82C31828500572B96 /* Deleagtes */,
+				3B2D97A02C22F4BE00E20DBA /* View */,
+			);
+			path = KaKaoMap;
 			sourceTree = "<group>";
 		};
 		3BA9AD962B3BDF580048D986 = {
@@ -289,6 +375,41 @@
 			path = ci_scripts;
 			sourceTree = "<group>";
 		};
+		3BEA39C82C1F160C001AAEFA /* PositionSettingScene */ = {
+			isa = PBXGroup;
+			children = (
+				3BEA39C92C1F161F001AAEFA /* View */,
+				3BEA39CC2C1F1637001AAEFA /* ViewModel */,
+			);
+			path = PositionSettingScene;
+			sourceTree = "<group>";
+		};
+		3BEA39C92C1F161F001AAEFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BEA39CF2C1F2F09001AAEFA /* SearchListCellView.swift */,
+				3B2D979E2C22B66900E20DBA /* PositionSettingView.swift */,
+				3BEA39C42C1EF201001AAEFA /* SearchPlaceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3BEA39CC2C1F1637001AAEFA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3BEA39CA2C1F1633001AAEFA /* PositionSettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3BEA39D12C203789001AAEFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B32FFC32B94432A000358E7 /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,6 +427,8 @@
 				3B0778C32C1738900073D572 /* PBXTargetDependency */,
 			);
 			name = RandomDineTests;
+			packageProductDependencies = (
+			);
 			productName = RandomDineTests;
 			productReference = 3B0778BE2C17388F0073D572 /* RandomDineTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -325,6 +448,7 @@
 			);
 			name = RandomDine;
 			packageProductDependencies = (
+				3BCF945D2C786756003F11C5 /* KakaoMapsSDK-SPM */,
 			);
 			productName = "Effortless Eats";
 			productReference = 3BA9AD9F2B3BDF580048D986 /* RandomDine.app */;
@@ -359,6 +483,7 @@
 			);
 			mainGroup = 3BA9AD962B3BDF580048D986;
 			packageReferences = (
+				3B887F4D2C29B684002AE1F0 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 3BA9ADA02B3BDF580048D986 /* Products */;
 			projectDirPath = "";
@@ -406,7 +531,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -424,19 +550,32 @@
 			files = (
 				3B32FFE82B94432A000358E7 /* KaKaoLocalAPIDTO.swift in Sources */,
 				3B32FFE12B94432A000358E7 /* SettingView.swift in Sources */,
+				3B2D979F2C22B66900E20DBA /* PositionSettingView.swift in Sources */,
+				3B1985CA2C31865700572B96 /* KaKaoUIDraw.swift in Sources */,
+				3BA7A6032C2EB83E004062E7 /* KaKaoMapViewController.swift in Sources */,
 				3B93EA942C09C96900EA0C70 /* AppDIContainer.swift in Sources */,
+				3B5893342C858ACD00BB738D /* AppConfiguration.swift in Sources */,
 				3B68B48E2C0F0DE800CDB536 /* HomeViewModel.swift in Sources */,
+				3BEA39C52C1EF201001AAEFA /* SearchPlaceView.swift in Sources */,
+				3BEA39CB2C1F1633001AAEFA /* PositionSettingViewModel.swift in Sources */,
 				3B32FFE72B94432A000358E7 /* RecommendView.swift in Sources */,
 				3B32FFE62B94432A000358E7 /* RecommendViewModel.swift in Sources */,
 				3B32FFE22B94432A000358E7 /* HomeView.swift in Sources */,
 				3B32FFDF2B94432A000358E7 /* Effortless-EatsApp.swift in Sources */,
 				3B32FFE32B94432A000358E7 /* NavigationBackButton.swift in Sources */,
 				3B32FFE02B94432A000358E7 /* Color+.swift in Sources */,
+				3BCC27C92C1B26F70028C9AB /* KaKaoMap.swift in Sources */,
+				3BD4A41D2C3BDA8100FBA633 /* KaKaoMapCameraDelegate.swift in Sources */,
 				3B32FFE92B94432A000358E7 /* KaKaoAPI.swift in Sources */,
 				3B32FFEA2B94432A000358E7 /* CoreDataStack.swift in Sources */,
+				3B2D97A52C22F5D300E20DBA /* MapView.swift in Sources */,
 				3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */,
+				3B9D19B32C21C13D00068208 /* KakaoMapCoordinatorTest.swift in Sources */,
 				3B32FFE52B94432A000358E7 /* LoadingView.swift in Sources */,
 				3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */,
+				3B5893382C85912B00BB738D /* KaKaoMapViewModel.swift in Sources */,
+				3BEA39D02C1F2F09001AAEFA /* SearchListCellView.swift in Sources */,
+				3BEA39C72C1EF21F001AAEFA /* SearchBar.swift in Sources */,
 				3B0778B62C16D4380073D572 /* FoodStoreDBRepository.swift in Sources */,
 				3B32FFE42B94432A000358E7 /* SafariWebView.swift in Sources */,
 			);
@@ -720,6 +859,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B887F4D2C29B684002AE1F0 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3BCF945D2C786756003F11C5 /* KakaoMapsSDK-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B887F4D2C29B684002AE1F0 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = "KakaoMapsSDK-SPM";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */ = {

@@ -14,14 +14,14 @@ final class HomeViewModel: ObservableObject {
     
     struct Dependencies {
         ///notes: CoreData DB
-        var repository: FoodStoreDBRepository
+        let repository: FoodStoreDBRepository
     }
     
     private var subsciprionts = Set<AnyCancellable>()
     let dependency: Dependencies
     
-    init(dependencies: Dependencies) {
-        self.dependency = dependencies
+    init() {
+        self.dependency = AppDIContainer.makeHomeViewModelDependencies()
     }
     
     func fetchFoodStore() {

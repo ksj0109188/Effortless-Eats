@@ -1,0 +1,15 @@
+{
+  "originHash" : "eee309cfef0f37f3c13335b64049f3cef6bdacc7310fc789e5412ae8228c0a63",
+  "pins" : [
+    {
+      "identity" : "kakaomapssdk-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git",
+      "state" : {
+        "revision" : "c1571d411caca22ad6e3e76a593e0b95b3586fb7",
+        "version" : "2.10.4"
+      }
+    }
+  ],
+  "version" : 3
+}

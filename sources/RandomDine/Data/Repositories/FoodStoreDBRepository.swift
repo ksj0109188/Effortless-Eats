@@ -11,7 +11,7 @@ import Combine
 
 protocol FoodStoreDBRepository {
     func selectFoodStore() -> AnyPublisher<[RecommendedList], Error>
-    func insertFoodStore(foodStore: Documents) -> AnyPublisher<Void, Error>
+    func insertFoodStore(foodStore: Document) -> AnyPublisher<Void, Error>
     func deleteFoodStore(item: NSManagedObject) -> AnyPublisher<Void, Error>
     func cancelFavoriteFoodStore(id: String) -> AnyPublisher<Void, Error>
     func countFoodStore(id: String) -> AnyPublisher<Int, Error>
@@ -24,16 +24,16 @@ struct RealFoodStoreDBRepository: FoodStoreDBRepository {
         persistentStore.fetch(RecommendedList.foodStoreListRequest())
     }
     
-    func insertFoodStore(foodStore: Documents) -> AnyPublisher<Void, Error> {
+    func insertFoodStore(foodStore: Document) -> AnyPublisher<Void, Error> {
         persistentStore.update { context in
             let newItem = RecommendedList(context: context)
             
             newItem.id = foodStore.id
-            newItem.address_name = foodStore.address_name
+            newItem.addressName = foodStore.addressName
             newItem.date = Date()
             newItem.isFavorite = true
-            newItem.place_name = foodStore.place_name
-            newItem.place_url = foodStore.place_url
+            newItem.placeName = foodStore.placeName
+            newItem.placeURL = foodStore.placeURL
         }
     }
     
