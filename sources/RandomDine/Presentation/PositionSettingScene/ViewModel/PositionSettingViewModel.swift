@@ -8,13 +8,12 @@
 import Foundation
 import Combine
 import CoreLocation
-// TODO: 둘로 나누어야 할 거 같음, items이 postionview에선 쓸모가 없음 ㅠ
+
 final class PositionSettingViewModel: ObservableObject {
     @Published var items: [Document]?
     @Published var selectedPosition: Document?
     
     struct Dependencies {
-//        let repository: FoodStoreDBRepository
         let locationManager: LocationManager
     }
     
@@ -42,8 +41,20 @@ final class PositionSettingViewModel: ObservableObject {
             .store(in: &subsciprionts)
     }
     
-    func setCustomPosition(location: CLLocation) {
-        dependency.locationManager.kaKaoSettingLocation = location
+    func setCustomPosition() {
+        if let xString = selectedPosition?.x, let yString = selectedPosition?.y {
+            guard let x = Double(xString), let y = Double(yString) else { return }
+            let location = CLLocation(latitude: .init(y), longitude: .init(x))
+            dependency.locationManager.kaKaoSettingLocation = location
+        }
     }
     
+    func setCurrentSelect(selectedPlace: Document) {
+        selectedPosition = selectedPlace
+    }
+    
+    func resetLocation() {
+        dependency.locationManager.kaKaoSettingLocation = nil
+        selectedPosition = nil
+    }
 }

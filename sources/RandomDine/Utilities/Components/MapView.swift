@@ -14,9 +14,9 @@ struct MapView : View {
     
     var body: some View {
         VStack {
-//            KakaoMapView(viewModel: viewModel, draw: $draw, selectedPlace: $selectedPlace)
-//                .onAppear(perform: { self.draw = true })
-//                .onDisappear(perform: { self.draw = false })
+            KakaoMapView(viewModel: viewModel, draw: $draw, selectedPlace: $selectedPlace)
+                .onAppear(perform: { self.draw = true })
+                .onDisappear(perform: { self.draw = false })
         }
     }
 }

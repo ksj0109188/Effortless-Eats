@@ -31,4 +31,8 @@ final class AppDIContainer {
         return PositionSettingViewModel.Dependencies(locationManager: locationManager)
     }
     
+    static func makeKaKaoMapViewModel() -> KaKaoMapViewModel.Dependencies {
+        return KaKaoMapViewModel.Dependencies(config: config, locationManager: locationManager)
+    }
+    
 }

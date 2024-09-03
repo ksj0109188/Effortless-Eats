@@ -11,8 +11,6 @@ import CoreLocation
 struct SearchPlaceView: View {
     @ObservedObject var viewModel: PositionSettingViewModel
     @Binding var searchTitle: String
-    @Binding var selectedPosition: Document?
-    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -22,7 +20,7 @@ struct SearchPlaceView: View {
                 if let itmes = viewModel.items {
                     ForEach(itmes, id: \.self) { item in
                         Button(action: {
-                            selectedPosition = item
+                            viewModel.setCurrentSelect(selectedPlace: item)
                             dismiss()
                         }, label: {
                             SearchListCellView(item: item)
@@ -39,13 +37,3 @@ struct SearchPlaceView: View {
         }
     }
 }
-
-//#Preview {
-//    SearchPlaceView(positionSettingViewModel: PositionSettingViewModel(
-//        dependency: PositionSettingViewModel.Dependencies(
-//            repository: RealFoodStoreDBRepository(
-//                persistentStore: CoreDataStack()
-//            ) 
-//        )
-//    ))
-//}

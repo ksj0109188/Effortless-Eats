@@ -11,7 +11,6 @@ import CoreLocation
 final class LocationManager: NSObject {
     private let locationManager = CLLocationManager()
     var location: CLLocation?
-    //TODO: 설정 후 다른 앱 이용후 다시 foreground에도 이 설정이 살아 있을까???
     var kaKaoSettingLocation: CLLocation?
     
     override init() {
