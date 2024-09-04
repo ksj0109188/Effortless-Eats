@@ -11,21 +11,27 @@ struct NavigationBackButton: View {
     @Environment(\.dismiss) var dismiss
     
     let color: Color?
+    var type: ButtonType = .Back
     let action: () -> Void
+    
+    var symbolName: String {
+        type == .Back ? "chevron.left" : "xmark"
+    }
     
     var body: some View {
         Button {
             action()
             dismiss()
         } label: {
-            Image(systemName: "chevron.left")
+            Image(systemName: symbolName)
                 .font(.title3)
                 .foregroundStyle(color ?? .primary)
                 .bold()
         }
     }
-}
-
-#Preview {
-    NavigationBackButton(color: Color.blue, action: {})
+    
+    enum ButtonType {
+        case Back
+        case Cancel
+    }
 }

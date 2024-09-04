@@ -36,7 +36,6 @@ struct RecommendView: View {
                     .onDisappear(perform: { showingResultView = true })
             } else {
                 resultForm
-                settingPositionButton
             }
         }
         .navigationBarBackButtonHidden()
@@ -103,6 +102,8 @@ struct RecommendView: View {
                 
                 Spacer()
             }
+            
+            settingPositionButton
         }
         .padding(20)
         .frame(width: 300, height: 300)
