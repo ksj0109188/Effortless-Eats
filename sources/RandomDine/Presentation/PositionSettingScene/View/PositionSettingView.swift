@@ -20,7 +20,7 @@ struct PositionSettingView: View {
                 }
                 MapView(draw: true, selectedPlace: $viewModel.selectedPosition)
             }
-            .toolbar(content: {
+            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     NavigationBackButton(color: .black) {}
                 }
@@ -39,7 +39,7 @@ struct PositionSettingView: View {
                         viewModel.setCustomPosition()
                     }
                 }
-            })
+            }
         }
     }
 }

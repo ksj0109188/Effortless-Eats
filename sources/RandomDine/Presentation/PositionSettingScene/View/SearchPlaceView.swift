@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreLocation
+import Combine
 
 struct SearchPlaceView: View {
     @ObservedObject var viewModel: PositionSettingViewModel
@@ -20,6 +21,9 @@ struct SearchPlaceView: View {
                 if let itmes = viewModel.items {
                     ForEach(itmes, id: \.self) { item in
                         Button(action: {
+                            if let placeName = item.placeName {
+                                searchTitle = placeName
+                            }
                             viewModel.setCurrentSelect(selectedPlace: item)
                             dismiss()
                         }, label: {
@@ -28,12 +32,12 @@ struct SearchPlaceView: View {
                     }
                 }
             }
-        }
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                NavigationBackButton(color: .white) { }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    NavigationBackButton(color: .primary) {}
+                }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }

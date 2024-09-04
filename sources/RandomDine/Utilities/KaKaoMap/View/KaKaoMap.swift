@@ -25,7 +25,7 @@ struct KakaoMapView: UIViewControllerRepresentable {
             uiViewController.resetEngine()
         }
         
-        if let location = getLocationFromSelectedPlace() ?? viewModel.getLocation() {
+        if uiViewController.canDraw, let location = getLocationFromSelectedPlace() ?? viewModel.getLocation() {
             uiViewController.markPosition(location: location, isMoveCamera: true)
         }
     }

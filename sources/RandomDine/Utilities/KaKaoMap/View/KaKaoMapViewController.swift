@@ -103,10 +103,10 @@ extension KaKaoMapViewController: MapControllerDelegate {
         isMapViewAdded.send(true)
         canDraw = true
         createTouchEvent()
-        viewModel.setMapView(from: controller)
-        
-        if let location = viewModel.getLocation() {
-            markPosition(location: location, isMoveCamera: true)
+        viewModel.setMapView(from: controller) {
+            if let location = viewModel.getLocation() {
+                markPosition(location: location, isMoveCamera: true)
+            }
         }
     }
     

@@ -26,7 +26,6 @@ final class KaKaoMapViewModel {
     }
     
     private func bootSDK() {
-        print(dependency.config.kakaoMapAPIKey)
         SDKInitializer.InitSDK(appKey: dependency.config.kakaoMapAPIKey)
     }
     
@@ -43,8 +42,9 @@ final class KaKaoMapViewModel {
         return mapviewInfo
     }
     
-    func setMapView(from controller: KMController?) {
+    func setMapView(from controller: KMController?, completion: () -> Void ) {
         map = controller?.getView(mapViewName) as? KakaoMap
+        completion()
     }
     
     func getMapview() throws -> KakaoMap {
