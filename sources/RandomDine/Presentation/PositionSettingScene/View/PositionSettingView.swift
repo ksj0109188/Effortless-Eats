@@ -22,7 +22,7 @@ struct PositionSettingView: View {
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
-                    NavigationBackButton(color: .black) { }
+                    NavigationBackButton(color: .black) {}
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
