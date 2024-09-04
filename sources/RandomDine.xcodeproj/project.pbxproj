@@ -26,6 +26,7 @@
 		3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */; };
 		3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFDE2B94432A000358E7 /* LocationManager.swift */; };
+		3B46C3322C882A27000CE62F /* NavigationCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46C3312C882A27000CE62F /* NavigationCheckButton.swift */; };
 		3B5893342C858ACD00BB738D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893332C858ACD00BB738D /* AppConfiguration.swift */; };
 		3B5893382C85912B00BB738D /* KaKaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */; };
 		3B68B48E2C0F0DE800CDB536 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */; };
@@ -75,6 +76,7 @@
 		3B32FFDA2B94432A000358E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B32FFDC2B94432A000358E7 /* RandomDine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RandomDine-Info.plist"; sourceTree = "<group>"; };
 		3B32FFDE2B94432A000358E7 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3B46C3312C882A27000CE62F /* NavigationCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCheckButton.swift; sourceTree = "<group>"; };
 		3B5893332C858ACD00BB738D /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoMapViewModel.swift; sourceTree = "<group>"; };
 		3B68B48D2C0F0DE800CDB536 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				3B32FFC62B94432A000358E7 /* NavigationBackButton.swift */,
+				3B46C3312C882A27000CE62F /* NavigationCheckButton.swift */,
 				3B32FFC72B94432A000358E7 /* SafariWebView.swift */,
 				3B32FFC82B94432A000358E7 /* LoadingView.swift */,
 				3BEA39C62C1EF21F001AAEFA /* SearchBar.swift */,
@@ -565,6 +568,7 @@
 				3B32FFE32B94432A000358E7 /* NavigationBackButton.swift in Sources */,
 				3B32FFE02B94432A000358E7 /* Color+.swift in Sources */,
 				3BCC27C92C1B26F70028C9AB /* KaKaoMap.swift in Sources */,
+				3B46C3322C882A27000CE62F /* NavigationCheckButton.swift in Sources */,
 				3BD4A41D2C3BDA8100FBA633 /* KaKaoMapCameraDelegate.swift in Sources */,
 				3B32FFE92B94432A000358E7 /* KaKaoAPI.swift in Sources */,
 				3B32FFEA2B94432A000358E7 /* CoreDataStack.swift in Sources */,

@@ -12,7 +12,7 @@ import CoreLocation
 final class KaKaoMapViewModel {
     private let mapViewName = "mapview"
     private var map: KakaoMap?
-    //TODO: 이부분 리팩토링 가능할거 같다, appConfig를 좀 더 세부적으로 KaKaoLocal, KaKaoMap으로 나누는건 어떨까
+    
     struct Dependencies {
         let config: AppConfiguration
         let locationManager: LocationManager
@@ -74,7 +74,5 @@ final class KaKaoMapViewModel {
     private func setKakabasedLocation(location: CLLocation) {
         dependency.locationManager.setKaKaoLocationValue(location: location)
     }
-    
-    
     
 }
