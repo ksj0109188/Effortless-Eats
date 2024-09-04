@@ -20,15 +20,12 @@ struct SearchBar: View {
                         onSearch()
                     }
                     .foregroundColor(.primary)
-                
-                if !text.isEmpty {
-                    Button {
-                        self.text = ""
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                    }
-                } else {
-                    EmptyView()
+                  
+                Button {
+                    self.text = ""
+                } label: {
+                    Image(systemName: text.isEmpty ? "circle" : "xmark.circle.fill")
+                        .foregroundColor(text.isEmpty ? .clear : .secondary)
                 }
             }
             .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))

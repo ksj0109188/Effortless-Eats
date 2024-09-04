@@ -16,18 +16,10 @@ class KaKaoMapViewController: UIViewController {
     private let poiDelegate: KaKaoDrawUIDelegate!
     private let cameraDelegate: KaKaoMapCameraDelegate!
     private let viewModel = KaKaoMapViewModel()
-//    private var prevPoiId: String?
     private var controller: KMController?
     private var container: KMViewContainer?
     private var isMapViewAdded = CurrentValueSubject<Bool, Never>(false)
     private var subsciprionts = Set<AnyCancellable>()
-
-//        init(viewModel: KaKaoMapViewModel, poiDelegate: KaKaoDrawUIDelegate, cameraDelegate: KaKaoMapCameraDelegate) {
-//        self.viewModel = viewModel0
-//        self.poiDelegate = poiDelegate
-//        self.cameraDelegate = cameraDelegate
-//        super.init(nibName: nil, bundle: nil)
-//    }
     
     init() {
         self.poiDelegate = KaKaoUIDraw()
@@ -101,37 +93,25 @@ extension KaKaoMapViewController: MapControllerDelegate {
         }
     }
     
-    //MARK: addViews 시점에 위치 설정
     func addViews() {
-        print("addViews")
-//        let location = viewModel.dependency.locationManager.getLocation()
-//        let mapviewInfo: MapviewInfo
-//        
-//        
-//        if let latitude = location?.coordinate.latitude, let longitude = location?.coordinate.longitude {
-//            let defaultPosition = MapPoint(longitude: longitude, latitude: latitude)
-//            mapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition, defaultLevel: 7)
-//        } else {
-//            mapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: nil, defaultLevel: 7)
-//        }
-        
+        debugPrint("addViews")
         controller?.addView(viewModel.makeMapviewInfo())
     }
     
     func addViewSucceeded(_ viewName: String, viewInfoName: String) {
-        print("OK") //추가 성공. 성공시 추가적으로 수행할 작업을 진행한다.
+        debugPrint("OK") //추가 성공. 성공시 추가적으로 수행할 작업을 진행한다.
         isMapViewAdded.send(true)
         canDraw = true
         createTouchEvent()
-        viewModel.setMapView(from: controller)
-        
-        if let location = viewModel.getLocation() {
-            markPosition(location: location, isMoveCamera: true)
+        viewModel.setMapView(from: controller) {
+            if let location = viewModel.getLocation() {
+                markPosition(location: location, isMoveCamera: true)
+            }
         }
     }
     
     func addViewFailed(_ viewName: String, viewInfoName: String) {
-        print("Failed")
+        debugPrint("Failed")
         canDraw = false
     }
     
@@ -163,7 +143,6 @@ extension KaKaoMapViewController {
             
             poiDelegate.drawPoi(location: location, subView: mapView)
         } catch(let err) {
-            print("markPosition catch")
             showToast(self.view, message: err.localizedDescription)
         }
     }

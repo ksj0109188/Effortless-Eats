@@ -9,7 +9,6 @@ import SwiftUI
 import CoreLocation
 
 struct PositionSettingView: View {
-    //TODO: selectedPosition, viewModel locationManager 위/경도 값 두개가 지금 뷰끼리 흐름있음, 이걸 고민해서 고쳐야함
     @StateObject private var viewModel: PositionSettingViewModel = PositionSettingViewModel()
     @State private var searchTitle: String = ""
     
@@ -19,28 +18,28 @@ struct PositionSettingView: View {
                 NavigationLink(destination: SearchPlaceView(viewModel: viewModel, searchTitle: $searchTitle)){
                     SearchBar(text: $searchTitle){}.disabled(true)
                 }
-//                MapView(draw: true, selectedPlace: $selectedPosition, viewModel: .init(dependency: .init(locationManager: viewModel.dependency.locationManager)))
                 MapView(draw: true, selectedPlace: $viewModel.selectedPosition)
             }
-            VStack {
-                Button {
-                    viewModel.resetLocation()
-                } label: {
-                    Text("위치 초기화")
-                }
-            }
-            .toolbar(content: {
+            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    NavigationBackButton(color: .black) { }
+                    NavigationBackButton(color: .black, type: .Cancel) {}
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        viewModel.setCustomPosition()
-                    }, label: {
-                        Text("위치저장")
-                    })
+                    Button {
+                        viewModel.resetLocation()
+                    } label: {
+                        Image(systemName: "arrow.circlepath")
+                            .font(.title3)
+                            .bold()
+                    }
+                    .foregroundStyle(.primary)
                 }
-            })
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationCheckButton(color: .primary, completeDismiss: true) {
+                        viewModel.setCustomPosition()
+                    }
+                }
+            }
         }
     }
 }
