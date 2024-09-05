@@ -12,7 +12,8 @@ struct KaKaoLocalAPIDTO: Codable {
     let meta: Meta?
 }
 
-struct Document: Codable, Hashable {
+struct Document: Codable, Hashable, Identifiable {
+    let uniqueId = UUID()
     let addressName: String?
     let categoryGroupCode: String?
     let categoryGroupName: String?

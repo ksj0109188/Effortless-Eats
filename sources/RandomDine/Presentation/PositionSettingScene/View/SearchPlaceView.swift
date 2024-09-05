@@ -19,7 +19,7 @@ struct SearchPlaceView: View {
             SearchBar(text: $searchTitle) { viewModel.searchPlace(title: searchTitle) }
             List {
                 if let itmes = viewModel.items {
-                    ForEach(itmes, id: \.self) { item in
+                    ForEach(itmes, id: \.uniqueId) { item in
                         Button(action: {
                             if let placeName = item.placeName {
                                 searchTitle = placeName
@@ -29,7 +29,14 @@ struct SearchPlaceView: View {
                         }, label: {
                             SearchListCellView(item: item)
                         })
-                    }
+                        .onAppear(perform: {
+                            if let items = viewModel.items,
+                               let index = items.firstIndex(of: item),
+                               index == items.count - 3 {
+                                viewModel.loadNextPage(title: searchTitle)
+                            }
+                        })
+                    }.id(viewModel.items)
                 }
             }
             .toolbar {

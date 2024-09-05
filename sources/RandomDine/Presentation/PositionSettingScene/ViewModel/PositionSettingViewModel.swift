@@ -20,14 +20,17 @@ final class PositionSettingViewModel: ObservableObject {
     let dependency: Dependencies
     private let api = KaKaoAPI()
     private var subsciprionts = Set<AnyCancellable>()
+    private var meta: Meta?
+    private var searchAPIPageCount = 1
+    private var searchAPISize = 15
     
     init() {
         self.dependency = AppDIContainer.makePositionSettingViewModel()
     }
     
     func searchPlace(title: String) {
-        //TODO: Page, size설정해서 paging 기능 구현하자
-        api.searchPlace(title: title)
+        searchAPIPageCount = 0
+        api.searchPlace(title: title, size: searchAPISize)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
                 switch complete {
@@ -38,6 +41,38 @@ final class PositionSettingViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] in
                 self?.items = $0.documents
+                self?.meta = $0.meta
+                self?.searchAPIPageCount += 1
+            })
+            .store(in: &subsciprionts)
+    }
+    
+    func loadNextPage(title: String) {
+        guard let meta = meta, !(meta.isEnd ?? true) else {
+            return
+        }
+        
+        api.searchPlace(title: title, page: searchAPIPageCount + 1, size: searchAPISize)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { complete in
+                switch complete {
+                case .finished:
+                    debugPrint(complete)
+                case .failure(let error):
+                    debugPrint(error)
+                }
+            }, receiveValue: { [weak self] in
+                guard let self = self else { return }
+                guard let newItems = $0.documents else { return }
+                
+                if var currentItems = self.items {
+                    currentItems.append(contentsOf: newItems)
+                    self.items = currentItems
+                } else {
+                    self.items = newItems
+                }
+                self.meta = $0.meta
+                self.searchAPIPageCount += 1
             })
             .store(in: &subsciprionts)
     }
