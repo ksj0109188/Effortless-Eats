@@ -49,6 +49,10 @@ struct KaKaoAPI {
             .eraseToAnyPublisher()
     }
     
+    /// 특정 위치 검색
+    /// - Parameters:
+    ///   - title: 검색어
+    /// - Returns: URL session data task publihser for a given request
     func searchPlace(title: String) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
         guard !title.isEmpty else {
             return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
