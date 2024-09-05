@@ -11,25 +11,32 @@ struct SearchListCellView: View {
     let item: Document
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(item.placeName ?? "")
+        HStack(alignment: .center) {
+            VStack(alignment: .center) {
+                Image(systemName: "mappin")
                     .font(.title2)
-                Text(item.categoryGroupName ?? "")
-                    .font(.footnote)
-            }
-            HStack {
                 Text(transformDistance)
-                    .font(.title3)
-                Text(item.addressName ?? "")
                     .font(.footnote)
+                    .lineLimit(1)
+                    .frame(width: 100.0, height: 20.0)
+            }
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(item.placeName ?? "")
+                        .font(.title2)
+                    Text(item.categoryGroupName ?? "")
+                        .font(.footnote)
+                        .foregroundStyle(Color.secondary)
+                }
+                HStack {
+                    Text(item.addressName ?? "")
+                        .font(.footnote)
+                        .foregroundStyle(Color.secondary)
+                }
             }
         }
     }
-}
-
-//Functions
-extension SearchListCellView {
+    
     var transformDistance: String {
         var distance = ""
         
@@ -53,7 +60,7 @@ extension SearchListCellView {
                             addressName: "인천 미추홀구 용현동 501",
                             categoryGroupCode: "A4", categoryGroupName: "A4",
                             categoryName: "임시",
-                            distance: "100", id: "21231",
+                            distance: "1100001", id: "21231",
                             phone: "01091665478",
                             placeName: "임시지역",
                             placeURL: "임시URL",

@@ -49,7 +49,11 @@ struct KaKaoAPI {
             .eraseToAnyPublisher()
     }
     
-    func searchPlace(title: String) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
+    /// 특정 위치 검색
+    /// - Parameters:
+    ///   - title: 검색어
+    /// - Returns: URL session data task publihser for a given request
+    func searchPlace(title: String, page: Int = 1, size: Int) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
         guard !title.isEmpty else {
             return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
                 .mapError { _ in KakaoAPIError.invalidQuery}
@@ -59,11 +63,14 @@ struct KaKaoAPI {
         var request = EndPoint.searchPlace.request
         request.url?.append(queryItems: [.init(name: "query", value: title)])
         
+        //TODO: 이 부분 리팩토링 필요 append 안에 배열 콤마로 수정
         if let coordinate = locationManager.location?.coordinate {
             request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
             request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
+            request.url?.append(queryItems: [ .init(name: "page", value: "\(page)")])  
+            request.url?.append(queryItems: [ .init(name: "size", value: "\(size)")])
         }
-        
+        print(request.url)
         return URLSession.shared.dataTaskPublisher(for: request)
             .receive(on: DispatchQueue.global())
             .tryMap { output in
