@@ -26,6 +26,7 @@ final class PositionSettingViewModel: ObservableObject {
     }
     
     func searchPlace(title: String) {
+        //TODO: Page, size설정해서 paging 기능 구현하자
         api.searchPlace(title: title)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { complete in
