@@ -19,6 +19,4 @@ class KaKaoCamera: KaKaoMapCameraDelegate {
         
         subView.moveCamera(cameraUpdate)
     }
-    
-    
 }

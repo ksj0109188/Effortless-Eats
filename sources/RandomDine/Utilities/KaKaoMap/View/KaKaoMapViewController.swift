@@ -76,20 +76,20 @@ class KaKaoMapViewController: UIViewController {
 extension KaKaoMapViewController: MapControllerDelegate {
     func authenticationFailed(_ errorCode: Int, desc: String) {
         switch errorCode {
-            case 400:
-                showToast(self.view, message: KaKaoErrorTypes.apiAuthParam.description)
-            case 401:
-                showToast(self.view, message: KaKaoErrorTypes.apiAuthKey.description)
-            case 403:
-                showToast(self.view, message: KaKaoErrorTypes.apiAccessAuth.description)
-            case 429:
-                showToast(self.view, message: KaKaoErrorTypes.apiOverflowQuter.description)
-            case 499:
-                showToast(self.view, message: KaKaoErrorTypes.netowrk.description)
-                // 인증 실패 delegate 호출 이후 5초뒤에 재인증 시도..
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { self.prepareEngine() }
-            default:
-                break
+        case 400:
+            showToast(self.view, message: KaKaoErrorTypes.apiAuthParam.description)
+        case 401:
+            showToast(self.view, message: KaKaoErrorTypes.apiAuthKey.description)
+        case 403:
+            showToast(self.view, message: KaKaoErrorTypes.apiAccessAuth.description)
+        case 429:
+            showToast(self.view, message: KaKaoErrorTypes.apiOverflowQuter.description)
+        case 499:
+            showToast(self.view, message: KaKaoErrorTypes.netowrk.description)
+            // 인증 실패 delegate 호출 이후 5초뒤에 재인증 시도..
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { self.prepareEngine() }
+        default:
+            break
         }
     }
     
@@ -117,7 +117,7 @@ extension KaKaoMapViewController: MapControllerDelegate {
     
 }
 
-extension KaKaoMapViewController :KakaoMapEventDelegate {
+extension KaKaoMapViewController: KakaoMapEventDelegate {
     private func createTouchEvent() {
         let mapView: KakaoMap? = controller?.getView("mapview") as? KakaoMap
         mapView?.eventDelegate = self
@@ -142,7 +142,7 @@ extension KaKaoMapViewController {
             }
             
             poiDelegate.drawPoi(location: location, subView: mapView)
-        } catch(let err) {
+        } catch let err {
             showToast(self.view, message: err.localizedDescription)
         }
     }
@@ -154,12 +154,12 @@ extension KaKaoMapViewController {
         
         toastLabel.backgroundColor = UIColor.black
         toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = NSTextAlignment.center;
+        toastLabel.textAlignment = NSTextAlignment.center
         toastLabel.font = .systemFont(ofSize: 16)
         view.addSubview(toastLabel)
         toastLabel.text = message
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
+        toastLabel.layer.cornerRadius = 10
         toastLabel.clipsToBounds  =  true
         
         UIView.animate(withDuration: 0.4,
@@ -168,7 +168,7 @@ extension KaKaoMapViewController {
                        animations: {
             toastLabel.alpha = 0.0
         },
-                       completion: { (finished) in
+                       completion: { _ in
             toastLabel.removeFromSuperview()
         })
     }
@@ -189,22 +189,22 @@ enum KaKaoErrorTypes: String, Error {
     
     var description: String {
         switch self {
-            case .apiAuthParam:
-                return "지도 종료(API인증 파라미터 오류)"
-            case .apiAuthKey:
-                return "지도 종료(API인증 키 오류)"
-            case .apiAccessAuth:
-                return "지도 종료(API인증 권한 오류)"
-            case .apiOverflowQuter:
-                return "지도 종료(API 사용쿼터 초과)"
-            case .netowrk:
-                return "지도 종료(네트워크 오류) 5초 후 재시도.."
-            case .failedDrawPoi:
-                return "지도 라벨 그리기 실패, 개발자한테 문의주세요."
-            case .notFoundedMapBase:
-                return "맵 정보를 가지고 올 수 없습니다. 개발자한테 문의 주세요."
-            case .notFoundedLocation:
-                return "위치 정보를 찾을 수 없습니다. 앱 홈화면에서 위치정보를 공유해주세요"
+        case .apiAuthParam:
+            return "지도 종료(API인증 파라미터 오류)"
+        case .apiAuthKey:
+            return "지도 종료(API인증 키 오류)"
+        case .apiAccessAuth:
+            return "지도 종료(API인증 권한 오류)"
+        case .apiOverflowQuter:
+            return "지도 종료(API 사용쿼터 초과)"
+        case .netowrk:
+            return "지도 종료(네트워크 오류) 5초 후 재시도.."
+        case .failedDrawPoi:
+            return "지도 라벨 그리기 실패, 개발자한테 문의주세요."
+        case .notFoundedMapBase:
+            return "맵 정보를 가지고 올 수 없습니다. 개발자한테 문의 주세요."
+        case .notFoundedLocation:
+            return "위치 정보를 찾을 수 없습니다. 앱 홈화면에서 위치정보를 공유해주세요"
         }
     }
 }

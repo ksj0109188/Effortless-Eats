@@ -23,7 +23,7 @@ class KaKaoUIDraw: KaKaoDrawUIDelegate {
         let manager = subView.getLabelManager()
         let layerOption = LabelLayerOptions(layerID: "PoiLayer", competitionType: .none, competitionUnit: .symbolFirst, orderType: .rank, zOrder: 0)
         if manager.getLabelLayer(layerID: "PoiLayer") == nil {
-            let _ = manager.addLabelLayer(option: layerOption)
+            _ = manager.addLabelLayer(option: layerOption)
         }
     }
     
@@ -38,7 +38,7 @@ class KaKaoUIDraw: KaKaoDrawUIDelegate {
             layer?.removePoi(poiID: prevPoiId)
         }
         
-        let poi1 = layer?.addPoi(option:poiOption, at: MapPoint(longitude: longitude, latitude: latitude))
+        let poi1 = layer?.addPoi(option: poiOption, at: MapPoint(longitude: longitude, latitude: latitude))
         self.prevPoiId = poi1?.itemID
         
         let image =  UIImage(named: "roadview_search_ico_pin_map")
