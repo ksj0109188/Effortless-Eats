@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MapView : View {
+struct MapView: View {
     @State var draw: Bool = false
     @Binding var selectedPlace: Document?
     var viewModel: KaKaoMapViewModel = KaKaoMapViewModel()

@@ -15,8 +15,8 @@ struct PositionSettingView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                NavigationLink(destination: SearchPlaceView(viewModel: viewModel, searchTitle: $searchTitle)){
-                    SearchBar(text: $searchTitle){}.disabled(true)
+                NavigationLink(destination: SearchPlaceView(viewModel: viewModel, searchTitle: $searchTitle)) {
+                    SearchBar(text: $searchTitle) {}.disabled(true)
                 }
                 MapView(draw: true, selectedPlace: $viewModel.selectedPosition)
             }
