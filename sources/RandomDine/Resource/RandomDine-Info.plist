@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIconName</key>
-	<string>logo</string>
+	<string>AppIcon</string>
 	<key>KAKAO_API_DOMAIN</key>
 	<string>$(KAKAO_API_DOMAIN)</string>
 	<key>KAKAO_API_PROTOCOL</key>
