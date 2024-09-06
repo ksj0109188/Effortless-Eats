@@ -41,7 +41,7 @@ class KaKaoUIDraw: KaKaoDrawUIDelegate {
         let poi1 = layer?.addPoi(option: poiOption, at: MapPoint(longitude: longitude, latitude: latitude))
         self.prevPoiId = poi1?.itemID
         
-        let image =  UIImage(named: "roadview_search_ico_pin_map")
+        let image =  UIImage(named: "mappin.and.ellipse")
         let badge = PoiBadge(badgeID: "noti", image: image, offset: CGPoint(x: 0, y: 0), zOrder: 1)
         poi1?.addBadge(badge)
         poi1?.show()
