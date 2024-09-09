@@ -28,6 +28,19 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3B0778BD2C17388F0073D572"
+               BuildableName = "RandomDineTests.xctest"
+               BlueprintName = "RandomDineTests"
+               ReferencedContainer = "container:RandomDine.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -49,33 +62,6 @@
             ReferencedContainer = "container:RandomDine.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "KAKAO_RESTAPI_AUTH_METHOD"
-            value = "KakaoAK"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "KAKAO_REST_API_KEY"
-            value = "8b9d47e3885b0f2e06fac729842fc127"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "KAKAO_PHAS"
-            value = "beta"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "KAKAO_APP_KEY"
-            value = "eca26b04e01cbca507c6327c0af4cdcb"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "KAKAO_API_URL"
-            value = "https://dapi.kakao.com/v2"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

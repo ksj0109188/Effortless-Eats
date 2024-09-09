@@ -1,24 +1,28 @@
 //
-//  NavigationBackButton.swift
-//  Effortless Eats
+//  NavigationCheckButton.swift
+//  RandomDine
 //
-//  Created by 김성준 on 1/17/24.
+//  Created by 김성준 on 9/4/24.
 //
 
 import SwiftUI
 
-struct NavigationBackButton: View {
+struct NavigationCheckButton: View {
     @Environment(\.dismiss) var dismiss
     
     let color: Color?
+    var completeDismiss: Bool = false
     let action: () -> Void
     
     var body: some View {
         Button {
             action()
-            dismiss()
+            
+            if completeDismiss {
+                dismiss()
+            }
         } label: {
-            Image(systemName: "chevron.left")
+            Image(systemName: "checkmark")
                 .font(.title3)
                 .foregroundStyle(color ?? .primary)
                 .bold()
@@ -27,5 +31,5 @@ struct NavigationBackButton: View {
 }
 
 #Preview {
-    NavigationBackButton(color: Color.blue, action: {})
+    NavigationCheckButton(color: .black, action: {})
 }

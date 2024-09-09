@@ -9,13 +9,11 @@ import SwiftUI
 
 @main
 struct RandomDine: App {
-    let persistenceController = PersistenceController.shared
-    
+    @State var document: Document?
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 HomeView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
     }
