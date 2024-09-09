@@ -26,6 +26,7 @@
 		3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */; };
 		3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFDE2B94432A000358E7 /* LocationManager.swift */; };
+		3B35B6892C8EC6F6005F63A7 /* RandomDine-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDC2B94432A000358E7 /* RandomDine-Info.plist */; };
 		3B46C3322C882A27000CE62F /* NavigationCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46C3312C882A27000CE62F /* NavigationCheckButton.swift */; };
 		3B5893342C858ACD00BB738D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893332C858ACD00BB738D /* AppConfiguration.swift */; };
 		3B5893382C85912B00BB738D /* KaKaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */; };
@@ -509,6 +510,7 @@
 			files = (
 				3BB25B972B6CFB2F000C8A88 /* .swiftlint.yml in Resources */,
 				3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */,
+				3B35B6892C8EC6F6005F63A7 /* RandomDine-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
