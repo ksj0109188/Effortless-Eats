@@ -10,16 +10,20 @@
 
 <Table align = "center">
   <tr>
-    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/061c9eb5-8f2c-4a4c-983d-33bb86894877" width="200" alt="추천받기" /></td>
-    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/f20a37e5-60f4-4b66-88da-e5cba9bc34f9" width="200" alt="즐겨찾기" /></td>
-    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/94871d10-f72f-428a-ba68-cdc5b11ccd9c" width="200" alt="가게정보 표출" /></td>
-    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/02e48b30-2d70-4d03-a8f5-459e6691c9f0" width="200" alt="설정" /></td>
+    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/061c9eb5-8f2c-4a4c-983d-33bb86894877" width="100" alt="추천받기" /></td>
+    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/f20a37e5-60f4-4b66-88da-e5cba9bc34f9" width="100" alt="즐겨찾기" /></td>
+    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/94871d10-f72f-428a-ba68-cdc5b11ccd9c" width="100" alt="가게정보 표출" /></td>
+    <td><img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/02e48b30-2d70-4d03-a8f5-459e6691c9f0" width="100" alt="설정" /></td>
+    <td><img src="https://github.com/user-attachments/assets/73863223-eb9a-4f61-957f-e5fbdabb8edb" width="100" alt="장소검색" /></td>
+    <td><img src="https://github.com/user-attachments/assets/49dfe881-a689-4120-a113-31dace7960bd" width="100" alt="맵을 활용한 위치설정" /></td>
   </tr>
   <tr align="center">
     <td>추천받기</td>
     <td>즐겨찾기</td>
     <td>가게정보 보기</td>
     <td>설정</td>
+    <td>장소검색</td>
+    <td>맵 위치표시</td>
   </tr>
 </Table>
 
@@ -103,6 +107,33 @@
       </p>
     </td>
   </tr>
+
+
+  <tr align = "center">
+    <td>
+      <img src="https://github.com/user-attachments/assets/73863223-eb9a-4f61-957f-e5fbdabb8edb" width="150" alt="장소검색" />
+    </td>
+   <td align="left" valign="top">
+      <p>
+       <h2> 장소검색 </h2>
+       <li> 사용자가 특정 장소를 검색 </li>
+       <li> 검색 결과 선택에 따라 Map과 위치가 동기화됩니다.</li> 
+      </p>
+    </td>
+  </tr>
+
+  <tr align = "center">
+    <td>
+      <img src="https://github.com/user-attachments/assets/49dfe881-a689-4120-a113-31dace7960bd" width="150" alt="맵 위치표시" />
+    </td>
+   <td align="left" valign="top">
+      <p>
+       <h2> 맵 위치표시 </h2>
+       <li> 사용자가 맵 Tap시 해당 위치로 랜덤음식점이 추첨됩니다. </li>
+        <li> Tap시점에 따라 위경도 값을 이용했습니다. </li>
+      </p>
+    </td>
+  </tr>
 </Table>
 
 ## 트러블 슈팅
@@ -128,153 +159,217 @@
   </Summary>
   
   #### 추천받기 기능을 터치할 때 마다 API호출이 발생하게 됩니다. 과도한 API요청으로 이어질 수 있어 사용자 UX를 고려해 너무 길지 않는 시간(초당 request 1번)제한을 설정했습니다.
-  <details>
-    <summary>
-      소스보기
-    </summary>
   
   ```swift
-       struct RecommendView: View {
-        // Publisher
-        let clickedButtonSubject = PassthroughSubject<Void, Never>()
-        @State private var showingResultView: Bool = true
-        var recommendViewModel: RecommendViewModel
-        let searchDistance: Double
-          
-        var body: some View {
-            HStack {
-                Spacer()
-                Button("다시 받기") {
-                    showingResultView = false
-                    clickedButtonSubject.send()
-                }
-                .onReceive(clickedButtonSubject.throttle(for: .seconds(1), scheduler: DispatchQueue.main, latest: true)) { _ in
-                    recommendViewModel.fetchRandomStore(radius: Int(searchDistance))
-                }
-            }
-        }
-    }  
+struct RecommendView: View {
+  // Publisher
+  let clickedButtonSubject = PassthroughSubject<Void, Never>()
+  @State private var showingResultView: Bool = true
+  var recommendViewModel: RecommendViewModel
+  let searchDistance: Double
+    
+  var body: some View {
+      HStack {
+          Spacer()
+          Button("다시 받기") {
+              showingResultView = false
+              clickedButtonSubject.send()
+          }
+          .onReceive(clickedButtonSubject.throttle(for: .seconds(1), scheduler: DispatchQueue.main, latest: true)) { _ in
+              recommendViewModel.fetchRandomStore(radius: Int(searchDistance))
+          }
+      }
+  }
+}  
   ```
-  </details>
 </details>
-
 
 <details>
-  <summary id="apiModule">
-  확장성과 재사용성을 고려한 API 모듈
-  </summary>
+  <Summary>
+    KaKaoMap 위치표시 트러블 슈팅
+  </Summary>
   
-  #### KaKao Local API외 다른 API(KaKao Map API)사용을 고려해야 했습니다. 재사용성이나 유지보수 측면에서 용이하게 설계의 초점을 두었습니다.
-  #### KaKao API 종류별 endPoint를 생성 하고 응답받은 data들을 ViewModel의 책임을 전가할 수 있게 Combine을 활용한 코드를 구현했습니다.
-  
-  <details>
-      <summary>
-        소스보기
-      </summary>
-    
-  ```swift
-//요약한 코드입니다.
-struct KaKaoAPI {
-    let locationManager = LocationManager()
+#### 카카오맵 클릭시 좌표에 따른 위치 표시 기능을 구현했었고 탭 이벤트가 발생한 위치 기준 200Point 아래 마커가 표시되는 버그가 있었습니다.
+<table>
+  <tr align = "left">
+    <td><img src="https://github.com/user-attachments/assets/05927677-3035-4ef3-a5d4-1bf458faa62e" width="200" alt="카카오맵 버그" /></td>
+    <td>맵 터치시 가로방향은 정상이지만 높이 계산에서 버그발생, 의도한 위치가 아닌 200Pint 아래 마커가 표시되는 그림입니다.</td>
+  </tr>
+</table>
 
-    enum KakaoAPIError: Error, CustomStringConvertible {
-        case overflowRadius, invalidURL, invalidResponse, decodeError
+### 원인분석
+#### 가장 먼저 kakaoMap Container에서의 viewFrame을 확인 했습니다.
+1. 터치 이벤트를 활용한 viewFrame 출력 확인
+```swift
+// 클릭 이벤트시 Delegate 패턴으로 실행되는 이벤트 메소드
+func kakaoMapDidTapped(kakaoMap: KakaoMap, point: CGPoint) {
+      let position = kakaoMap.getPosition(point)
+      let latitude = position.wgsCoord.latitude
+      let longtitude = position.wgsCoord.longitude
+      print("point", point) //디바이스에서  최하단 클릭시(height = 716.333)
+      let location = viewModel.dependency.locationManager.transToCLLocation(latitude: latitude, longitude: longtitude)
+      viewModel.dependency.locationManager.kaKaoSettingLocation = location
+      drawPoi(location: location)
+  }
+```
+2. Xcode Debug View Hierarchy로 설정된 Frame확인
+<img width="225" alt="debugHieararchy" src="https://github.com/user-attachments/assets/76a57636-67e3-4597-a914-154a6271bef3">
 
-        var description: String {
-            switch self {
-            case .overflowRadius: return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
-            case .invalidURL: return "유효하지 않는 URL 발생"
-            case .invalidResponse: return "유효하지 않는 응답."
-            case .decodeError: return "Parsing 에러 발생"
-            }
-        }
-    }
+3. kakaoMap Container를 포함하는 ViewController Root UIView 프레임 확인
+```swift
+func addViewSucceeded(_ viewName: String, viewInfoName: String) {
+      print("OK") //추가 성공. 성공시 추가적으로 수행할 작업을 진행한다.
+      canDraw = true
+      
+      print(view.frame.width) // 393.0 출력
+      print(view.frame.height) // 852.0 출력
 
-    enum EndPoint {
-        static let apiProtocol = "https"
-        static let domain = "dapi.kakao.com"
-        static let restAPIKey = "YOUR_REST_API_KEY"
-        static let restAPIMethod = "KakaoAK"
-
-        case kakaoLocalAPI
-
-        var baseURL: URL { URL(string: "\(apiProtocol)://\(domain)")! }
-
-        var request: URLRequest {
-            switch self {
-            case .kakaoLocalAPI:
-                let url = baseURL.appendingPathComponent("/v2/local/search/category.json")
-                var request = URLRequest(url: url)
-                request.addValue("\(restAPIMethod) \(restAPIKey)", forHTTPHeaderField: "Authorization")
-                request.httpMethod = "GET"
-                return request
-            }
-        }
-    }
-
-    enum KaKaoLocalAPICategory: String {
-        case Supermarket = "MT1", ConvenienceStore = "CS2", Restaurant = "FD6"
-        // Additional categories...
-    }
-
-    func requestStores(distance radius: Int, coordinate: CLLocationCoordinate2D?) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
-        guard (0...20000).contains(radius) else {
-            return Fail(error: KakaoAPIError.overflowRadius).eraseToAnyPublisher()
-        }
-
-        var request = EndPoint.kakaoLocalAPI.request
-        // Append additional query items here...
-
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .mapError { _ in KakaoAPIError.invalidURL }
-            .flatMap { URLSession.shared.dataTaskPublisher(for: $0.request).mapError { _ in KakaoAPIError.invalidResponse } }
-            .decode(type: KaKaoLocalAPIDTO.self, decoder: JSONDecoder())
-            .mapError { _ in KakaoAPIError.decodeError }
-            .eraseToAnyPublisher()
-    }
+      containerDidResized(CGSize(width: view.frame.width, height: view.frame.height)) // Viewcontroller UIView로 초기화시점에 frame값 설정 코드
+      drawPoi(location: viewModel.getLocation())
+  }
+```
+#### view.frame.height 가 852 Point, 실제 KaKaoMap View는 최대 716.333 Point를 사용하는 걸 확인했고 좌표계 값은 정상적으로 받아오지만 852Point기준으로 작동되는 걸 추측할 수 있었습니다.
+#### 852Point는 해당 화면의 전체크기로, SwiftUI UIView
+### 해결방법
+Combine을 활용해 ViewController Frame이 결정된 후 Kakaomap Frame을 설정하도록 변경해 해당 이슈를 처리했습니다.
+```swift
+override func viewDidLoad() {
+  super.viewDidLoad()
+  prepareEngine()
+  activateEngine()
 }
 
-    
-    /// 내주위 음식점 정보 가지고오기
-    /// - Parameters:
-    ///   - radius: 내 중심점 위도 경도 기준 반경 설정 파라미터(m단위).
-    /// - Returns: URL session data task publihser for a given request
-    func requestStores(distance radius: Int, coordinate: CLLocationCoordinate2D?) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
-        guard (0...20000).contains(radius) else {
-            return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
-                .mapError { _ in KakaoAPIError.overflowRadius}
-                .eraseToAnyPublisher()
-        }
-        
-        var request = EndPoint.kakaoLocalAPI.request
-        request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
-        if let coordinate = coordinate {
-            request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
-            request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
-        }
+private func prepareEngine() {
+  let container = KMViewContainer()
+  self.view = container
+  self.container = container
 
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .receive(on: DispatchQueue.global())
-            .tryMap { output in
-                return try JSONDecoder().decode(KaKaoLocalAPIDTO.self, from: output.data)
-            }
-            .mapError { error -> KakaoAPIError in
-                switch error {
-                case is URLError:
-                    return KakaoAPIError.invalidURL
-                case is DecodingError:
-                    return KakaoAPIError.decodeError
-                default: return KakaoAPIError.invalidResponse
-                }
-            }
-            .eraseToAnyPublisher()
-    }
+  controller = KMController(viewContainer: container)
+  controller?.delegate = self
+  controller?.prepareEngine()
 }
-  ```
-  </details>
+
+override func viewDidLayoutSubviews() {
+  super.viewDidLayoutSubviews()
+  isMapViewAdded.sink { [weak self] isAdded in
+    if isAdded {
+      if let self = self {
+      self.containerResize(CGSize(width: self.view.frame.width, height: self.view.frame.height))
+      }
+    }
+  }
+.store(in: &subsciprionts)
+}
+
+private func containerResize(_ size: CGSize) {
+let mapView: KakaoMap? = controller?.getView("mapview") as? KakaoMap
+mapView?.viewRect = CGRect(origin: .zero, size: size)
+}
+```
+
+### 인사이트
+#### KaKaoMap은 UIKit 기반으로 되어 있었습니다. SwiftUI에서 UIViewControllerRepresentable 활용해 브릿징 해서 사용할 때 View Frame결정 사이클에 대해 생각할 수 있었습니다.
+#### 초기화 시점에는 해당 화면 프레임 전체로 초기화 되므로 
+
+   
 </details>
 
+<details>
+  <summary>
+    DIContainer를 활용한 관심사 분리
+  </summary>
+  
+  #### 기존 View 코드에 CoreData를 사용하는 영역이 존재했습니다. 해당 프로젝트에선 MVVM을 채택해 사용하고 있었고 View가 아닌 ViewModel에 CoreData를 의존성 주입 하는 방식으로 변경했습니다.
+  ```swift
+// 기존 코드
+struct RecommendView: View {
+@Environment(\.managedObjectContext) private var viewContext
+@FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \RecommendedList.date, ascending: true)],
+        animation: .default)
+private var items: FetchedResults<RecommendedList>
 
+var body: some View {
+...
+
+//---------------------개선된 코드 ---------------------
+//---------------------ViewModel---------------------
+final class RecommendViewModel: ObservableObject {
+    @Published var recommendedStore: Document?
+    @Published var isEmptyRecommendStore: Bool = true
+    @Published var isFavorite: Bool = false
+    
+    struct Dependencies {
+        let repository: FoodStoreDBRepository
+        let locationManager: LocationManager
+        let kakaoAPI: KaKaoAPI
+    }
+    
+    let dependency: Dependencies
+    private var subsciprionts = Set<AnyCancellable>()
+    
+    init() {
+        self.dependency = AppDIContainer.makeRecommendViewModel()
+    }
+    ...
+}
+
+//---------------------DIContainer---------------------
+final class AppDIContainer {
+  static let config = AppConfiguration()
+  static let locationManager =  LocationManager()
+  
+  static func makeRecommendViewModel() -> RecommendViewModel.Dependencies {
+      let persistence = CoreDataStack()
+      let db = RealFoodStoreDBRepository(persistentStore: persistence)
+      let kakaoAPI = KaKaoAPI()
+      
+      return RecommendViewModel.Dependencies(repository: db, locationManager: locationManager, kakaoAPI: kakaoAPI)
+}
+    ...
+
+//---------------------CoreData---------------------
+protocol PersistentStore {
+typealias DBOperation<Result> = (NSManagedObjectContext) throws -> Result
+func count<T>(_ fetchRequest: NSFetchRequest<T>) -> AnyPublisher<Int, Error>
+func fetch<T: NSManagedObject>(_ fetchRequest: NSFetchRequest<T>) -> AnyPublisher<[T], Error>
+func update<Result>(_ operation: @escaping DBOperation<Result>) -> AnyPublisher<Result, Error>
+}
+
+struct CoreDataStack: PersistentStore {
+private let container: NSPersistentContainer
+
+init(inMemory: Bool = false) {
+    container = NSPersistentContainer(name: "Model")
+    
+    if inMemory {
+        container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+    }
+    
+    container.loadPersistentStores(completionHandler: { (_, error) in
+        if let error = error as NSError? {
+            debugPrint("Unresolved error \(error), \(error.userInfo)")
+        }
+    })
+}
+
+func count<T>(_ fetchRequest: NSFetchRequest<T>) -> AnyPublisher<Int, Error> {
+    return Future<Int, Error> { [weak container] promise in
+        let context = container?.viewContext
+        do {
+            let count = try context?.count(for: fetchRequest) ?? 0
+            promise(.success(count))
+        } catch {
+            promise(.failure(error))
+        }
+    }
+    .eraseToAnyPublisher()
+}
+...
+}
+  ```
+</details>
+  
 <details>
   <summary>
     UI/UX
@@ -283,9 +378,6 @@ struct KaKaoAPI {
   #### API요청의 응답이 늦으면 사용자가 기다리는 시간에 심심하지 않을까에 고민을 했습니다.
   #### SwiftUI에서 제공하는 ProgressView대신 커스텀한 View를 생성했고 GCD scheduler를 사용해 이미지가 계속 바뀌게 구현했습니다.
   
- <details>
-  <summary>소스보기</summary>
-   
    ```swift
 //요약한 코드입니다.
 struct LoadingView: View {
@@ -325,12 +417,13 @@ struct LoadingView: View {
     }
 }
   ```
-  </details>
 </details>
 
 ## File tree
 <details>
   <summary>자세히</summary>
+
+  #### 화면영역 (Presentation), Data영역(Data)을 분리했습니다. 
   
 ```
 sources
