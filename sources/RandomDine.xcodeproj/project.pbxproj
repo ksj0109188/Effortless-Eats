@@ -24,8 +24,8 @@
 		3B32FFE92B94432A000358E7 /* KaKaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD32B94432A000358E7 /* KaKaoAPI.swift */; };
 		3B32FFEA2B94432A000358E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD52B94432A000358E7 /* CoreDataStack.swift */; };
 		3B32FFEB2B94432A000358E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFD62B94432A000358E7 /* Model.xcdatamodeld */; };
-		3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B32FFEF2B94432A000358E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32FFDE2B94432A000358E7 /* LocationManager.swift */; };
+		3B35B68B2C8ECB8E005F63A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B32FFDA2B94432A000358E7 /* Assets.xcassets */; };
 		3B46C3322C882A27000CE62F /* NavigationCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B46C3312C882A27000CE62F /* NavigationCheckButton.swift */; };
 		3B5893342C858ACD00BB738D /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893332C858ACD00BB738D /* AppConfiguration.swift */; };
 		3B5893382C85912B00BB738D /* KaKaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5893372C85912B00BB738D /* KaKaoMapViewModel.swift */; };
@@ -506,7 +506,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B32FFED2B94432A000358E7 /* Assets.xcassets in Resources */,
+				3B35B68B2C8ECB8E005F63A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,11 +756,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AppIcon;
-				"ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME[sdk=*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_ASSET_PATHS = "\"RandomDine/Resource\"";
+				DEVELOPMENT_ASSET_PATHS = RandomDine/Resource/Assets.xcassets;
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -797,10 +795,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_ASSET_PATHS = "\"RandomDine/Resource\"";
+				DEVELOPMENT_ASSET_PATHS = RandomDine/Resource/Assets.xcassets;
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
