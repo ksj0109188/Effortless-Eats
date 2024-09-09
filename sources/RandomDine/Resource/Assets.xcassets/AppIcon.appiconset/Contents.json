@@ -50,6 +50,7 @@
       "size" : "40x40"
     },
     {
+      "filename" : "Icon-120 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -87,6 +88,7 @@
       "size" : "76x76"
     },
     {
+      "filename" : "Icon-167.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
