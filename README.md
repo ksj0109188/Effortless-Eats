@@ -155,7 +155,7 @@
 
 <details>
   <Summary>
-    과도한 API요청
+    과도한 API요청 방지
   </Summary>
   
   #### 추천받기 기능을 터치할 때 마다 API호출이 발생하게 됩니다. 과도한 API요청으로 이어질 수 있어 사용자 UX를 고려해 너무 길지 않는 시간(초당 request 1번)제한을 설정했습니다.
@@ -182,6 +182,152 @@ struct RecommendView: View {
   }
 }  
   ```
+</details>
+
+<details>
+  <summary id="apiModule">
+  확장성과 재사용성을 고려한 API 모듈
+  </summary>
+
+  #### KaKao Local API외 다른 API(Kakao Map API)사용을 고려해야 했습니다. 재사용성이나 유지보수 측면에서 용이하게 설계의 초점을 두었습니다.
+  #### KaKao API 종류별 endPoint를 생성 하고 응답받은 data들을 ViewModel에서 활용할 수 있게 Combine을 활용한 코드를 구현했습니다.
+
+```swift
+struct KaKaoAPI {
+    let locationManager = LocationManager()
+    private let config: AppConfiguration = AppConfiguration()
+    
+    /// 내주위 음식점 정보 가지고오기
+    /// - Parameters:
+    ///   - radius: 내 중심점 위도 경도 기준 반경 설정 파라미터(m단위).
+    /// - Returns: URL session data task publihser for a given request
+    func requestStores(distance radius: Int, coordinate: CLLocationCoordinate2D?) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
+        guard (0...20000).contains(radius) else {
+            return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
+                .mapError { _ in KakaoAPIError.overflowRadius}
+                .eraseToAnyPublisher()
+        }
+        
+        var request = EndPoint.recommendFoodStore.request
+        request.url?.append(queryItems: [ .init(name: "radius", value: "\(radius)")])
+        
+        if let coordinate = coordinate {
+            request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
+            request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.global())
+            .tryMap { output in
+                return try JSONDecoder().decode(KaKaoLocalAPIDTO.self, from: output.data)
+            }
+            .mapError { error -> KakaoAPIError in
+                switch error {
+                case is URLError:
+                    return KakaoAPIError.invalidURL
+                case is DecodingError:
+                    return KakaoAPIError.decodeError
+                default: return KakaoAPIError.invalidResponse
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    /// 특정 위치 검색
+    /// - Parameters:
+    ///   - title: 검색어
+    /// - Returns: URL session data task publihser for a given request
+    func searchPlace(title: String, page: Int = 1, size: Int) -> AnyPublisher<KaKaoLocalAPIDTO, KakaoAPIError> {
+        guard !title.isEmpty else {
+            return Empty<KaKaoLocalAPIDTO, KakaoAPIError>()
+                .mapError { _ in KakaoAPIError.invalidQuery}
+                .eraseToAnyPublisher()
+        }
+        
+        var request = EndPoint.searchPlace.request
+        request.url?.append(queryItems: [.init(name: "query", value: title)])
+        
+        if let coordinate = locationManager.location?.coordinate {
+            request.url?.append(queryItems: [ .init(name: "x", value: "\(coordinate.longitude)")])
+            request.url?.append(queryItems: [ .init(name: "y", value: "\(coordinate.latitude)")])
+            request.url?.append(queryItems: [ .init(name: "page", value: "\(page)")])  
+            request.url?.append(queryItems: [ .init(name: "size", value: "\(size)")])
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .receive(on: DispatchQueue.global())
+            .tryMap { output in
+                return try JSONDecoder().decode(KaKaoLocalAPIDTO.self, from: output.data)
+            }
+            .mapError { error -> KakaoAPIError in
+                switch error {
+                case is URLError:
+                    return KakaoAPIError.invalidURL
+                case is DecodingError:
+                    return KakaoAPIError.decodeError
+                default: return KakaoAPIError.invalidResponse
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension KaKaoAPI {
+    enum KakaoAPIError: Error, CustomStringConvertible {
+        case overflowRadius
+        case invalidURL
+        case invalidResponse
+        case decodeError
+        case invalidQuery
+        
+        var description: String {
+            switch self {
+            case .overflowRadius:
+                return "radius 파라미터 값이 유효하지 않습니다. 범위는 0~200000"
+            case .invalidURL:
+                return "유효하지 않는 URL 발생"
+                    
+            case .invalidResponse:
+                return "유효하지 않는 응답."
+            case .decodeError:
+                return "Parsing 에러 발생"
+            case .invalidQuery:
+                return "유효하지 않는 쿼리 파라미터"
+            }
+        }
+    }
+    
+    enum EndPoint {
+        case recommendFoodStore
+        case searchPlace
+        
+        var baseURL: URL {
+            URL(string: "\(AppConfiguration().apiProtocol)://\(AppConfiguration().domain)")!
+        }
+        
+        var request: URLRequest {
+            switch self {
+            case .recommendFoodStore:
+                let url = baseURL.appendingPathComponent("/local/search/category.json")
+                var request = URLRequest(url: url)
+                request.url?.append(queryItems: [ .init(name: "category_group_code", value: KaKaoLocalAPICategory.Restaurant.rawValue)])
+                request.addValue("\(AppConfiguration().restAPIMethod) \(AppConfiguration().restAPIKey)", forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                return request
+                    
+            case .searchPlace:
+                let url = baseURL.appendingPathComponent("/local/search/keyword.json")
+                var request = URLRequest(url: url)
+                    request.addValue("\(AppConfiguration().restAPIMethod) \(AppConfiguration().restAPIKey)", forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                
+                return request
+            }
+        }
+    }
+...
+```
+  
 </details>
 
 <details>
