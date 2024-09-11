@@ -375,9 +375,9 @@ func addViewSucceeded(_ viewName: String, viewInfoName: String) {
   }
 ```
 #### view.frame.height 가 852 Point, 실제 KaKaoMap View는 최대 716.333 Point를 사용하는 걸 확인했고 좌표계 값은 정상적으로 받아오지만 852Point기준으로 작동되는 걸 추측할 수 있었습니다.
-#### 852Point는 해당 화면의 전체크기로, SwiftUI UIView
+#### 852Point는 해당 화면의 전체크기로, SwiftUI에서 초기화 시점에 KakaoViewController의 Map UIView 크기를 설정하는 게 원인인 것을 파악했습니다.
 ### 해결방법
-Combine을 활용해 ViewController Frame이 결정된 후 Kakaomap Frame을 설정하도록 변경해 해당 이슈를 처리했습니다.
+Combine을 활용해 ViewController Frame이 결정된 후 Map UIView Frame을 설정하도록 변경해 해당 이슈를 처리했습니다.
 ```swift
 override func viewDidLoad() {
   super.viewDidLoad()
