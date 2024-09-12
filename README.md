@@ -27,115 +27,6 @@
   </tr>
 </Table>
 
-## Skills
-- SwiftUI
-- MVVM 
-- Cobmine 
-- KaKaoMap Local API 
-- Swift Lint 
-- CoreData
-- Git Flow
-- Xcode Cloud
-
-## Functions
-  <Table>
-  <tr>
-    <td align = "center">
-      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/fba17168-d9d2-4c05-a537-231d76d66aa8" width="150" alt="설정" />
-    </td>
-    <td valign= "top">
-      <p>
-        <h2> 홈 </h2>
-        <li> 메인 화면으로 추천받기 버튼 및 저장된 즐겨찾기 리스트가 출력됩니다. </li>
-        <li> 오른쪽 상단위 톱니 Symbol을 터치해 환경설정뷰로 이동됩니다. </li>
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td align = "center">
-      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/061c9eb5-8f2c-4a4c-983d-33bb86894877" width="150" alt="추천받기" />
-    </td>
-    <td valign= "top">
-      <p>
-       <h2> 추천받기</h2>
-       <li> 사용자 위치 기준으로 설정된 거리에 따라 랜덤하게 가게정보를 받아옵니다.</li>
-       <li> Combine으로 비동기 핸들링 기능을 구현했습니다 </li>
-       <li> 사용 API는 KaKao Local API를 사용했습니다.</li>
-       <li> UX를 고려해 API통신이 끝나기 전까지 음식 아이콘이 표출됩니다. Combine Publisher Scheduler를 이용했습니다.</li>
-      </p>
-    </td>
-  </tr>
-
-  <tr>
-    <td align = "center">
-      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/f20a37e5-60f4-4b66-88da-e5cba9bc34f9" width="150" alt="즐겨찾기" />
-    </td>
-    <td valign= "top">
-      <p>
-       <h2> 즐겨찾기 </h2>
-       <li> 추천받은 가게정보를 사용자가 별아이콘 터치만으로 즐겨찾기에 추가할 수 있습니다.</li>
-       <li> 삭제의 경우 별아이콘을 다시 터치하거나 홈 화면에서 스와이프 동작으로 제거할 수 있습니다. </li>
-       <li> CoreData를 활용해 데이터 Persistence를 구축했습니다.</li>
-      </p>
-    </td>
-  </tr>
-
-  <tr>
-    <td align = "center">
-      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/94871d10-f72f-428a-ba68-cdc5b11ccd9c" width="150" alt="가게정보 보기" />
-    </td>
-    <td align="left" valign="top">
-      <p>
-       <h2> 가게정보 보기</h2>
-       <li> 홈 화면에서 즐겨찾기 항목을 터치하거나, 추천받기뷰에 출력된 아이템에서 이동 가능합니다. </li>
-       <li> SafarWebView에 추천된 가게 URL이 전달되며 카카오맵 웹 페이지로 가게정보를 볼 수 있습니다. </li>
-      </p>
-    </td>
-  </tr>
-
-  <tr align = "center">
-    <td>
-      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/02e48b30-2d70-4d03-a8f5-459e6691c9f0" width="150" alt="설정" />
-    </td>
-   <td align="left" valign="top">
-      <p>
-       <h2> 설정 </h2>
-       <li> 사용자가 설정한 거리에따라 음식춤이 됩니다. </li>
-       <li> 사용자의 설정 거리에따른 정보가 API request parameter로 전달 됩니다.</li> 
-       <li> 사용자가 위치정보를 제공 여부 설정을 쉽게 할 수 있게 기능을 제공하고 있습니다. </li>
-      </p>
-    </td>
-  </tr>
-
-
-  <tr align = "center">
-    <td>
-      <img src="https://github.com/user-attachments/assets/73863223-eb9a-4f61-957f-e5fbdabb8edb" width="150" alt="장소검색" />
-    </td>
-   <td align="left" valign="top">
-      <p>
-       <h2> 장소검색 </h2>
-       <li> 사용자가 특정 장소를 검색 </li>
-       <li> 검색 결과 선택에 따라 Map과 위치가 동기화됩니다.</li> 
-      </p>
-    </td>
-  </tr>
-
-  <tr align = "center">
-    <td>
-      <img src="https://github.com/user-attachments/assets/49dfe881-a689-4120-a113-31dace7960bd" width="150" alt="맵 위치표시" />
-    </td>
-   <td align="left" valign="top">
-      <p>
-       <h2> 맵 위치표시 </h2>
-       <li> 사용자가 맵 Tap시 해당 위치로 랜덤음식점이 추첨됩니다. </li>
-        <li> Tap시점에 따라 위경도 값을 이용했습니다. </li>
-      </p>
-    </td>
-  </tr>
-</Table>
-
 ## 트러블 슈팅
 <details>
 <summary> 카카오, Naver, Google API 선택이슈</summary>
@@ -564,6 +455,118 @@ struct LoadingView: View {
 }
   ```
 </details>
+
+## Skills
+- SwiftUI
+- UIKit
+- UIViewControllerPresentTable
+- MVVM
+- Cobmine 
+- Kakao Local API
+- Kakao Map
+- Swift Lint 
+- CoreData
+- Git Flow
+- Xcode Cloud
+
+## Functions
+  <Table>
+  <tr>
+    <td align = "center">
+      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/fba17168-d9d2-4c05-a537-231d76d66aa8" width="150" alt="설정" />
+    </td>
+    <td valign= "top">
+      <p>
+        <h2> 홈 </h2>
+        <li> 메인 화면으로 추천받기 버튼 및 저장된 즐겨찾기 리스트가 출력됩니다. </li>
+        <li> 오른쪽 상단위 톱니 Symbol을 터치해 환경설정뷰로 이동됩니다. </li>
+      </p>
+    </td>
+  </tr>
+  
+  <tr>
+    <td align = "center">
+      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/061c9eb5-8f2c-4a4c-983d-33bb86894877" width="150" alt="추천받기" />
+    </td>
+    <td valign= "top">
+      <p>
+       <h2> 추천받기</h2>
+       <li> 사용자 위치 기준으로 설정된 거리에 따라 랜덤하게 가게정보를 받아옵니다.</li>
+       <li> Combine으로 비동기 핸들링 기능을 구현했습니다 </li>
+       <li> 사용 API는 KaKao Local API를 사용했습니다.</li>
+       <li> UX를 고려해 API통신이 끝나기 전까지 음식 아이콘이 표출됩니다. Combine Publisher Scheduler를 이용했습니다.</li>
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td align = "center">
+      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/f20a37e5-60f4-4b66-88da-e5cba9bc34f9" width="150" alt="즐겨찾기" />
+    </td>
+    <td valign= "top">
+      <p>
+       <h2> 즐겨찾기 </h2>
+       <li> 추천받은 가게정보를 사용자가 별아이콘 터치만으로 즐겨찾기에 추가할 수 있습니다.</li>
+       <li> 삭제의 경우 별아이콘을 다시 터치하거나 홈 화면에서 스와이프 동작으로 제거할 수 있습니다. </li>
+       <li> CoreData를 활용해 데이터 Persistence를 구축했습니다.</li>
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td align = "center">
+      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/94871d10-f72f-428a-ba68-cdc5b11ccd9c" width="150" alt="가게정보 보기" />
+    </td>
+    <td align="left" valign="top">
+      <p>
+       <h2> 가게정보 보기</h2>
+       <li> 홈 화면에서 즐겨찾기 항목을 터치하거나, 추천받기뷰에 출력된 아이템에서 이동 가능합니다. </li>
+       <li> SafarWebView에 추천된 가게 URL이 전달되며 카카오맵 웹 페이지로 가게정보를 볼 수 있습니다. </li>
+      </p>
+    </td>
+  </tr>
+
+  <tr align = "center">
+    <td>
+      <img src="https://github.com/ksj0109188/Effortless-Eats/assets/48472569/02e48b30-2d70-4d03-a8f5-459e6691c9f0" width="150" alt="설정" />
+    </td>
+   <td align="left" valign="top">
+      <p>
+       <h2> 설정 </h2>
+       <li> 사용자가 설정한 거리에따라 음식춤이 됩니다. </li>
+       <li> 사용자의 설정 거리에따른 정보가 API request parameter로 전달 됩니다.</li> 
+       <li> 사용자가 위치정보를 제공 여부 설정을 쉽게 할 수 있게 기능을 제공하고 있습니다. </li>
+      </p>
+    </td>
+  </tr>
+
+
+  <tr align = "center">
+    <td>
+      <img src="https://github.com/user-attachments/assets/73863223-eb9a-4f61-957f-e5fbdabb8edb" width="150" alt="장소검색" />
+    </td>
+   <td align="left" valign="top">
+      <p>
+       <h2> 장소검색 </h2>
+       <li> 사용자가 특정 장소를 검색 </li>
+       <li> 검색 결과 선택에 따라 Map과 위치가 동기화됩니다.</li> 
+      </p>
+    </td>
+  </tr>
+
+  <tr align = "center">
+    <td>
+      <img src="https://github.com/user-attachments/assets/49dfe881-a689-4120-a113-31dace7960bd" width="150" alt="맵 위치표시" />
+    </td>
+   <td align="left" valign="top">
+      <p>
+       <h2> 맵 위치표시 </h2>
+       <li> 사용자가 맵 Tap시 해당 위치로 랜덤음식점이 추첨됩니다. </li>
+        <li> Tap시점에 따라 위경도 값을 이용했습니다. </li>
+      </p>
+    </td>
+  </tr>
+</Table>
 
 ## File tree
 <details>
