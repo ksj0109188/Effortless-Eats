@@ -27,7 +27,7 @@
   </tr>
 </Table>
 
-## 트러블 슈팅
+## Trouble shotting
 <details>
 <summary> 카카오, Naver, Google API 선택이슈</summary>
 <span>
