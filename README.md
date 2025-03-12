@@ -460,6 +460,7 @@ struct LoadingView: View {
 - SwiftUI
 - UIKit
 - UIViewControllerPresentTable
+- LocationManager
 - MVVM
 - Cobmine 
 - Kakao Local API
@@ -470,6 +471,15 @@ struct LoadingView: View {
 - Xcode Cloud
 
 ## Functions
+  ### Summary
+  - Combine을 활용한 API 통신 비동기 처리, 스케줄링 및 에러 핸들링
+  - 추첨받기 버튼(API Request 트리거 버튼)에 Combine throttle을 적용하여 과도한 API 요청 방지
+  - UIViewControllerPresentTable을 활용한 SwiftUI, ViewController 브릿징
+  - TestFlight 및 Xcode Cloud를 활용한 테스트와 `CI/CD 환경` 구축
+  - Xcode Cloud Workflow를 활용한 API 키관리
+  - `Kakao API`를 활용한 주위 음식점 데이터 Fetch
+  - Kakao Map을 활용한 위치설정 기능 추가
+  - 위치 정보를 활용하여 사용자 주변 음식점만 랜덤 추첨
   <Table>
   <tr>
     <td align = "center">
