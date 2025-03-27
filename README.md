@@ -221,13 +221,13 @@ extension KaKaoAPI {
   
 </details>
 
-<details id="issue3">
+<details>
   <Summary>
     KaKaoMap 위치표시 트러블 슈팅
   </Summary>
   
 #### 카카오맵 클릭시 좌표에 따른 위치 표시 기능을 구현했었고 탭 이벤트가 발생한 위치 기준 200Point 아래 마커가 표시되는 버그가 있었습니다.
-<table>
+<table id="issue3">
   <tr align = "left">
     <td><img src="https://github.com/user-attachments/assets/05927677-3035-4ef3-a5d4-1bf458faa62e" width="200" alt="카카오맵 버그" /></td>
     <td>맵 터치시 가로방향은 정상이지만 높이 계산에서 버그발생, 의도한 위치가 아닌 200Pint 아래 마커가 표시되는 그림입니다.</td>
