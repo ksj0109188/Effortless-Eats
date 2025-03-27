@@ -221,7 +221,7 @@ extension KaKaoAPI {
   
 </details>
 
-<details>
+<details id="issue3">
   <Summary>
     KaKaoMap 위치표시 트러블 슈팅
   </Summary>
